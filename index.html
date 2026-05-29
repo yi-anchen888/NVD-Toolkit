@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; form-action 'none'; upgrade-insecure-requests">
   <title>NVD 自生活，實用工具箱</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI" crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -81,7 +82,7 @@
         <button class="category-tab" type="button" data-category-key="design" data-i18n="categoryDesign">圖文設計</button>
         <button class="category-tab" type="button" data-category-key="dev" data-i18n="categoryDev">工程開發</button>
         <button class="category-tab" type="button" data-category-key="favorites">
-          <i class="fa-solid fa-heart" style="color: var(--primary-orange); margin-right: 6px;"></i>
+          <i class="fa-solid fa-heart category-tab-icon"></i>
           <span data-i18n="categoryFavorites">我的收藏</span>
         </button>
       </div>

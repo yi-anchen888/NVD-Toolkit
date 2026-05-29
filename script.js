@@ -33,6 +33,7 @@ const translations = {
     linkCopied: "已成功複製 {name} 的連結！",
     favoriteAdded: "已將 {name} 加入我的收藏！",
     favoriteRemoved: "已將 {name} 從我的收藏移除！",
+    checksumLabel: "SHA-256",
     emptyTitle: "沒有找到符合條件的工具",
     emptyText: "換個關鍵字或切回全部分類試試看。",
     frictionEyebrow: "Technology Friction",
@@ -112,6 +113,7 @@ const translations = {
     linkCopied: "Successfully copied link for {name}!",
     favoriteAdded: "Added {name} to your favorites!",
     favoriteRemoved: "Removed {name} from your favorites!",
+    checksumLabel: "SHA-256",
     emptyTitle: "No matching tools found",
     emptyText: "Try another keyword or switch back to all categories.",
     frictionEyebrow: "Technology Friction",
@@ -170,6 +172,7 @@ const tools = [
     categoryKey: "office",
     categoryLabelKey: "categoryOffice",
     url: "https://drive.google.com/file/d/1Ky8qJnXC1Frui0MzlERgi2xGHtEIOsc7/view?usp=drive_link",
+    sha256: "E7806BA585D1508CA0879FDE0E2B006376CD81D2DBC599FBD3F37752CE82FFB2",
     imageIcon: "fa-solid fa-file-powerpoint",
     i18n: {
       zh: {
@@ -189,6 +192,7 @@ const tools = [
     categoryKey: "document",
     categoryLabelKey: "categoryDocument",
     url: "https://drive.google.com/file/d/1n6Y5QMSkbWsl3IgEDtYZ4w80sgoZFdow/view?usp=drive_link",
+    sha256: "8A083298C6C185EB28C8B8B2E4D5AA3287814C1B652A86D34D272324ECDCF2B0",
     imageIcon: "fa-solid fa-file-arrow-down",
     i18n: {
       zh: {
@@ -319,12 +323,7 @@ const tools = [
   }
 ];
 
-const iconThemes = [
-  { color: "#ff6842" },
-  { color: "#f28c38" },
-  { color: "#18a999" },
-  { color: "#8b6f5a" }
-];
+const iconThemeCount = 4;
 
 const savedFavorites = localStorage.getItem("nvd-favorites");
 const systemThemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -441,17 +440,20 @@ function getFilteredTools() {
 
 function createToolCard(tool, index) {
   const content = getToolText(tool);
-  const theme = iconThemes[index % iconThemes.length];
+  const themeClass = `theme-${index % iconThemeCount}`;
   const tagsHtml = content.tags.map((tag) => `<span class="tag">${escapeHTML(tag)}</span>`).join("");
   const isFavorite = state.favorites.has(tool.id);
   const escapedName = escapeHTML(content.name);
   const escapedDescription = escapeHTML(content.description);
+  const checksumHtml = tool.sha256
+    ? `<div class="checksum"><span>${t("checksumLabel")}</span><code>${escapeHTML(tool.sha256)}</code></div>`
+    : "";
 
   return `
     <article class="tool-card">
       <div class="card-header-visual">
         <div class="card-visual-gradient"></div>
-        <div class="tool-icon-badge" style="--icon-color: ${theme.color};">
+        <div class="tool-icon-badge ${themeClass}">
           <i class="${tool.imageIcon}"></i>
         </div>
       </div>
@@ -460,6 +462,7 @@ function createToolCard(tool, index) {
         <div class="tag-list">${tagsHtml}</div>
         <h3 class="tool-title">${escapedName}</h3>
         <p class="tool-desc">${escapedDescription}</p>
+        ${checksumHtml}
       </div>
 
       <div class="card-footer">
@@ -642,8 +645,7 @@ function copyText(text) {
     const textarea = document.createElement("textarea");
     textarea.value = text;
     textarea.setAttribute("readonly", "");
-    textarea.style.position = "fixed";
-    textarea.style.top = "-9999px";
+    textarea.className = "copy-buffer";
     document.body.appendChild(textarea);
     textarea.select();
 
@@ -698,14 +700,14 @@ function openModal(event) {
 
   guideModal.classList.add("active");
   guideModal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
+  document.body.classList.add("modal-open");
   closeModalBtn.focus();
 }
 
 function closeModal() {
   guideModal.classList.remove("active");
   guideModal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
+  document.body.classList.remove("modal-open");
   openGuideBtn.focus();
 }
 
