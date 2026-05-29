@@ -2,6 +2,10 @@
 *.zip
 *.rar
 backup.ps1
+README.md
+GEMINI.md
+*.docx
+.antigravitycli/
 
 # Tool installation packages
 NVD 自生活(工具)/
