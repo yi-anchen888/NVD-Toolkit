@@ -28,6 +28,7 @@ const translations = {
     categoryDesign: "圖文設計",
     categoryDev: "工程開發",
     categoryFavorites: "我的收藏",
+    categoryUnknown: "未分類",
     shareTool: "分享 {name} 連結",
     linkCopied: "已成功複製 {name} 的連結！",
     favoriteAdded: "已將 {name} 加入我的收藏！",
@@ -78,6 +79,8 @@ const translations = {
     faqOneAnswer: "本站推薦的部分客製工具提供免費下載，其餘外部工具則視原廠政策而定，多數均有免註冊免費體驗額度。",
     faqTwoQuestion: "Q: 開啟打包工具時若被防毒軟體攔截該怎麼辦？",
     faqTwoAnswer: "由於本地工具通常是獨立可執行檔，Windows Defender 等可能會出現誤報。若您信任來源，可依系統提示選擇仍要執行。",
+    faqThreeQuestion: "Q: 下載 EXE 工具前需要注意什麼？",
+    faqThreeAnswer: "請只從本站卡片提供的官方連結下載，下載後可先使用防毒軟體掃描。若系統跳出未知來源提醒，請確認檔名與來源後再執行。",
     modalConfirm: "我知道了"
   },
   en: {
@@ -104,6 +107,7 @@ const translations = {
     categoryDesign: "Design",
     categoryDev: "Development",
     categoryFavorites: "My Favorites",
+    categoryUnknown: "Uncategorized",
     shareTool: "Share {name} link",
     linkCopied: "Successfully copied link for {name}!",
     favoriteAdded: "Added {name} to your favorites!",
@@ -154,6 +158,8 @@ const translations = {
     faqOneAnswer: "Some custom tools on this site are free to download. External tools follow their own policies, and many offer free trials.",
     faqTwoQuestion: "Q: What if antivirus software blocks a packaged tool?",
     faqTwoAnswer: "Local tools are often standalone executable files, so Windows Defender may warn you. If you trust the source, follow the system prompt to continue.",
+    faqThreeQuestion: "Q: What should I check before downloading EXE tools?",
+    faqThreeAnswer: "Only download from the official links shown on this site. After downloading, scan the file with antivirus software. If your system warns about an unknown source, confirm the filename and source before running it.",
     modalConfirm: "Got it"
   }
 };
@@ -162,6 +168,7 @@ const tools = [
   {
     id: 1,
     categoryKey: "office",
+    categoryLabelKey: "categoryOffice",
     url: "https://drive.google.com/file/d/1Ky8qJnXC1Frui0MzlERgi2xGHtEIOsc7/view?usp=drive_link",
     imageIcon: "fa-solid fa-file-powerpoint",
     i18n: {
@@ -180,6 +187,7 @@ const tools = [
   {
     id: 2,
     categoryKey: "document",
+    categoryLabelKey: "categoryDocument",
     url: "https://drive.google.com/file/d/1n6Y5QMSkbWsl3IgEDtYZ4w80sgoZFdow/view?usp=drive_link",
     imageIcon: "fa-solid fa-file-arrow-down",
     i18n: {
@@ -198,6 +206,7 @@ const tools = [
   {
     id: 3,
     categoryKey: "ai",
+    categoryLabelKey: "categoryAi",
     url: "https://www.notion.so/product/ai",
     imageIcon: "fa-solid fa-wand-magic-sparkles",
     i18n: {
@@ -216,6 +225,7 @@ const tools = [
   {
     id: 4,
     categoryKey: "ai",
+    categoryLabelKey: "categoryAi",
     url: "https://www.perplexity.ai",
     imageIcon: "fa-solid fa-magnifying-glass-chart",
     i18n: {
@@ -234,6 +244,7 @@ const tools = [
   {
     id: 5,
     categoryKey: "design",
+    categoryLabelKey: "categoryDesign",
     url: "https://www.remove.bg",
     imageIcon: "fa-solid fa-image",
     i18n: {
@@ -252,6 +263,7 @@ const tools = [
   {
     id: 6,
     categoryKey: "design",
+    categoryLabelKey: "categoryDesign",
     url: "https://www.canva.com",
     imageIcon: "fa-solid fa-palette",
     i18n: {
@@ -270,6 +282,7 @@ const tools = [
   {
     id: 7,
     categoryKey: "dev",
+    categoryLabelKey: "categoryDev",
     url: "https://codepen.io",
     imageIcon: "fa-brands fa-codepen",
     i18n: {
@@ -288,6 +301,7 @@ const tools = [
   {
     id: 8,
     categoryKey: "dev",
+    categoryLabelKey: "categoryDev",
     url: "https://jsonformatter.org",
     imageIcon: "fa-solid fa-code",
     i18n: {
@@ -315,6 +329,7 @@ const iconThemes = [
 const savedFavorites = localStorage.getItem("nvd-favorites");
 const systemThemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
 const savedTheme = localStorage.getItem("nvd-theme");
+const htmlTranslationKeys = new Set(["heroSubtitle"]);
 
 const state = {
   keyword: "",
@@ -382,7 +397,13 @@ function applyTranslations() {
   document.title = t("pageTitle");
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
-    element.innerHTML = t(element.dataset.i18n);
+    const key = element.dataset.i18n;
+    if (htmlTranslationKeys.has(key)) {
+      element.innerHTML = t(key);
+      return;
+    }
+
+    element.textContent = t(key);
   });
 
   document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
@@ -400,7 +421,7 @@ function getFilteredTools() {
 
   return tools.filter((tool) => {
     const content = getToolText(tool);
-    const categoryLabel = t(`category${capitalizeKey(tool.categoryKey)}`);
+    const categoryLabel = t(tool.categoryLabelKey || "categoryUnknown");
     const searchableText = normalizeText(`${content.name} ${content.description} ${categoryLabel} ${content.tags.join(" ")}`);
     
     let matchesCategory = false;
@@ -416,19 +437,6 @@ function getFilteredTools() {
 
     return matchesCategory && matchesKeyword;
   });
-}
-
-function capitalizeKey(key) {
-  const categoryMap = {
-    ai: "Ai",
-    office: "Office",
-    document: "Document",
-    design: "Design",
-    dev: "Dev",
-    favorites: "Favorites"
-  };
-
-  return categoryMap[key] || "All";
 }
 
 function createToolCard(tool, index) {
