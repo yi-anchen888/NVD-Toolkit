@@ -1,0 +1,14 @@
+# Backup files
+*.zip
+*.rar
+backup.ps1
+
+# Tool installation packages
+NVD 自生活(工具)/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Project temporary files
+temp_backup/
