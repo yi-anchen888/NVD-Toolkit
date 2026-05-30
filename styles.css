@@ -172,6 +172,10 @@ button {
   color: var(--primary-orange);
 }
 
+.nav-links a.active {
+  color: var(--primary-orange);
+}
+
 .header-actions {
   flex: 0 0 auto;
   gap: 10px;
@@ -365,6 +369,45 @@ body[data-theme="dark"] .hero-subtitle strong {
   letter-spacing: 0.5px;
 }
 
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 28px 0 6px;
+}
+
+.primary-link-btn,
+.secondary-link-btn {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-weight: 900;
+  transition: all 0.3s ease;
+}
+
+.primary-link-btn {
+  color: #fff;
+  background: var(--primary-orange);
+  box-shadow: 0 12px 24px rgba(255, 104, 66, 0.22);
+}
+
+.secondary-link-btn {
+  color: var(--text-main);
+  background: var(--surface-main);
+  border: 1px solid var(--border-main);
+}
+
+.primary-link-btn:hover,
+.secondary-link-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
 .search-box {
   width: min(100%, 660px);
   min-height: 60px;
@@ -449,7 +492,8 @@ body[data-theme="dark"] .hero-stats strong {
 }
 
 .values-section,
-.loop-section {
+.loop-section,
+.gateway-section {
   padding: 74px 0;
 }
 
@@ -475,7 +519,8 @@ body[data-theme="dark"] .hero-stats strong {
 }
 
 .values-grid,
-.loop-grid {
+.loop-grid,
+.gateway-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
@@ -484,7 +529,8 @@ body[data-theme="dark"] .hero-stats strong {
 
 .value-card,
 .loop-card,
-.dual-friction-card {
+.dual-friction-card,
+.gateway-card {
   background: var(--card-bg);
   border: 1px solid var(--border-main);
   border-radius: var(--radius-lg);
@@ -493,6 +539,27 @@ body[data-theme="dark"] .hero-stats strong {
 
 .value-card {
   padding: 28px;
+}
+
+.gateway-card {
+  padding: 28px;
+  transition: all 0.3s ease;
+}
+
+.gateway-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.gateway-card span {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-orange), var(--accent-teal));
+  border-radius: 16px;
 }
 
 .value-icon,
@@ -510,7 +577,8 @@ body[data-theme="dark"] .hero-stats strong {
 
 .value-card h3,
 .dual-friction-card h3,
-.loop-card h3 {
+.loop-card h3,
+.gateway-card h3 {
   margin: 0 0 10px;
   color: var(--text-main);
   font-size: 1.15rem;
@@ -519,7 +587,8 @@ body[data-theme="dark"] .hero-stats strong {
 
 .value-card p,
 .dual-friction-card p,
-.loop-card p {
+.loop-card p,
+.gateway-card p {
   margin: 0;
   color: var(--text-muted);
   line-height: 1.72;
@@ -1699,7 +1768,8 @@ body[data-theme="dark"] .social-links a {
   }
 
   .values-grid,
-  .loop-grid {
+  .loop-grid,
+  .gateway-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1820,6 +1890,7 @@ body[data-theme="dark"] .social-links a {
   .dual-friction-section,
   .resilience-section,
   .loop-section,
+  .gateway-section,
   .filter-section {
     padding: 52px 0;
   }
@@ -1827,6 +1898,7 @@ body[data-theme="dark"] .social-links a {
   .value-card,
   .dual-friction-card,
   .loop-card,
+  .gateway-card,
   .resilience-dashboard {
     padding: 22px;
     border-radius: 16px;

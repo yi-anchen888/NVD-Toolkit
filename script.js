@@ -7,9 +7,11 @@ const translations = {
   zh: {
     brandName: "NVD 自生活",
     pageTitle: "NVD 自生活，友善科技生態系",
+    navHome: "首頁",
     navValues: "核心理念",
     navSoftware: "綠色軟體",
     navResilience: "友善專案",
+    navManifesto: "理念宣言",
     navLoop: "參與共創",
     navGuide: "使用說明",
     navCommunity: "社群",
@@ -22,6 +24,17 @@ const translations = {
     searchLabel: "搜尋工具名稱、標籤或痛點",
     searchPlaceholder: "搜尋工具名稱、標籤或痛點...",
     statsProcessedFiles: "小工具已下載",
+    homePrimaryCta: "開始使用綠色軟體",
+    homeSecondaryCta: "查看友善專案",
+    gatewayEyebrow: "Ecosystem Gateway",
+    gatewayTitle: "三個入口，對應同一個使命",
+    gatewayLead: "NVD 不是先要求認同，而是先提供可感受到的幫助，再把幫助轉成理解與參與。",
+    gatewaySoftwareTitle: "綠色友善軟體",
+    gatewaySoftwareText: "從轉檔、簡報還原與日常效率開始，讓人不用註冊、不背指令也能完成任務。",
+    gatewayResilienceTitle: "社會韌性友善專案",
+    gatewayResilienceText: "用模擬資料盤呈現城市障礙如何被標記、被理解，並走向可協作的改善。",
+    gatewayJoinTitle: "參與共創",
+    gatewayJoinText: "讓同學、師資與種子使用者從測試、回饋、分享開始，進入 NVD 友善科技循環。",
     valuesEyebrow: "Core Values",
     valuesTitle: "從工具開始，走向友善社會系統",
     valuesLead: "我們先幫人少卡一次，再讓每一次下載、測試與回饋，成為社會韌性的一個節點。",
@@ -173,9 +186,11 @@ const translations = {
   en: {
     brandName: "NVD Life",
     pageTitle: "NVD Life, Friendly Tech Ecosystem",
+    navHome: "Home",
     navValues: "Values",
     navSoftware: "Green Software",
     navResilience: "Friendly Project",
+    navManifesto: "Manifesto",
     navLoop: "Co-create",
     navGuide: "Guide",
     navCommunity: "Community",
@@ -188,6 +203,17 @@ const translations = {
     searchLabel: "Search by tool name, tag, or pain point",
     searchPlaceholder: "Search by tool name, tag, or pain point...",
     statsProcessedFiles: "tools downloaded",
+    homePrimaryCta: "Use green software",
+    homeSecondaryCta: "View friendly project",
+    gatewayEyebrow: "Ecosystem Gateway",
+    gatewayTitle: "Three gateways, one mission",
+    gatewayLead: "NVD does not demand belief first. It offers tangible help, then turns help into understanding and participation.",
+    gatewaySoftwareTitle: "Green Friendly Software",
+    gatewaySoftwareText: "Start with conversion, slide recovery, and everyday workflows so people can finish tasks without accounts or commands.",
+    gatewayResilienceTitle: "Social Resilience Friendly Project",
+    gatewayResilienceText: "Use a simulated data board to show how city barriers can be marked, understood, and improved collaboratively.",
+    gatewayJoinTitle: "Co-create",
+    gatewayJoinText: "Invite classmates, mentors, and seed users to test, give feedback, share, and enter the NVD friendly tech loop.",
     valuesEyebrow: "Core Values",
     valuesTitle: "Start with tools, move toward a friendlier social system",
     valuesLead: "We help people get unstuck first, then turn every download, test, and feedback loop into a node of social resilience.",
@@ -737,6 +763,8 @@ function createToolCard(tool, index) {
 }
 
 function renderTools() {
+  if (!toolGrid || !resultCount || !emptyState) return;
+
   const filteredTools = getFilteredTools();
 
   toolGrid.innerHTML = filteredTools.map(createToolCard).join("");
@@ -745,6 +773,8 @@ function renderTools() {
 }
 
 function setActiveCategory(selectedButton) {
+  if (!categoryTabs.length) return;
+
   categoryTabs.forEach((button) => button.classList.remove("active"));
   selectedButton.classList.add("active");
 }
@@ -762,6 +792,8 @@ function setTheme(theme, shouldPersist = true) {
     document.body.removeAttribute("data-theme");
   }
 
+  if (!themeToggle) return;
+
   const icon = themeToggle.querySelector("i");
   const isDark = theme === "dark";
   icon.className = isDark ? "fa-solid fa-sun" : "fa-solid fa-moon";
@@ -771,8 +803,13 @@ function setTheme(theme, shouldPersist = true) {
 function setLanguage(language) {
   state.language = translations[language] ? language : "zh";
   localStorage.setItem("nvd-language", state.language);
-  currentLanguageLabel.textContent = state.language === "zh" ? "中文" : "EN";
-  languageToggle.setAttribute("aria-label", t("languageLabel"));
+  if (currentLanguageLabel) {
+    currentLanguageLabel.textContent = state.language === "zh" ? "中文" : "EN";
+  }
+
+  if (languageToggle) {
+    languageToggle.setAttribute("aria-label", t("languageLabel"));
+  }
 
   languageOptions.forEach((option) => {
     const isActive = option.dataset.language === state.language;
@@ -786,20 +823,26 @@ function setLanguage(language) {
 }
 
 function closeLanguageMenu() {
+  if (!languageMenu || !languageToggle) return;
+
   languageMenu.classList.remove("open");
   languageToggle.setAttribute("aria-expanded", "false");
 }
 
 function toggleLanguageMenu() {
+  if (!languageMenu || !languageToggle) return;
+
   const shouldOpen = !languageMenu.classList.contains("open");
   languageMenu.classList.toggle("open", shouldOpen);
   languageToggle.setAttribute("aria-expanded", String(shouldOpen));
 }
 
-searchInput.addEventListener("input", (event) => {
-  state.keyword = event.target.value;
-  renderTools();
-});
+if (searchInput) {
+  searchInput.addEventListener("input", (event) => {
+    state.keyword = event.target.value;
+    renderTools();
+  });
+}
 
 categoryTabs.forEach((button) => {
   button.addEventListener("click", () => {
@@ -855,39 +898,41 @@ function showToast(message, type = "success") {
   }, 3000);
 }
 
-toolGrid.addEventListener("click", (event) => {
-  const favoriteButton = event.target.closest(".favorite-btn");
+if (toolGrid) {
+  toolGrid.addEventListener("click", (event) => {
+    const favoriteButton = event.target.closest(".favorite-btn");
 
-  if (favoriteButton) {
-    const toolId = Number(favoriteButton.dataset.id);
-    const tool = tools.find((t) => t.id === toolId);
-    const content = getToolText(tool);
+    if (favoriteButton) {
+      const toolId = Number(favoriteButton.dataset.id);
+      const tool = tools.find((t) => t.id === toolId);
+      const content = getToolText(tool);
 
-    if (state.favorites.has(toolId)) {
-      state.favorites.delete(toolId);
-      localStorage.setItem("nvd-favorites", JSON.stringify(Array.from(state.favorites)));
-      showToast(t("favoriteRemoved", { name: content.name }), "info");
-    } else {
-      state.favorites.add(toolId);
-      localStorage.setItem("nvd-favorites", JSON.stringify(Array.from(state.favorites)));
-      showToast(t("favoriteAdded", { name: content.name }), "success");
+      if (state.favorites.has(toolId)) {
+        state.favorites.delete(toolId);
+        localStorage.setItem("nvd-favorites", JSON.stringify(Array.from(state.favorites)));
+        showToast(t("favoriteRemoved", { name: content.name }), "info");
+      } else {
+        state.favorites.add(toolId);
+        localStorage.setItem("nvd-favorites", JSON.stringify(Array.from(state.favorites)));
+        showToast(t("favoriteAdded", { name: content.name }), "success");
+      }
+      renderTools();
+      return;
     }
-    renderTools();
-    return;
-  }
 
-  const shareButton = event.target.closest(".share-btn");
-  if (shareButton) {
-    const toolId = Number(shareButton.dataset.id);
-    const tool = tools.find((item) => item.id === toolId);
-    if (!tool) return;
+    const shareButton = event.target.closest(".share-btn");
+    if (shareButton) {
+      const toolId = Number(shareButton.dataset.id);
+      const tool = tools.find((item) => item.id === toolId);
+      if (!tool) return;
 
-    const name = getToolText(tool).name;
-    copyText(tool.url)
-      .then(() => showToast(t("linkCopied", { name }), "success"))
-      .catch(() => showToast(tool.url, "info"));
-  }
-});
+      const name = getToolText(tool).name;
+      copyText(tool.url)
+        .then(() => showToast(t("linkCopied", { name }), "success"))
+        .catch(() => showToast(tool.url, "info"));
+    }
+  });
+}
 
 function copyText(text) {
   if (navigator.clipboard && window.isSecureContext) {
@@ -913,10 +958,12 @@ function copyText(text) {
   });
 }
 
-languageToggle.addEventListener("click", (event) => {
-  event.stopPropagation();
-  toggleLanguageMenu();
-});
+if (languageToggle) {
+  languageToggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleLanguageMenu();
+  });
+}
 
 languageOptions.forEach((option) => {
   option.addEventListener("click", (event) => {
@@ -927,14 +974,16 @@ languageOptions.forEach((option) => {
 });
 
 document.addEventListener("click", (event) => {
-  if (!languageMenu.contains(event.target)) {
+  if (languageMenu && !languageMenu.contains(event.target)) {
     closeLanguageMenu();
   }
 });
 
-themeToggle.addEventListener("click", () => {
-  setTheme(state.theme === "dark" ? "light" : "dark", true);
-});
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    setTheme(state.theme === "dark" ? "light" : "dark", true);
+  });
+}
 
 function handleSystemThemeChange(event) {
   if (!localStorage.getItem("nvd-theme")) {
@@ -961,7 +1010,9 @@ function closeModal() {
   guideModal.classList.remove("active");
   guideModal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");
-  openGuideBtn.focus();
+  if (openGuideBtn) {
+    openGuideBtn.focus();
+  }
 }
 
 function openLegalModal(type, event) {
