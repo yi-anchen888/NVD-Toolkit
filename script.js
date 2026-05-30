@@ -92,6 +92,25 @@ const translations = {
     footerCompanyTerms: "服務條款",
     footerPrivacyNote: "100% 本地優先 · 不收集敏感資料 · 無需帳戶",
     modalTitle: "使用說明手冊",
+    privacyTitle: "隱私權政策",
+    termsTitle: "服務條款",
+    legalUpdated: "最後更新：2026 年 5 月 30 日",
+    privacySectionScope: "我們如何保護你的資料",
+    privacyScopeText: "NVD 自生活，實用工具箱是純前端靜態網站。本網站不要求註冊帳號，也不會主動收集你的姓名、電子郵件、檔案內容或付款資料。",
+    privacySectionStorage: "本機儲存資料",
+    privacyStorageText: "網站會在你的瀏覽器 localStorage 中保存語言、深淺色主題與收藏清單，僅用於維持你的使用偏好。你可以隨時透過瀏覽器清除網站資料。",
+    privacySectionThirdParty: "第三方服務",
+    privacyThirdPartyText: "本網站透過 GitHub Pages 提供頁面，並可能載入 Google Fonts、Font Awesome 與 Google Drive 下載連結。這些服務可能依各自政策處理基本連線紀錄。",
+    privacySectionDownloads: "下載與工具使用",
+    privacyDownloadsText: "下載工具後，請確認來源並使用防毒軟體掃描。本網站不會讀取你的本機檔案內容；外部工具或第三方網站的資料處理方式，請以該服務提供者的政策為準。",
+    termsSectionService: "服務內容",
+    termsServiceText: "本網站提供實用工具推薦、下載連結、使用說明與相關資源整理。部分連結會導向第三方網站或雲端硬碟下載頁。",
+    termsSectionUse: "使用責任",
+    termsUseText: "使用者應自行確認工具是否符合需求，並遵守所在地法律與第三方服務規範。請勿使用本網站或相關工具處理、散布或侵害他人權利的內容。",
+    termsSectionDownloads: "下載風險提醒",
+    termsDownloadsText: "本站會盡力維護連結與說明的正確性，但無法保證所有第三方工具、下載檔案或外部網站永久可用或完全無風險。執行可執行檔前，請先確認來源並掃描檔案。",
+    termsSectionChanges: "內容異動",
+    termsChangesText: "我們可能依專案進度調整工具清單、連結、政策與條款。更新後的內容會公布於本頁，繼續使用網站即代表你了解並接受更新內容。",
     modalStepsTitle: "極簡 3 步驟輕鬆上手",
     stepOneTitle: "選功能與下載",
     stepOneText: "在網站中選擇您需要的工具分類，點擊直達連結或下載點取得工具。",
@@ -196,6 +215,25 @@ const translations = {
     footerCompanyTerms: "Terms of Service",
     footerPrivacyNote: "100% local-first · no sensitive data collection · no account required",
     modalTitle: "User Guide",
+    privacyTitle: "Privacy Policy",
+    termsTitle: "Terms of Service",
+    legalUpdated: "Last updated: May 30, 2026",
+    privacySectionScope: "How we protect your data",
+    privacyScopeText: "NVD Life, Practical Toolkit is a static front-end website. This site does not require an account and does not actively collect your name, email address, file contents, or payment information.",
+    privacySectionStorage: "Local browser storage",
+    privacyStorageText: "The site stores language, theme, and favorite-tool preferences in your browser localStorage only to keep your experience consistent. You can clear this site data through your browser at any time.",
+    privacySectionThirdParty: "Third-party services",
+    privacyThirdPartyText: "This site is hosted on GitHub Pages and may load Google Fonts, Font Awesome, and Google Drive download links. These services may process basic connection logs under their own policies.",
+    privacySectionDownloads: "Downloads and tool usage",
+    privacyDownloadsText: "After downloading a tool, verify the source and scan the file with antivirus software. This website does not read your local file contents. Data handling by external tools or third-party websites is governed by those providers.",
+    termsSectionService: "Service scope",
+    termsServiceText: "This site provides practical tool recommendations, download links, usage notes, and related resources. Some links may lead to third-party websites or cloud-drive download pages.",
+    termsSectionUse: "User responsibility",
+    termsUseText: "You are responsible for confirming whether each tool fits your needs and for complying with local laws and third-party service rules. Do not use this site or related tools to process, distribute, or infringe content that violates others' rights.",
+    termsSectionDownloads: "Download risk notice",
+    termsDownloadsText: "We try to keep links and descriptions accurate, but cannot guarantee that every third-party tool, download file, or external website will remain available or risk-free. Before running executable files, verify the source and scan the file.",
+    termsSectionChanges: "Changes",
+    termsChangesText: "We may update the tool list, links, policies, and terms as the project evolves. Updated content will be posted on this page. Continued use of the site means you understand and accept the updates.",
     modalStepsTitle: "Get started in 3 simple steps",
     stepOneTitle: "Choose and download",
     stepOneText: "Pick the tool category you need, then use the direct link or download page to get the tool.",
@@ -406,6 +444,13 @@ const openGuideBtn = document.querySelector("#openGuideBtn");
 const guideModal = document.querySelector("#guideModal");
 const closeModalBtn = document.querySelector("#closeModalBtn");
 const modalConfirmBtn = document.querySelector("#modalConfirmBtn");
+const legalModal = document.querySelector("#legalModal");
+const legalModalTitleText = document.querySelector("#legalModalTitleText");
+const closeLegalModalBtn = document.querySelector("#closeLegalModalBtn");
+const legalModalConfirmBtn = document.querySelector("#legalModalConfirmBtn");
+const legalLinks = document.querySelectorAll("[data-legal-modal]");
+const legalPanels = document.querySelectorAll("[data-legal-panel]");
+let processedFilesTimerId;
 
 function t(key, replacements = {}) {
   const dictionary = translations[state.language] || translations.zh;
@@ -450,6 +495,10 @@ function getSimulatedProcessedFiles() {
   return simulatedStats.processedFilesBase + elapsedDays * simulatedStats.dailyIncrement + sessionBoost;
 }
 
+function getCurrentProcessedFilesValue() {
+  return Number(processedFilesCount?.dataset.currentValue) || getSimulatedProcessedFiles();
+}
+
 function formatNumber(value) {
   const locale = state.language === "zh" ? "zh-TW" : "en-US";
   return new Intl.NumberFormat(locale).format(value);
@@ -480,7 +529,7 @@ function animateNumber(element, targetValue) {
 }
 
 function renderSimulatedStats(shouldAnimate = false) {
-  const processedFiles = getSimulatedProcessedFiles();
+  const processedFiles = getCurrentProcessedFilesValue();
 
   if (shouldAnimate) {
     animateNumber(processedFilesCount, processedFiles);
@@ -491,6 +540,20 @@ function renderSimulatedStats(shouldAnimate = false) {
     processedFilesCount.textContent = formatNumber(processedFiles);
     processedFilesCount.dataset.currentValue = String(processedFiles);
   }
+}
+
+function incrementProcessedFiles() {
+  if (!processedFilesCount) return;
+
+  const nextValue = getCurrentProcessedFilesValue() + Math.floor(Math.random() * 4) + 1;
+  processedFilesCount.dataset.currentValue = String(nextValue);
+  processedFilesCount.textContent = formatNumber(nextValue);
+}
+
+function startProcessedFilesTicker() {
+  if (!processedFilesCount || processedFilesTimerId) return;
+
+  processedFilesTimerId = window.setInterval(incrementProcessedFiles, 2600);
 }
 
 function getToolText(tool) {
@@ -815,6 +878,30 @@ function closeModal() {
   openGuideBtn.focus();
 }
 
+function openLegalModal(type, event) {
+  if (event) event.preventDefault();
+  const activeType = type === "terms" ? "terms" : "privacy";
+
+  legalPanels.forEach((panel) => {
+    panel.hidden = panel.dataset.legalPanel !== activeType;
+  });
+
+  const titleKey = activeType === "terms" ? "termsTitle" : "privacyTitle";
+  legalModalTitleText.dataset.i18n = titleKey;
+  legalModalTitleText.textContent = t(titleKey);
+
+  legalModal.classList.add("active");
+  legalModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  closeLegalModalBtn.focus();
+}
+
+function closeLegalModal() {
+  legalModal.classList.remove("active");
+  legalModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
+
 if (openGuideBtn && guideModal) {
   openGuideBtn.addEventListener("click", openModal);
   closeModalBtn.addEventListener("click", closeModal);
@@ -838,9 +925,33 @@ if (openGuideBtn && guideModal) {
   });
 }
 
+if (legalModal) {
+  legalLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      openLegalModal(link.dataset.legalModal, event);
+    });
+  });
+
+  closeLegalModalBtn.addEventListener("click", closeLegalModal);
+  legalModalConfirmBtn.addEventListener("click", closeLegalModal);
+
+  legalModal.addEventListener("click", (event) => {
+    if (event.target === legalModal) {
+      closeLegalModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && legalModal.classList.contains("active")) {
+      closeLegalModal();
+    }
+  });
+}
+
 setLanguage(state.language);
 setTheme(state.theme, Boolean(savedTheme));
 if (processedFilesCount) {
   delete processedFilesCount.dataset.currentValue;
   renderSimulatedStats(true);
+  startProcessedFilesTicker();
 }

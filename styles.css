@@ -1105,6 +1105,10 @@ body[data-theme="dark"] .manifesto-section {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.legal-modal-content {
+  width: min(92%, 720px);
+}
+
 .modal-backdrop.active .modal-content {
   transform: translateY(0);
 }
@@ -1168,6 +1172,27 @@ body[data-theme="dark"] .manifesto-section {
   border-left: 4px solid var(--primary-orange);
   font-size: 1.08rem;
   font-weight: 800;
+}
+
+.legal-body .modal-section h3 {
+  margin-top: 22px;
+}
+
+.legal-body .modal-section h3:first-of-type {
+  margin-top: 0;
+}
+
+.legal-updated {
+  margin: 0 0 18px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.legal-panel p:not(.legal-updated) {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.78;
 }
 
 .step-list {
