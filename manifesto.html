@@ -1,240 +1,638 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; form-action 'none'; upgrade-insecure-requests">
-  <title>NVD 自生活，實用工具箱</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css?v=20260530-9">
-</head>
-<body>
-  <header class="site-header">
-    <nav class="navbar container" aria-label="主要導覽">
-      <a class="brand" href="index.html" aria-label="NVD 自生活首頁">
-        <span class="brand-mark"><i class="fa-solid fa-bolt"></i></span>
-        <span data-i18n="brandName">NVD 自生活</span>
-      </a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; form-action 'none'; upgrade-insecure-requests"
+    />
+    <title>NVD 自生活，實用工具箱</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css?v=20260530-9" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar container" aria-label="主要導覽">
+        <a class="brand" href="index.html" aria-label="NVD 自生活首頁">
+          <span class="brand-mark"><i class="fa-solid fa-bolt"></i></span>
+          <span data-i18n="brandName">NVD 自生活</span>
+        </a>
 
-      <div class="nav-links" aria-label="網站選單">
-        <a href="index.html" data-i18n="navHome">首頁</a>
-        <a href="software.html" data-i18n="navSoftware">綠色軟體</a>
-        <a href="resilience.html" data-i18n="navResilience">友善專案</a>
-        <a class="active" href="manifesto.html" data-i18n="navManifesto">理念宣言</a>
-        <a href="join.html" data-i18n="navLoop">參與共創</a>
-        <a href="#footer" data-i18n="navCommunity">社群</a>
-      </div>
+        <div class="nav-links" aria-label="網站選單">
+          <a href="index.html" data-i18n="navHome">首頁</a>
+          <a href="software.html" data-i18n="navSoftware">綠色軟體</a>
+          <a href="resilience.html" data-i18n="navResilience">友善專案</a>
+          <a class="active" href="manifesto.html" data-i18n="navManifesto"
+            >理念宣言</a
+          >
+          <a href="join.html" data-i18n="navLoop">參與共創</a>
+          <a href="#footer" data-i18n="navCommunity">社群</a>
+        </div>
 
-      <div class="header-actions">
-        <div class="language-menu" id="languageMenu">
-          <button id="languageToggle" class="language-toggle" type="button" aria-haspopup="listbox" aria-expanded="false">
-            <i class="fa-solid fa-globe"></i>
-            <span id="currentLanguageLabel">中文</span>
-            <i class="fa-solid fa-chevron-down"></i>
+        <div class="header-actions">
+          <div class="language-menu" id="languageMenu">
+            <button
+              id="languageToggle"
+              class="language-toggle"
+              type="button"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-globe"></i>
+              <span id="currentLanguageLabel">中文</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="language-options" role="listbox" aria-label="選擇語言">
+              <button
+                class="language-option active"
+                type="button"
+                role="option"
+                data-language="zh"
+                aria-selected="true"
+              >
+                中文
+              </button>
+              <button
+                class="language-option"
+                type="button"
+                role="option"
+                data-language="en"
+                aria-selected="false"
+              >
+                EN
+              </button>
+            </div>
+          </div>
+
+          <button
+            id="themeToggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="切換深淺色主題"
+          >
+            <i class="fa-solid fa-moon"></i>
           </button>
-          <div class="language-options" role="listbox" aria-label="選擇語言">
-            <button class="language-option active" type="button" role="option" data-language="zh" aria-selected="true">中文</button>
-            <button class="language-option" type="button" role="option" data-language="en" aria-selected="false">EN</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="friction" class="dual-friction-section">
+        <div class="container">
+          <div class="section-heading centered-heading">
+            <div>
+              <p class="eyebrow" data-i18n="dualFrictionEyebrow">
+                Dual Friction
+              </p>
+              <h1 data-i18n="dualFrictionTitle">社會系統的雙重摩擦力</h1>
+              <p class="section-lead" data-i18n="dualFrictionLead">
+                我們同時處理認知與數位斷裂、物理與空間障礙，讓 NVD
+                不只是工具箱，而是友善科技行動入口。
+              </p>
+            </div>
+          </div>
+          <div class="dual-friction-grid">
+            <article class="dual-friction-card digital-card">
+              <span class="dual-friction-icon"
+                ><i class="fa-solid fa-terminal"></i
+              ></span>
+              <h3 data-i18n="digitalFrictionTitle">認知與數位斷裂</h3>
+              <p data-i18n="digitalFrictionText">
+                繁瑣軟體、黑色視窗、複雜流程，會讓有價值的知識與時間被工具消耗。
+              </p>
+            </article>
+            <article class="dual-friction-card physical-card">
+              <span class="dual-friction-icon"
+                ><i class="fa-solid fa-wheelchair-move"></i
+              ></span>
+              <h3 data-i18n="physicalFrictionTitle">物理與空間障礙</h3>
+              <p data-i18n="physicalFrictionText">
+                道路高低差、違停與缺乏友善資料，讓城市基礎建設無法真正回應使用者。
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="friction-section">
+        <div class="container">
+          <div class="friction-heading">
+            <p class="eyebrow" data-i18n="frictionEyebrow">
+              Technology Friction
+            </p>
+            <h2 data-i18n="frictionTitle">科技讓我們進化，還是退化？</h2>
+            <p data-i18n="frictionLead">
+              人類花了數百萬年學會挺直脊椎，卻在科技爆炸的今天，因為繁瑣指令與黑色視窗，再度駝下背。NVD
+              自生活誕生，就是為了用滑鼠右鍵的一鍵自動化，還給每個人最直覺、最省力的自生活。
+            </p>
+          </div>
+          <div class="friction-grid">
+            <article class="friction-card">
+              <img src="assets/human-evolution.jpg" alt="人類演化圖" />
+              <div class="friction-copy">
+                <span>01</span>
+                <h3 data-i18n="frictionCardOneTitle">我們曾經學會直立</h3>
+                <p data-i18n="frictionCardOneText">
+                  文明的演化，應該讓人更自由、更省力，而不是被工具反過來壓低姿態。
+                </p>
+              </div>
+            </article>
+            <article class="friction-card friction-card-featured">
+              <img src="assets/life-stages.jpg" alt="人生階段圖" />
+              <div class="friction-copy">
+                <span>02</span>
+                <h3 data-i18n="frictionCardTwoTitle">科技不該讓人駝背</h3>
+                <p data-i18n="frictionCardTwoText">
+                  黑色視窗、複雜指令與層層設定，都是不該由使用者承擔的摩擦力。
+                </p>
+              </div>
+            </article>
+            <article class="friction-card">
+              <img src="assets/life-stages-clean.jpg" alt="不同年齡階段" />
+              <div class="friction-copy">
+                <span>03</span>
+                <h3 data-i18n="frictionCardThreeTitle">
+                  每個人都會走向不同階段
+                </h3>
+                <p data-i18n="frictionCardThreeText">
+                  當我們走到生命後半段，難道就注定被現代科技拋棄，只能對著電腦發愁嗎？
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section id="manifesto" class="manifesto-section">
+        <div class="container">
+          <div class="manifesto-intro">
+            <p class="eyebrow" data-i18n="manifestoEyebrow">
+              The Sovereign Manifesto
+            </p>
+            <h2 data-i18n="manifestoTitle">核心主權宣言</h2>
+            <blockquote data-i18n="manifestoQuote">
+              現在的我們，就是未來的你們。
+            </blockquote>
+            <p data-i18n="manifestoLead">
+              我們不是在乞求同情，而是在以全人先驅者的姿態，為人類提前建設社會友善韌性工程。當世界還在討論被動扶助，NVD
+              已經在定義規則。
+            </p>
+          </div>
+          <div class="manifesto-grid">
+            <article class="manifesto-card">
+              <span class="manifesto-index">01</span>
+              <p class="manifesto-symbol" data-i18n="manifestoNatureSymbol">
+                N (Nature) —— 天生、本然、無所畏懼。
+              </p>
+              <h3 data-i18n="manifestoNatureTitle">天生玩家</h3>
+              <p data-i18n="manifestoNatureText">
+                生命不是一場等待被拯救的苦旅，而是一場頂級的硬核遊戲。打破體制設定的局限，我們以天生的姿態，在社會韌性的沙盒中重新定義玩法。
+              </p>
+            </article>
+            <article class="manifesto-card">
+              <span class="manifesto-index">02</span>
+              <p class="manifesto-symbol" data-i18n="manifestoValueSymbol">
+                V (Value) —— 本我價值、不容置疑。
+              </p>
+              <h3 data-i18n="manifestoValueTitle">本我定值</h3>
+              <p data-i18n="manifestoValueText">
+                拒絕標籤，拒絕被社會殘留的估值系統定義。我們的存在，本身就是最高級別的資產。
+              </p>
+            </article>
+            <article class="manifesto-card">
+              <span class="manifesto-index">03</span>
+              <p class="manifesto-symbol" data-i18n="manifestoDaysSymbol">
+                D (Days) —— 跨越過去、現在與未來的日子。
+              </p>
+              <h3 data-i18n="manifestoDaysTitle">無礙永日</h3>
+              <p data-i18n="manifestoDaysText">
+                這不是一場短期倡議，而是一場跨越時間軸的社會韌性工程，讓每個人都能擁有無所阻礙的永恆日常。
+              </p>
+            </article>
+            <article class="manifesto-card">
+              <span class="manifesto-index">04</span>
+              <p class="manifesto-symbol" data-i18n="manifestoLogicSymbol">
+                Sovereign Logic —— 規則定義者。
+              </p>
+              <h3 data-i18n="manifestoLogicTitle">全人先驅</h3>
+              <p data-i18n="manifestoLogicText">
+                領先時代的步伐，我們率先踏入高階資產工程學的實踐場。這不是為特定族群妥協，而是為全人類提前建構防線。
+              </p>
+            </article>
+            <article class="manifesto-card">
+              <span class="manifesto-index">05</span>
+              <p class="manifesto-symbol" data-i18n="manifestoResilienceSymbol">
+                Social Resilience Engineering —— 社會韌性工程。
+              </p>
+              <h3 data-i18n="manifestoResilienceTitle">韌性架構</h3>
+              <p data-i18n="manifestoResilienceText">
+                將傳統公益的碎步，升級為系統化的社會韌性架構。NVD
+                是地基、是框架、是未來社會運行的頂層協議。
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" class="site-footer">
+      <div class="container">
+        <div class="footer-top">
+          <section class="footer-intro" aria-labelledby="footerIntroTitle">
+            <span class="footer-intro-mark" aria-hidden="true"
+              ><i class="fa-solid fa-bolt"></i
+            ></span>
+            <p class="eyebrow">NVD LIFE OS</p>
+            <h2 id="footerIntroTitle" data-i18n="footerIntroTitle">
+              把複雜科技，折成一鍵生活。
+            </h2>
+            <p data-i18n="footerIntroText">
+              為長輩、電腦小白與忙碌工作者整理最省力的工具入口，讓每一次下載都更安心、更直覺。
+            </p>
+          </section>
+
+          <div class="footer-grid" aria-label="頁尾導覽">
+            <section class="footer-column">
+              <h2 data-i18n="footerProductsTitle">產品</h2>
+              <ul>
+                <li>
+                  <a href="software.html#tools" data-i18n="footerProductTools"
+                    >實用工具箱</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="software.html#guide"
+                    data-i18n="footerProductConverter"
+                    >一鍵轉檔助理</a
+                  >
+                </li>
+                <li>
+                  <a href="software.html#tools" data-i18n="footerProductSlides"
+                    >智慧簡報還原</a
+                  >
+                </li>
+              </ul>
+            </section>
+
+            <section class="footer-column">
+              <h2 data-i18n="footerGuidesTitle">指南</h2>
+              <ul>
+                <li>
+                  <a
+                    href="software.html#guide"
+                    data-i18n="footerGuideQuickStart"
+                    >快速上手 NVD 工具</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="software.html#guide"
+                    data-i18n="footerGuideRightClick"
+                    >右鍵一鍵轉檔教學</a
+                  >
+                </li>
+                <li>
+                  <a href="software.html#guide" data-i18n="footerGuideSlides"
+                    >簡報還原使用指南</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="manifesto.html#manifesto"
+                    data-i18n="footerGuideFriction"
+                    >降低科技摩擦</a
+                  >
+                </li>
+                <li>
+                  <a href="software.html#guide" data-i18n="footerGuidePrivacy"
+                    >本地工具與安全檢查</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="manifesto.html#manifesto"
+                    data-i18n="footerGuideElderFriendly"
+                    >友善設計理念</a
+                  >
+                </li>
+              </ul>
+            </section>
+
+            <section class="footer-column">
+              <h2 data-i18n="footerCompareTitle">工具比較</h2>
+              <ul>
+                <li>
+                  <a
+                    href="software.html#tools"
+                    data-i18n="footerCompareNvdVsCommand"
+                    >NVD vs 黑色視窗指令</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="software.html#tools"
+                    data-i18n="footerCompareNvdVsManual"
+                    >NVD vs 手動轉檔</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="software.html#tools"
+                    data-i18n="footerCompareNvdVsOnline"
+                    >NVD vs 線上轉檔網站</a
+                  >
+                </li>
+                <li>
+                  <a href="software.html#tools" data-i18n="footerComparePptx"
+                    >NoteLM vs 簡報重做</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="software.html#tools"
+                    data-i18n="footerCompareWorkflow"
+                    >自動化工具比較</a
+                  >
+                </li>
+              </ul>
+            </section>
+
+            <section class="footer-column">
+              <h2 data-i18n="footerCompanyTitle">公司</h2>
+              <ul>
+                <li>
+                  <a
+                    href="manifesto.html#manifesto"
+                    data-i18n="footerCompanyAbout"
+                    >關於 NVD 自生活</a
+                  >
+                </li>
+                <li>
+                  <a href="software.html#guide" data-i18n="footerCompanyFaq"
+                    >常見問題</a
+                  >
+                </li>
+                <li>
+                  <a href="software.html#tools" data-i18n="footerCompanyUpdates"
+                    >更新日誌</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#privacy"
+                    data-legal-modal="privacy"
+                    data-i18n="footerCompanyPrivacy"
+                    >隱私權政策</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#terms"
+                    data-legal-modal="terms"
+                    data-i18n="footerCompanyTerms"
+                    >服務條款</a
+                  >
+                </li>
+              </ul>
+            </section>
           </div>
         </div>
 
-        <button id="themeToggle" class="theme-toggle" type="button" aria-label="切換深淺色主題">
-          <i class="fa-solid fa-moon"></i>
-        </button>
-
-      </div>
-    </nav>
-  </header>
-
-  <main>
-  <section id="friction" class="dual-friction-section"><div class="container"><div class="section-heading centered-heading"><div><p class="eyebrow" data-i18n="dualFrictionEyebrow">Dual Friction</p><h1 data-i18n="dualFrictionTitle">社會系統的雙重摩擦力</h1><p class="section-lead" data-i18n="dualFrictionLead">我們同時處理認知與數位斷裂、物理與空間障礙，讓 NVD 不只是工具箱，而是友善科技行動入口。</p></div></div><div class="dual-friction-grid"><article class="dual-friction-card digital-card"><span class="dual-friction-icon"><i class="fa-solid fa-terminal"></i></span><h3 data-i18n="digitalFrictionTitle">認知與數位斷裂</h3><p data-i18n="digitalFrictionText">繁瑣軟體、黑色視窗、複雜流程，會讓有價值的知識與時間被工具消耗。</p></article><article class="dual-friction-card physical-card"><span class="dual-friction-icon"><i class="fa-solid fa-wheelchair-move"></i></span><h3 data-i18n="physicalFrictionTitle">物理與空間障礙</h3><p data-i18n="physicalFrictionText">道路高低差、違停與缺乏友善資料，讓城市基礎建設無法真正回應使用者。</p></article></div></div></section>
-  <section class="friction-section"><div class="container"><div class="friction-heading"><p class="eyebrow" data-i18n="frictionEyebrow">Technology Friction</p><h2 data-i18n="frictionTitle">科技讓我們進化，還是退化？</h2><p data-i18n="frictionLead">人類花了數百萬年學會挺直脊椎，卻在科技爆炸的今天，因為繁瑣指令與黑色視窗，再度駝下背。NVD 自生活誕生，就是為了用滑鼠右鍵的一鍵自動化，還給每個人最直覺、最省力的自生活。</p></div><div class="friction-grid"><article class="friction-card"><img src="assets/human-evolution.jpg" alt="人類演化圖"><div class="friction-copy"><span>01</span><h3 data-i18n="frictionCardOneTitle">我們曾經學會直立</h3><p data-i18n="frictionCardOneText">文明的演化，應該讓人更自由、更省力，而不是被工具反過來壓低姿態。</p></div></article><article class="friction-card friction-card-featured"><img src="assets/life-stages.jpg" alt="人生階段圖"><div class="friction-copy"><span>02</span><h3 data-i18n="frictionCardTwoTitle">科技不該讓人駝背</h3><p data-i18n="frictionCardTwoText">黑色視窗、複雜指令與層層設定，都是不該由使用者承擔的摩擦力。</p></div></article><article class="friction-card"><img src="assets/life-stages-clean.jpg" alt="不同年齡階段"><div class="friction-copy"><span>03</span><h3 data-i18n="frictionCardThreeTitle">每個人都會走向不同階段</h3><p data-i18n="frictionCardThreeText">當我們走到生命後半段，難道就注定被現代科技拋棄，只能對著電腦發愁嗎？</p></div></article></div></div></section>
-  <section id="manifesto" class="manifesto-section"><div class="container"><div class="manifesto-intro"><p class="eyebrow" data-i18n="manifestoEyebrow">The Sovereign Manifesto</p><h2 data-i18n="manifestoTitle">核心主權宣言</h2><blockquote data-i18n="manifestoQuote">現在的我們，就是未來的你們。</blockquote><p data-i18n="manifestoLead">我們不是在乞求同情，而是在以全人先驅者的姿態，為人類提前建設社會友善韌性工程。當世界還在討論被動扶助，NVD 已經在定義規則。</p></div><div class="manifesto-grid"><article class="manifesto-card"><span class="manifesto-index">01</span><p class="manifesto-symbol" data-i18n="manifestoNatureSymbol">N (Nature) —— 天生、本然、無所畏懼。</p><h3 data-i18n="manifestoNatureTitle">天生玩家</h3><p data-i18n="manifestoNatureText">生命不是一場等待被拯救的苦旅，而是一場頂級的硬核遊戲。打破體制設定的局限，我們以天生的姿態，在社會韌性的沙盒中重新定義玩法。</p></article><article class="manifesto-card"><span class="manifesto-index">02</span><p class="manifesto-symbol" data-i18n="manifestoValueSymbol">V (Value) —— 本我價值、不容置疑。</p><h3 data-i18n="manifestoValueTitle">本我定值</h3><p data-i18n="manifestoValueText">拒絕標籤，拒絕被社會殘留的估值系統定義。我們的存在，本身就是最高級別的資產。</p></article><article class="manifesto-card"><span class="manifesto-index">03</span><p class="manifesto-symbol" data-i18n="manifestoDaysSymbol">D (Days) —— 跨越過去、現在與未來的日子。</p><h3 data-i18n="manifestoDaysTitle">無礙永日</h3><p data-i18n="manifestoDaysText">這不是一場短期倡議，而是一場跨越時間軸的社會韌性工程，讓每個人都能擁有無所阻礙的永恆日常。</p></article><article class="manifesto-card"><span class="manifesto-index">04</span><p class="manifesto-symbol" data-i18n="manifestoLogicSymbol">Sovereign Logic —— 規則定義者。</p><h3 data-i18n="manifestoLogicTitle">全人先驅</h3><p data-i18n="manifestoLogicText">領先時代的步伐，我們率先踏入高階資產工程學的實踐場。這不是為特定族群妥協，而是為全人類提前建構防線。</p></article><article class="manifesto-card"><span class="manifesto-index">05</span><p class="manifesto-symbol" data-i18n="manifestoResilienceSymbol">Social Resilience Engineering —— 社會韌性工程。</p><h3 data-i18n="manifestoResilienceTitle">韌性架構</h3><p data-i18n="manifestoResilienceText">將傳統公益的碎步，升級為系統化的社會韌性架構。NVD 是地基、是框架、是未來社會運行的頂層協議。</p></article></div></div></section>
-</main>
-
-  <footer id="footer" class="site-footer">
-    <div class="container">
-      <div class="footer-top">
-        <section class="footer-intro" aria-labelledby="footerIntroTitle">
-          <span class="footer-intro-mark" aria-hidden="true"><i class="fa-solid fa-bolt"></i></span>
-          <p class="eyebrow">NVD LIFE OS</p>
-          <h2 id="footerIntroTitle" data-i18n="footerIntroTitle">把複雜科技，折成一鍵生活。</h2>
-          <p data-i18n="footerIntroText">為長輩、電腦小白與忙碌工作者整理最省力的工具入口，讓每一次下載都更安心、更直覺。</p>
-        </section>
-
-        <div class="footer-grid" aria-label="頁尾導覽">
-          <section class="footer-column">
-            <h2 data-i18n="footerProductsTitle">產品</h2>
-            <ul>
-              <li><a href="software.html#tools" data-i18n="footerProductTools">實用工具箱</a></li>
-              <li><a href="software.html#guide" data-i18n="footerProductConverter">一鍵轉檔助理</a></li>
-              <li><a href="software.html#tools" data-i18n="footerProductSlides">智慧簡報還原</a></li>
-            </ul>
-          </section>
-
-          <section class="footer-column">
-            <h2 data-i18n="footerGuidesTitle">指南</h2>
-            <ul>
-              <li><a href="software.html#guide" data-i18n="footerGuideQuickStart">快速上手 NVD 工具</a></li>
-              <li><a href="software.html#guide" data-i18n="footerGuideRightClick">右鍵一鍵轉檔教學</a></li>
-              <li><a href="software.html#guide" data-i18n="footerGuideSlides">簡報還原使用指南</a></li>
-              <li><a href="manifesto.html#manifesto" data-i18n="footerGuideFriction">降低科技摩擦</a></li>
-              <li><a href="software.html#guide" data-i18n="footerGuidePrivacy">本地工具與安全檢查</a></li>
-              <li><a href="manifesto.html#manifesto" data-i18n="footerGuideElderFriendly">友善設計理念</a></li>
-            </ul>
-          </section>
-
-          <section class="footer-column">
-            <h2 data-i18n="footerCompareTitle">工具比較</h2>
-            <ul>
-              <li><a href="software.html#tools" data-i18n="footerCompareNvdVsCommand">NVD vs 黑色視窗指令</a></li>
-              <li><a href="software.html#tools" data-i18n="footerCompareNvdVsManual">NVD vs 手動轉檔</a></li>
-              <li><a href="software.html#tools" data-i18n="footerCompareNvdVsOnline">NVD vs 線上轉檔網站</a></li>
-              <li><a href="software.html#tools" data-i18n="footerComparePptx">NoteLM vs 簡報重做</a></li>
-              <li><a href="software.html#tools" data-i18n="footerCompareWorkflow">自動化工具比較</a></li>
-            </ul>
-          </section>
-
-          <section class="footer-column">
-            <h2 data-i18n="footerCompanyTitle">公司</h2>
-            <ul>
-              <li><a href="manifesto.html#manifesto" data-i18n="footerCompanyAbout">關於 NVD 自生活</a></li>
-              <li><a href="software.html#guide" data-i18n="footerCompanyFaq">常見問題</a></li>
-              <li><a href="software.html#tools" data-i18n="footerCompanyUpdates">更新日誌</a></li>
-              <li><a href="#privacy" data-legal-modal="privacy" data-i18n="footerCompanyPrivacy">隱私權政策</a></li>
-              <li><a href="#terms" data-legal-modal="terms" data-i18n="footerCompanyTerms">服務條款</a></li>
-            </ul>
-          </section>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div class="footer-brand">
-          <span class="footer-logo" aria-hidden="true"><i class="fa-solid fa-bolt"></i></span>
-          <p data-i18n="footerCopy">© 2026 NVD 自生活，實用工具箱. Curated practical tools for smarter workflows.</p>
-        </div>
-        <div class="footer-meta">
-          <span data-i18n="footerPrivacyNote">100% 本地優先 · 不收集敏感資料 · 無需帳戶</span>
-          <div class="social-links" aria-label="社群連結">
-            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <div class="footer-bottom">
+          <div class="footer-brand">
+            <span class="footer-logo" aria-hidden="true"
+              ><i class="fa-solid fa-bolt"></i
+            ></span>
+            <p data-i18n="footerCopy">
+              © 2026 NVD 自生活，實用工具箱. Curated practical tools for smarter
+              workflows.
+            </p>
+          </div>
+          <div class="footer-meta">
+            <span data-i18n="footerPrivacyNote"
+              >100% 本地優先 · 不收集敏感資料 · 無需帳戶</span
+            >
+            <div class="social-links" aria-label="社群連結">
+              <a href="#" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="GitHub"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-  <div id="guideModal" class="modal-backdrop" aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="modalTitle">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 id="modalTitle">
-          <i class="fa-regular fa-circle-question"></i>
-          <span data-i18n="modalTitle">使用說明手冊</span>
-        </h2>
-        <button id="closeModalBtn" class="modal-close-icon-btn" aria-label="關閉視窗">&times;</button>
-      </div>
-      <div class="modal-body">
-        <section class="modal-section">
-          <h3 data-i18n="modalStepsTitle">極簡 3 步驟輕鬆上手</h3>
-          <ol class="step-list">
-            <li>
-              <span class="step-number">1</span>
-              <div>
-                <strong data-i18n="stepOneTitle">選功能與下載</strong>
-                <p data-i18n="stepOneText">在網站中選擇您需要的工具分類，點擊直達連結或下載點取得工具。</p>
+    <div
+      id="guideModal"
+      class="modal-backdrop"
+      aria-hidden="true"
+      aria-modal="true"
+      role="dialog"
+      aria-labelledby="modalTitle"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalTitle">
+            <i class="fa-regular fa-circle-question"></i>
+            <span data-i18n="modalTitle">使用說明手冊</span>
+          </h2>
+          <button
+            id="closeModalBtn"
+            class="modal-close-icon-btn"
+            aria-label="關閉視窗"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <section class="modal-section">
+            <h3 data-i18n="modalStepsTitle">極簡 3 步驟輕鬆上手</h3>
+            <ol class="step-list">
+              <li>
+                <span class="step-number">1</span>
+                <div>
+                  <strong data-i18n="stepOneTitle">選功能與下載</strong>
+                  <p data-i18n="stepOneText">
+                    在網站中選擇您需要的工具分類，點擊直達連結或下載點取得工具。
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="step-number">2</span>
+                <div>
+                  <strong data-i18n="stepTwoTitle">一鍵自動化</strong>
+                  <p data-i18n="stepTwoText">
+                    程式皆經過極簡設計，開啟後只需一鍵點擊，便能自動啟動處理流程。
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="step-number">3</span>
+                <div>
+                  <strong data-i18n="stepThreeTitle">直達結果下載</strong>
+                  <p data-i18n="stepThreeText">
+                    無任何繁雜設定，處理完成的檔案將自動輸出，即刻下載並投入工作。
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <section class="modal-section">
+            <h3 data-i18n="faqTitle">常見問題 FAQ</h3>
+            <div class="faq-group">
+              <div class="faq-item">
+                <h4 data-i18n="faqOneQuestion">
+                  Q: 使用這些工具需要付費或註冊嗎？
+                </h4>
+                <p data-i18n="faqOneAnswer">
+                  本站推薦的部分客製工具提供免費下載，其餘外部工具則視原廠政策而定，多數均有免註冊免費體驗額度。
+                </p>
               </div>
-            </li>
-            <li>
-              <span class="step-number">2</span>
-              <div>
-                <strong data-i18n="stepTwoTitle">一鍵自動化</strong>
-                <p data-i18n="stepTwoText">程式皆經過極簡設計，開啟後只需一鍵點擊，便能自動啟動處理流程。</p>
+              <div class="faq-item">
+                <h4 data-i18n="faqTwoQuestion">
+                  Q: 開啟打包工具時若被防毒軟體攔截該怎麼辦？
+                </h4>
+                <p data-i18n="faqTwoAnswer">
+                  由於本地工具通常是獨立可執行檔，Windows Defender
+                  等可能會出現誤報。若您信任來源，可依系統提示選擇仍要執行。
+                </p>
               </div>
-            </li>
-            <li>
-              <span class="step-number">3</span>
-              <div>
-                <strong data-i18n="stepThreeTitle">直達結果下載</strong>
-                <p data-i18n="stepThreeText">無任何繁雜設定，處理完成的檔案將自動輸出，即刻下載並投入工作。</p>
+              <div class="faq-item">
+                <h4 data-i18n="faqThreeQuestion">
+                  Q: 下載 EXE 工具前需要注意什麼？
+                </h4>
+                <p data-i18n="faqThreeAnswer">
+                  請只從本站卡片提供的官方連結下載，下載後可先使用防毒軟體掃描。若系統跳出未知來源提醒，請確認檔名與來源後再執行。
+                </p>
               </div>
-            </li>
-          </ol>
-        </section>
-
-        <section class="modal-section">
-          <h3 data-i18n="faqTitle">常見問題 FAQ</h3>
-          <div class="faq-group">
-            <div class="faq-item">
-              <h4 data-i18n="faqOneQuestion">Q: 使用這些工具需要付費或註冊嗎？</h4>
-              <p data-i18n="faqOneAnswer">本站推薦的部分客製工具提供免費下載，其餘外部工具則視原廠政策而定，多數均有免註冊免費體驗額度。</p>
             </div>
-            <div class="faq-item">
-              <h4 data-i18n="faqTwoQuestion">Q: 開啟打包工具時若被防毒軟體攔截該怎麼辦？</h4>
-              <p data-i18n="faqTwoAnswer">由於本地工具通常是獨立可執行檔，Windows Defender 等可能會出現誤報。若您信任來源，可依系統提示選擇仍要執行。</p>
-            </div>
-            <div class="faq-item">
-              <h4 data-i18n="faqThreeQuestion">Q: 下載 EXE 工具前需要注意什麼？</h4>
-              <p data-i18n="faqThreeAnswer">請只從本站卡片提供的官方連結下載，下載後可先使用防毒軟體掃描。若系統跳出未知來源提醒，請確認檔名與來源後再執行。</p>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div class="modal-footer">
-        <button id="modalConfirmBtn" class="modal-btn-primary" data-i18n="modalConfirm">我知道了</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="legalModal" class="modal-backdrop" aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="legalModalTitle">
-    <div class="modal-content legal-modal-content">
-      <div class="modal-header">
-        <h2 id="legalModalTitle">
-          <i class="fa-solid fa-shield-halved"></i>
-          <span id="legalModalTitleText" data-i18n="privacyTitle">隱私權政策</span>
-        </h2>
-        <button id="closeLegalModalBtn" class="modal-close-icon-btn" aria-label="關閉視窗">&times;</button>
-      </div>
-      <div class="modal-body legal-body">
-        <section class="modal-section legal-panel" data-legal-panel="privacy">
-          <p class="legal-updated" data-i18n="legalUpdated">最後更新：2026 年 5 月 30 日</p>
-          <h3 data-i18n="privacySectionScope">我們如何保護你的資料</h3>
-          <p data-i18n="privacyScopeText">NVD 自生活，實用工具箱是純前端靜態網站。本網站不要求註冊帳號，也不會主動收集你的姓名、電子郵件、檔案內容或付款資料。</p>
-
-          <h3 data-i18n="privacySectionStorage">本機儲存資料</h3>
-          <p data-i18n="privacyStorageText">網站會在你的瀏覽器 localStorage 中保存語言、深淺色主題與收藏清單，僅用於維持你的使用偏好。你可以隨時透過瀏覽器清除網站資料。</p>
-
-          <h3 data-i18n="privacySectionThirdParty">第三方服務</h3>
-          <p data-i18n="privacyThirdPartyText">本網站透過 GitHub Pages 提供頁面，並可能載入 Google Fonts、Font Awesome 與 Google Drive 下載連結。這些服務可能依各自政策處理基本連線紀錄。</p>
-
-          <h3 data-i18n="privacySectionDownloads">下載與工具使用</h3>
-          <p data-i18n="privacyDownloadsText">下載工具後，請確認來源並使用防毒軟體掃描。本網站不會讀取你的本機檔案內容；外部工具或第三方網站的資料處理方式，請以該服務提供者的政策為準。</p>
-        </section>
-
-        <section class="modal-section legal-panel" data-legal-panel="terms" hidden>
-          <p class="legal-updated" data-i18n="legalUpdated">最後更新：2026 年 5 月 30 日</p>
-          <h3 data-i18n="termsSectionService">服務內容</h3>
-          <p data-i18n="termsServiceText">本網站提供實用工具推薦、下載連結、使用說明與相關資源整理。部分連結會導向第三方網站或雲端硬碟下載頁。</p>
-
-          <h3 data-i18n="termsSectionUse">使用責任</h3>
-          <p data-i18n="termsUseText">使用者應自行確認工具是否符合需求，並遵守所在地法律與第三方服務規範。請勿使用本網站或相關工具處理、散布或侵害他人權利的內容。</p>
-
-          <h3 data-i18n="termsSectionDownloads">下載風險提醒</h3>
-          <p data-i18n="termsDownloadsText">本站會盡力維護連結與說明的正確性，但無法保證所有第三方工具、下載檔案或外部網站永久可用或完全無風險。執行可執行檔前，請先確認來源並掃描檔案。</p>
-
-          <h3 data-i18n="termsSectionChanges">內容異動</h3>
-          <p data-i18n="termsChangesText">我們可能依專案進度調整工具清單、連結、政策與條款。更新後的內容會公布於本頁，繼續使用網站即代表你了解並接受更新內容。</p>
-        </section>
-      </div>
-      <div class="modal-footer">
-        <button id="legalModalConfirmBtn" class="modal-btn-primary" data-i18n="modalConfirm">我知道了</button>
+          </section>
+        </div>
+        <div class="modal-footer">
+          <button
+            id="modalConfirmBtn"
+            class="modal-btn-primary"
+            data-i18n="modalConfirm"
+          >
+            我知道了
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script src="script.js?v=20260530-9"></script>
-</body>
+    <div
+      id="legalModal"
+      class="modal-backdrop"
+      aria-hidden="true"
+      aria-modal="true"
+      role="dialog"
+      aria-labelledby="legalModalTitle"
+    >
+      <div class="modal-content legal-modal-content">
+        <div class="modal-header">
+          <h2 id="legalModalTitle">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span id="legalModalTitleText" data-i18n="privacyTitle"
+              >隱私權政策</span
+            >
+          </h2>
+          <button
+            id="closeLegalModalBtn"
+            class="modal-close-icon-btn"
+            aria-label="關閉視窗"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="modal-body legal-body">
+          <section class="modal-section legal-panel" data-legal-panel="privacy">
+            <p class="legal-updated" data-i18n="legalUpdated">
+              最後更新：2026 年 5 月 30 日
+            </p>
+            <h3 data-i18n="privacySectionScope">我們如何保護你的資料</h3>
+            <p data-i18n="privacyScopeText">
+              NVD
+              自生活，實用工具箱是純前端靜態網站。本網站不要求註冊帳號，也不會主動收集你的姓名、電子郵件、檔案內容或付款資料。
+            </p>
+
+            <h3 data-i18n="privacySectionStorage">本機儲存資料</h3>
+            <p data-i18n="privacyStorageText">
+              網站會在你的瀏覽器 localStorage
+              中保存語言、深淺色主題與收藏清單，僅用於維持你的使用偏好。你可以隨時透過瀏覽器清除網站資料。
+            </p>
+
+            <h3 data-i18n="privacySectionThirdParty">第三方服務</h3>
+            <p data-i18n="privacyThirdPartyText">
+              本網站透過 GitHub Pages 提供頁面，並可能載入 Google Fonts、Font
+              Awesome 與 Google Drive
+              下載連結。這些服務可能依各自政策處理基本連線紀錄。
+            </p>
+
+            <h3 data-i18n="privacySectionDownloads">下載與工具使用</h3>
+            <p data-i18n="privacyDownloadsText">
+              下載工具後，請確認來源並使用防毒軟體掃描。本網站不會讀取你的本機檔案內容；外部工具或第三方網站的資料處理方式，請以該服務提供者的政策為準。
+            </p>
+          </section>
+
+          <section
+            class="modal-section legal-panel"
+            data-legal-panel="terms"
+            hidden
+          >
+            <p class="legal-updated" data-i18n="legalUpdated">
+              最後更新：2026 年 5 月 30 日
+            </p>
+            <h3 data-i18n="termsSectionService">服務內容</h3>
+            <p data-i18n="termsServiceText">
+              本網站提供實用工具推薦、下載連結、使用說明與相關資源整理。部分連結會導向第三方網站或雲端硬碟下載頁。
+            </p>
+
+            <h3 data-i18n="termsSectionUse">使用責任</h3>
+            <p data-i18n="termsUseText">
+              使用者應自行確認工具是否符合需求，並遵守所在地法律與第三方服務規範。請勿使用本網站或相關工具處理、散布或侵害他人權利的內容。
+            </p>
+
+            <h3 data-i18n="termsSectionDownloads">下載風險提醒</h3>
+            <p data-i18n="termsDownloadsText">
+              本站會盡力維護連結與說明的正確性，但無法保證所有第三方工具、下載檔案或外部網站永久可用或完全無風險。執行可執行檔前，請先確認來源並掃描檔案。
+            </p>
+
+            <h3 data-i18n="termsSectionChanges">內容異動</h3>
+            <p data-i18n="termsChangesText">
+              我們可能依專案進度調整工具清單、連結、政策與條款。更新後的內容會公布於本頁，繼續使用網站即代表你了解並接受更新內容。
+            </p>
+          </section>
+        </div>
+        <div class="modal-footer">
+          <button
+            id="legalModalConfirmBtn"
+            class="modal-btn-primary"
+            data-i18n="modalConfirm"
+          >
+            我知道了
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js?v=20260530-10"></script>
+  </body>
 </html>
