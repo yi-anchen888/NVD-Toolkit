@@ -33,7 +33,6 @@ const translations = {
     linkCopied: "已成功複製 {name} 的連結！",
     favoriteAdded: "已將 {name} 加入我的收藏！",
     favoriteRemoved: "已將 {name} 從我的收藏移除！",
-    checksumLabel: "SHA-256",
     emptyTitle: "沒有找到符合條件的工具",
     emptyText: "換個關鍵字或切回全部分類試試看。",
     frictionEyebrow: "Technology Friction",
@@ -113,7 +112,6 @@ const translations = {
     linkCopied: "Successfully copied link for {name}!",
     favoriteAdded: "Added {name} to your favorites!",
     favoriteRemoved: "Removed {name} from your favorites!",
-    checksumLabel: "SHA-256",
     emptyTitle: "No matching tools found",
     emptyText: "Try another keyword or switch back to all categories.",
     frictionEyebrow: "Technology Friction",
@@ -445,9 +443,6 @@ function createToolCard(tool, index) {
   const isFavorite = state.favorites.has(tool.id);
   const escapedName = escapeHTML(content.name);
   const escapedDescription = escapeHTML(content.description);
-  const checksumHtml = tool.sha256
-    ? `<div class="checksum"><span>${t("checksumLabel")}</span><code>${escapeHTML(tool.sha256)}</code></div>`
-    : "";
 
   return `
     <article class="tool-card">
@@ -462,7 +457,6 @@ function createToolCard(tool, index) {
         <div class="tag-list">${tagsHtml}</div>
         <h3 class="tool-title">${escapedName}</h3>
         <p class="tool-desc">${escapedDescription}</p>
-        ${checksumHtml}
       </div>
 
       <div class="card-footer">

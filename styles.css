@@ -608,30 +608,6 @@ body[data-theme="dark"] .card-visual-gradient {
   line-height: 1.65;
 }
 
-.checksum {
-  margin-top: 14px;
-  padding: 10px 12px;
-  display: grid;
-  gap: 5px;
-  background: var(--surface-muted);
-  border: 1px solid var(--border-main);
-  border-radius: 12px;
-}
-
-.checksum span {
-  color: var(--text-muted);
-  font-size: 0.72rem;
-  font-weight: 800;
-}
-
-.checksum code {
-  color: var(--text-main);
-  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
-  font-size: 0.72rem;
-  line-height: 1.45;
-  overflow-wrap: anywhere;
-}
-
 .card-footer {
   margin-top: 20px;
   padding: 16px 20px 20px;
