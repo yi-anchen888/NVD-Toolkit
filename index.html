@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css?v=20260530-1">
+  <link rel="stylesheet" href="styles.css?v=20260530-2">
 </head>
 <body>
   <header class="site-header">
@@ -186,12 +186,65 @@
   </main>
 
   <footer id="footer" class="site-footer">
-    <div class="container footer-inner">
-      <p data-i18n="footerCopy">© 2026 NVD 自生活，實用工具箱. Curated practical tools for smarter workflows.</p>
-      <div class="social-links" aria-label="社群連結">
-        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    <div class="container">
+      <div class="footer-grid" aria-label="頁尾導覽">
+        <section class="footer-column">
+          <h2 data-i18n="footerProductsTitle">產品</h2>
+          <ul>
+            <li><a href="#tools" data-i18n="footerProductTools">實用工具箱</a></li>
+            <li><a href="#guide" data-i18n="footerProductConverter">一鍵轉檔助理</a></li>
+            <li><a href="#tools" data-i18n="footerProductSlides">智慧簡報還原</a></li>
+          </ul>
+        </section>
+
+        <section class="footer-column">
+          <h2 data-i18n="footerGuidesTitle">指南</h2>
+          <ul>
+            <li><a href="#guide" data-i18n="footerGuideQuickStart">快速上手 NVD 工具</a></li>
+            <li><a href="#guide" data-i18n="footerGuideRightClick">右鍵一鍵轉檔教學</a></li>
+            <li><a href="#guide" data-i18n="footerGuideSlides">簡報還原使用指南</a></li>
+            <li><a href="#manifesto" data-i18n="footerGuideFriction">降低科技摩擦</a></li>
+            <li><a href="#guide" data-i18n="footerGuidePrivacy">本地工具與安全檢查</a></li>
+            <li><a href="#manifesto" data-i18n="footerGuideElderFriendly">友善設計理念</a></li>
+          </ul>
+        </section>
+
+        <section class="footer-column">
+          <h2 data-i18n="footerCompareTitle">工具比較</h2>
+          <ul>
+            <li><a href="#tools" data-i18n="footerCompareNvdVsCommand">NVD vs 黑色視窗指令</a></li>
+            <li><a href="#tools" data-i18n="footerCompareNvdVsManual">NVD vs 手動轉檔</a></li>
+            <li><a href="#tools" data-i18n="footerCompareNvdVsOnline">NVD vs 線上轉檔網站</a></li>
+            <li><a href="#tools" data-i18n="footerComparePptx">NoteLM vs 簡報重做</a></li>
+            <li><a href="#tools" data-i18n="footerCompareWorkflow">自動化工具比較</a></li>
+          </ul>
+        </section>
+
+        <section class="footer-column">
+          <h2 data-i18n="footerCompanyTitle">公司</h2>
+          <ul>
+            <li><a href="#manifesto" data-i18n="footerCompanyAbout">關於 NVD 自生活</a></li>
+            <li><a href="#guide" data-i18n="footerCompanyFaq">常見問題</a></li>
+            <li><a href="#tools" data-i18n="footerCompanyUpdates">更新日誌</a></li>
+            <li><a href="#footer" data-i18n="footerCompanyPrivacy">隱私權政策</a></li>
+            <li><a href="#footer" data-i18n="footerCompanyTerms">服務條款</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-brand">
+          <span class="footer-logo" aria-hidden="true"><i class="fa-solid fa-bolt"></i></span>
+          <p data-i18n="footerCopy">© 2026 NVD 自生活，實用工具箱. Curated practical tools for smarter workflows.</p>
+        </div>
+        <div class="footer-meta">
+          <span data-i18n="footerPrivacyNote">100% 本地優先 · 不收集敏感資料 · 無需帳戶</span>
+          <div class="social-links" aria-label="社群連結">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
       </div>
     </div>
   </footer>
@@ -257,6 +310,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=20260530-1"></script>
+  <script src="script.js?v=20260530-2"></script>
 </body>
 </html>
