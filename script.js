@@ -19,6 +19,7 @@ const translations = {
     heroSubtitle: "幫你快速找到 <strong>AI 工具</strong>、<strong>辦公效率</strong>、<strong>文件處理</strong>、<strong>圖文設計</strong> 與 <strong>工程開發</strong> 工具，<span class='tagline'>將零碎繁瑣的工作，自動化轉為流暢漂亮的流程。</span>",
     searchLabel: "搜尋工具名稱、標籤或痛點",
     searchPlaceholder: "搜尋工具名稱、標籤或痛點...",
+    statsProcessedFiles: "檔案已處理",
     filterTitle: "依照工作情境篩選",
     resultCount: "{count} 個工具",
     categoryAll: "全部",
@@ -122,6 +123,7 @@ const translations = {
     heroSubtitle: "Quickly find <strong>AI</strong>, <strong>Office</strong>, <strong>Document</strong>, <strong>Design</strong>, and <strong>Developer</strong> tools.<span class='tagline'>Automate scattered tasks into smooth, beautiful workflows.</span>",
     searchLabel: "Search by tool name, tag, or pain point",
     searchPlaceholder: "Search by tool name, tag, or pain point...",
+    statsProcessedFiles: "files processed",
     filterTitle: "Filter by work scenario",
     resultCount: "{count} tools",
     categoryAll: "All",
@@ -369,6 +371,11 @@ const tools = [
   }
 ];
 
+const simulatedStats = {
+  processedFilesBase: 1312619,
+  dailyIncrement: 173
+};
+
 const iconThemeCount = 4;
 
 const savedFavorites = localStorage.getItem("nvd-favorites");
@@ -387,6 +394,7 @@ const state = {
 const toolGrid = document.querySelector("#toolGrid");
 const emptyState = document.querySelector("#emptyState");
 const searchInput = document.querySelector("#searchInput");
+const processedFilesCount = document.querySelector("#processedFilesCount");
 const resultCount = document.querySelector("#resultCount");
 const categoryTabs = document.querySelectorAll(".category-tab");
 const languageMenu = document.querySelector("#languageMenu");
@@ -433,6 +441,58 @@ function normalizeText(text) {
   return String(text).trim().toLowerCase();
 }
 
+function getSimulatedProcessedFiles() {
+  const launchDate = new Date("2026-05-30T00:00:00+08:00");
+  const elapsedDays = Math.max(0, Math.floor((Date.now() - launchDate.getTime()) / 86400000));
+  const sessionBoost = Number(sessionStorage.getItem("nvd-session-stat-boost")) || Math.floor(Math.random() * 28);
+  sessionStorage.setItem("nvd-session-stat-boost", String(sessionBoost));
+
+  return simulatedStats.processedFilesBase + elapsedDays * simulatedStats.dailyIncrement + sessionBoost;
+}
+
+function formatNumber(value) {
+  const locale = state.language === "zh" ? "zh-TW" : "en-US";
+  return new Intl.NumberFormat(locale).format(value);
+}
+
+function animateNumber(element, targetValue) {
+  if (!element) return;
+
+  const startValue = Number(element.dataset.currentValue) || Math.max(0, targetValue - 820);
+  const duration = 900;
+  const startTime = performance.now();
+
+  function tick(currentTime) {
+    const progress = Math.min((currentTime - startTime) / duration, 1);
+    const easedProgress = 1 - Math.pow(1 - progress, 3);
+    const currentValue = Math.round(startValue + (targetValue - startValue) * easedProgress);
+    element.textContent = formatNumber(currentValue);
+
+    if (progress < 1) {
+      requestAnimationFrame(tick);
+      return;
+    }
+
+    element.dataset.currentValue = String(targetValue);
+  }
+
+  requestAnimationFrame(tick);
+}
+
+function renderSimulatedStats(shouldAnimate = false) {
+  const processedFiles = getSimulatedProcessedFiles();
+
+  if (shouldAnimate) {
+    animateNumber(processedFilesCount, processedFiles);
+    return;
+  }
+
+  if (processedFilesCount) {
+    processedFilesCount.textContent = formatNumber(processedFiles);
+    processedFilesCount.dataset.currentValue = String(processedFiles);
+  }
+}
+
 function getToolText(tool) {
   return tool.i18n[state.language] || tool.i18n.zh;
 }
@@ -459,6 +519,8 @@ function applyTranslations() {
     const count = getFilteredTools().length;
     resultCount.textContent = t("resultCount", { count });
   }
+
+  renderSimulatedStats();
 }
 
 function getFilteredTools() {
@@ -778,3 +840,7 @@ if (openGuideBtn && guideModal) {
 
 setLanguage(state.language);
 setTheme(state.theme, Boolean(savedTheme));
+if (processedFilesCount) {
+  delete processedFilesCount.dataset.currentValue;
+  renderSimulatedStats(true);
+}
