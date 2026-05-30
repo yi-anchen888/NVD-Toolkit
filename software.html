@@ -20,7 +20,7 @@
       integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="styles.css?v=20260530-9" />
+    <link rel="stylesheet" href="styles.css?v=20260531-2" />
   </head>
   <body>
     <header class="site-header">
@@ -89,114 +89,250 @@
     </header>
 
     <main>
-      <section class="hero page-hero">
-        <div class="hero-inner container">
-          <p class="hero-kicker" data-i18n="softwareEyebrow">
-            Green Friendly Software
-          </p>
-          <h1 data-i18n="filterTitle">依照工作情境篩選</h1>
-          <p class="hero-subtitle" data-i18n="softwareLead">
-            以低摩擦、少步驟、本地優先為原則，整理可以立即上手的實用工具。
-          </p>
-          <label
-            for="searchInput"
-            class="visually-hidden"
-            data-i18n="searchLabel"
-            >搜尋工具關鍵字</label
-          >
-          <div class="search-box">
-            <i class="fa-solid fa-magnifying-glass"></i
-            ><input
-              id="searchInput"
-              type="search"
-              data-i18n-placeholder="searchPlaceholder"
-              placeholder="搜尋工具名稱、標籤或痛點..."
-              autocomplete="off"
-            />
+      <section id="product" class="product-hero">
+        <div class="container product-hero-layout">
+          <div class="product-hero-copy">
+            <p class="eyebrow" data-i18n="productEyebrow">
+              NoteML Product Page
+            </p>
+            <h1 data-i18n="productHeroTitle">NoteML 智慧簡報還原助理</h1>
+            <p data-i18n="productHeroLead">
+              為非資訊本業的頂尖專家與商務決策者打造的零摩擦簡報還原工具，讓高價值思考回到策略、洞察與決策本身。
+            </p>
+            <div class="product-actions">
+              <a
+                class="primary-link-btn"
+                href="https://drive.google.com/file/d/1Ky8qJnXC1Frui0MzlERgi2xGHtEIOsc7/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-i18n="productHeroPrimaryCta"
+                >直達網站 →</a
+              >
+              <a
+                class="secondary-link-btn"
+                href="#workflow"
+                data-i18n="productHeroSecondaryCta"
+                >查看使用流程</a
+              >
+            </div>
           </div>
-          <div class="hero-stats" aria-label="小工具下載統計">
-            <span class="stat-dot" aria-hidden="true"></span
-            ><strong id="processedFilesCount">1,312,619</strong
-            ><span data-i18n="statsProcessedFiles">小工具已下載</span>
+
+          <article class="product-showcase-card" aria-label="NoteML 產品卡片">
+            <div class="product-showcase-visual">
+              <div class="tool-icon-badge theme-0">
+                <i class="fa-solid fa-file-powerpoint"></i>
+              </div>
+            </div>
+            <div class="product-showcase-body">
+              <div class="tag-list">
+                <span class="tag" data-i18n="productBadgeBusiness"
+                  >商務簡報</span
+                >
+                <span class="tag" data-i18n="productBadgeBinding"
+                  >自動綁定</span
+                >
+                <span class="tag" data-i18n="productBadgeElite"
+                  >跨界菁英首選</span
+                >
+                <span class="tag" data-i18n="productBadgeNoSerial">免序號</span>
+              </div>
+              <span
+                class="product-showcase-kicker"
+                data-i18n="productCardKicker"
+                >Business Deck Recovery</span
+              >
+              <h2 data-i18n="productCardTitle">NoteML 智慧簡報還原助理</h2>
+              <p data-i18n="productCardDescription">
+                免輸入序號即刻自動綁定，用零設定的直覺操作，讓科技無縫配合您的思維，完美呈現關鍵簡報。
+              </p>
+            </div>
+            <div class="product-showcase-footer">
+              <a
+                class="visit-btn"
+                href="https://drive.google.com/file/d/1Ky8qJnXC1Frui0MzlERgi2xGHtEIOsc7/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-i18n="productHeroPrimaryCta"
+                >直達網站 →</a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="product-section alt">
+        <div class="container">
+          <div class="product-narrow">
+            <p class="eyebrow" data-i18n="productPainEyebrow">
+              Executive Friction
+            </p>
+            <h2 data-i18n="productPainTitle">
+              你不該為了簡報，暫時變成 IT 管理員。
+            </h2>
+            <p data-i18n="productPainLead">
+              醫師、律師、顧問、企業主與頂尖業務的時間，應該花在判斷、說服、成交與策略，而不是卡在序號、設定、格式還原與技術盲區。
+            </p>
+          </div>
+
+          <div class="product-insight-grid">
+            <article class="product-panel">
+              <i class="fa-solid fa-chart-line"></i>
+              <h3 data-i18n="productPainStrategyTitle">
+                高階思考，不該被低階設定中斷
+              </h3>
+              <p data-i18n="productPainStrategyText">
+                當你正在準備關鍵簡報，真正稀缺的是注意力。NoteML
+                把繁瑣設定收進背景，讓你保持在決策節奏裡。
+              </p>
+            </article>
+            <article class="product-panel">
+              <i class="fa-solid fa-user-tie"></i>
+              <h3 data-i18n="productPainBandwidthTitle">
+                非資訊本業，也能乾淨完成
+              </h3>
+              <p data-i18n="productPainBandwidthText">
+                不需要理解技術細節、不需要找人救火，也不需要在黑色視窗和授權流程之間消耗專業能量。
+              </p>
+            </article>
           </div>
         </div>
       </section>
-      <section
-        id="software"
-        class="filter-section container"
-        aria-labelledby="filterTitle"
-      >
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow" data-i18n="softwareEyebrow">
-              Green Friendly Software
-            </p>
-            <h2 id="filterTitle" data-i18n="filterTitle">依照工作情境篩選</h2>
-            <p class="section-lead" data-i18n="softwareLead">
-              以低摩擦、少步驟、本地優先為原則，整理可以立即上手的實用工具。
-            </p>
+
+      <section class="product-section">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow" data-i18n="productFeatureEyebrow">
+                Zero-Friction Features
+              </p>
+              <h2 data-i18n="productFeatureTitle">
+                把技術摩擦壓到最低，把專業價值放到最大。
+              </h2>
+            </div>
           </div>
-          <span id="resultCount" class="result-count">0 個工具</span>
-        </div>
-        <div class="category-tabs" aria-label="工具分類">
-          <button
-            class="category-tab active"
-            type="button"
-            data-category-key="all"
-            data-i18n="categoryAll"
-          >
-            全部</button
-          ><button
-            class="category-tab"
-            type="button"
-            data-category-key="ai"
-            data-i18n="categoryAi"
-          >
-            AI 工具</button
-          ><button
-            class="category-tab"
-            type="button"
-            data-category-key="office"
-            data-i18n="categoryOffice"
-          >
-            辦公效率</button
-          ><button
-            class="category-tab"
-            type="button"
-            data-category-key="document"
-            data-i18n="categoryDocument"
-          >
-            文件處理</button
-          ><button
-            class="category-tab"
-            type="button"
-            data-category-key="design"
-            data-i18n="categoryDesign"
-          >
-            圖文設計</button
-          ><button
-            class="category-tab"
-            type="button"
-            data-category-key="dev"
-            data-i18n="categoryDev"
-          >
-            工程開發</button
-          ><button
-            class="category-tab"
-            type="button"
-            data-category-key="favorites"
-          >
-            <i class="fa-solid fa-heart category-tab-icon"></i
-            ><span data-i18n="categoryFavorites">我的收藏</span>
-          </button>
+
+          <div class="product-feature-grid">
+            <article class="product-panel">
+              <i class="fa-solid fa-link"></i>
+              <h3 data-i18n="productFeatureAutoTitle">免序號自動綁定</h3>
+              <p data-i18n="productFeatureAutoText">
+                降低授權與設定摩擦，讓工具啟動後直接進入可用狀態。
+              </p>
+            </article>
+            <article class="product-panel">
+              <i class="fa-solid fa-arrow-pointer"></i>
+              <h3 data-i18n="productFeatureClickTitle">點擊即用</h3>
+              <p data-i18n="productFeatureClickText">
+                以非技術使用者為核心設計，減少流程判斷與操作成本。
+              </p>
+            </article>
+            <article class="product-panel">
+              <i class="fa-solid fa-bullseye"></i>
+              <h3 data-i18n="productFeatureDeckTitle">聚焦關鍵簡報</h3>
+              <p data-i18n="productFeatureDeckText">
+                協助你把注意力留給內容、邏輯、客戶與決策，而不是工具本身。
+              </p>
+            </article>
+          </div>
         </div>
       </section>
-      <section id="tools" class="tools-section container" aria-live="polite">
-        <div id="toolGrid" class="tool-grid"></div>
-        <div id="emptyState" class="empty-state" hidden>
-          <i class="fa-regular fa-face-smile"></i>
-          <h3 data-i18n="emptyTitle">目前沒有符合條件的工具</h3>
-          <p data-i18n="emptyText">換個關鍵字，或切回全部分類試試。</p>
+
+      <section class="product-section alt">
+        <div class="container">
+          <div class="product-narrow">
+            <p class="eyebrow" data-i18n="productAudienceEyebrow">Built For</p>
+            <h2 data-i18n="productAudienceTitle">
+              給跨界菁英與商務領導者的簡報助理。
+            </h2>
+          </div>
+          <ul class="audience-list">
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span data-i18n="productAudienceDoctor"
+                >醫師與講師：衛教、研究、講座簡報。</span
+              >
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span data-i18n="productAudienceLawyer"
+                >律師與顧問：案件、提案、策略說明。</span
+              >
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span data-i18n="productAudienceOwner"
+                >企業主與主管：內訓、產品、營運簡報。</span
+              >
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span data-i18n="productAudienceSales"
+                >頂尖業務：客戶提案、成交簡報、產品展示。</span
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="workflow" class="product-section">
+        <div class="container">
+          <p class="eyebrow" data-i18n="productWorkflowEyebrow">Workflow</p>
+          <h2 data-i18n="productWorkflowTitle">五步驟，把工具變成成果。</h2>
+          <div class="workflow-steps">
+            <article class="workflow-step">
+              <span>01</span>
+              <h3 data-i18n="productStepOneTitle">下載</h3>
+              <p data-i18n="productStepOneText">
+                從官方連結取得工具，保留清楚來源。
+              </p>
+            </article>
+            <article class="workflow-step">
+              <span>02</span>
+              <h3 data-i18n="productStepTwoTitle">開啟</h3>
+              <p data-i18n="productStepTwoText">
+                不需要先研究技術文件，直接進入操作。
+              </p>
+            </article>
+            <article class="workflow-step">
+              <span>03</span>
+              <h3 data-i18n="productStepThreeTitle">自動綁定</h3>
+              <p data-i18n="productStepThreeText">
+                免輸入序號，降低授權流程的干擾。
+              </p>
+            </article>
+            <article class="workflow-step">
+              <span>04</span>
+              <h3 data-i18n="productStepFourTitle">還原簡報</h3>
+              <p data-i18n="productStepFourText">
+                讓工具協助處理繁瑣還原工作。
+              </p>
+            </article>
+            <article class="workflow-step">
+              <span>05</span>
+              <h3 data-i18n="productStepFiveTitle">使用成果</h3>
+              <p data-i18n="productStepFiveText">
+                把時間交還給內容修整、演示與決策。
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="security" class="product-section alt">
+        <div class="container">
+          <div class="security-callout">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div>
+              <p class="eyebrow" data-i18n="productSecurityEyebrow">
+                Trust & Safety
+              </p>
+              <h2 data-i18n="productSecurityTitle">安全提醒保留，雜訊拿掉。</h2>
+              <p data-i18n="productSecurityText">
+                頁面不顯示雜湊驗證區塊，避免干擾商務使用者閱讀；仍保留官方下載、來源確認與防毒掃描提醒。執行任何
+                EXE 前，請確認來源並以系統防護工具掃描。
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -204,75 +340,64 @@
     <footer id="footer" class="site-footer">
       <div class="container">
         <div class="footer-top">
-          <section class="footer-intro" aria-labelledby="footerIntroTitle">
-            <span class="footer-intro-mark" aria-hidden="true"
-              ><i class="fa-solid fa-bolt"></i
-            ></span>
-            <p class="eyebrow">NVD LIFE OS</p>
-            <h2 id="footerIntroTitle" data-i18n="footerIntroTitle">
-              把複雜科技，折成一鍵生活。
-            </h2>
-            <p data-i18n="footerIntroText">
-              為長輩、電腦小白與忙碌工作者整理最省力的工具入口，讓每一次下載都更安心、更直覺。
-            </p>
-          </section>
-
           <div class="footer-grid" aria-label="頁尾導覽">
             <section class="footer-column">
               <h2 data-i18n="footerProductsTitle">產品</h2>
               <ul>
                 <li>
-                  <a href="software.html#tools" data-i18n="footerProductTools"
-                    >實用工具箱</a
+                  <a href="software.html#product" data-i18n="footerProductTools"
+                    >NoteML 智慧簡報還原助理</a
                   >
                 </li>
                 <li>
                   <a
-                    href="software.html#guide"
+                    href="software.html#workflow"
                     data-i18n="footerProductConverter"
-                    >一鍵轉檔助理</a
+                    >使用流程</a
                   >
                 </li>
                 <li>
-                  <a href="software.html#tools" data-i18n="footerProductSlides"
-                    >智慧簡報還原</a
+                  <a
+                    href="software.html#security"
+                    data-i18n="footerProductSlides"
+                    >下載與安全</a
                   >
                 </li>
               </ul>
             </section>
 
             <section class="footer-column">
-              <h2 data-i18n="footerGuidesTitle">指南</h2>
+              <h2 data-i18n="footerGuidesTitle">理念</h2>
               <ul>
                 <li>
                   <a
-                    href="software.html#guide"
-                    data-i18n="footerGuideQuickStart"
-                    >快速上手 NVD 工具</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="software.html#guide"
-                    data-i18n="footerGuideRightClick"
-                    >右鍵一鍵轉檔教學</a
-                  >
-                </li>
-                <li>
-                  <a href="software.html#guide" data-i18n="footerGuideSlides"
-                    >簡報還原使用指南</a
-                  >
-                </li>
-                <li>
-                  <a
                     href="manifesto.html#manifesto"
-                    data-i18n="footerGuideFriction"
-                    >降低科技摩擦</a
+                    data-i18n="footerGuideQuickStart"
+                    >核心主權宣言</a
                   >
                 </li>
                 <li>
-                  <a href="software.html#guide" data-i18n="footerGuidePrivacy"
-                    >本地工具與安全檢查</a
+                  <a
+                    href="manifesto.html#friction"
+                    data-i18n="footerGuideRightClick"
+                    >科技摩擦</a
+                  >
+                </li>
+                <li>
+                  <a href="join.html#loop" data-i18n="footerGuideSlides"
+                    >友善科技循環</a
+                  >
+                </li>
+                <li>
+                  <a href="index.html#gateway" data-i18n="footerGuideFriction"
+                    >NVD 生態入口</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="manifesto.html#friction"
+                    data-i18n="footerGuidePrivacy"
+                    >降低數位摩擦</a
                   >
                 </li>
                 <li>
@@ -286,39 +411,35 @@
             </section>
 
             <section class="footer-column">
-              <h2 data-i18n="footerCompareTitle">工具比較</h2>
+              <h2 data-i18n="footerCompareTitle">專案</h2>
               <ul>
                 <li>
                   <a
-                    href="software.html#tools"
+                    href="resilience.html#resilience"
                     data-i18n="footerCompareNvdVsCommand"
-                    >NVD vs 黑色視窗指令</a
+                    >社會韌性友善專案</a
+                  >
+                </li>
+                <li>
+                  <a href="join.html#loop" data-i18n="footerCompareNvdVsManual"
+                    >參與共創</a
                   >
                 </li>
                 <li>
                   <a
-                    href="software.html#tools"
-                    data-i18n="footerCompareNvdVsManual"
-                    >NVD vs 手動轉檔</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="software.html#tools"
+                    href="resilience.html#resilience"
                     data-i18n="footerCompareNvdVsOnline"
-                    >NVD vs 線上轉檔網站</a
+                    >高雄友善道路模擬</a
                   >
                 </li>
                 <li>
-                  <a href="software.html#tools" data-i18n="footerComparePptx"
-                    >NoteLM vs 簡報重做</a
+                  <a href="join.html#loop" data-i18n="footerComparePptx"
+                    >種子測試</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="software.html#tools"
-                    data-i18n="footerCompareWorkflow"
-                    >自動化工具比較</a
+                  <a href="join.html#loop" data-i18n="footerCompareWorkflow"
+                    >回饋與協作</a
                   >
                 </li>
               </ul>
@@ -335,12 +456,14 @@
                   >
                 </li>
                 <li>
-                  <a href="software.html#guide" data-i18n="footerCompanyFaq"
+                  <a href="software.html#workflow" data-i18n="footerCompanyFaq"
                     >常見問題</a
                   >
                 </li>
                 <li>
-                  <a href="software.html#tools" data-i18n="footerCompanyUpdates"
+                  <a
+                    href="software.html#product"
+                    data-i18n="footerCompanyUpdates"
                     >更新日誌</a
                   >
                 </li>
@@ -589,6 +712,6 @@
       </div>
     </div>
 
-    <script src="script.js?v=20260531-1"></script>
+    <script src="script.js?v=20260531-2"></script>
   </body>
 </html>
