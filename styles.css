@@ -964,24 +964,94 @@ body[data-theme="dark"] .manifesto-section {
 }
 
 .site-footer {
-  padding: 44px 0 28px;
-  color: rgba(226, 232, 240, 0.76);
+  padding: 50px 0 30px;
+  color: rgba(236, 241, 248, 0.8);
   background:
-    radial-gradient(circle at 12% 0%, rgba(255, 104, 66, 0.12), transparent 30%),
-    linear-gradient(180deg, #0b111c 0%, #070b12 100%);
-  border-top: 1px solid rgba(148, 163, 184, 0.16);
+    linear-gradient(135deg, rgba(255, 104, 66, 0.16) 0%, transparent 28%),
+    radial-gradient(circle at 86% 12%, rgba(32, 201, 151, 0.15), transparent 28%),
+    linear-gradient(180deg, #151821 0%, #090d14 100%);
+  border-top: 1px solid rgba(255, 104, 66, 0.18);
   font-size: 0.95rem;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.9fr);
+  gap: 46px;
+  align-items: start;
+}
+
+.footer-intro {
+  position: relative;
+  overflow: hidden;
+  min-height: 100%;
+  padding: 28px;
+  background:
+    linear-gradient(135deg, rgba(255, 104, 66, 0.22), rgba(32, 201, 151, 0.1)),
+    rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.22);
+}
+
+.footer-intro::after {
+  content: "";
+  position: absolute;
+  right: -48px;
+  bottom: -54px;
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 104, 66, 0.16);
+  border-radius: 50%;
+}
+
+.footer-intro-mark {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-orange), #ff8a3d);
+  border-radius: 15px;
+  box-shadow: 0 14px 30px rgba(255, 104, 66, 0.32);
+}
+
+.footer-intro .eyebrow {
+  margin-bottom: 10px;
+}
+
+.footer-intro h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: clamp(1.45rem, 2.3vw, 2rem);
+  line-height: 1.28;
+  font-weight: 900;
+}
+
+.footer-intro p:last-child {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: rgba(236, 241, 248, 0.76);
+  line-height: 1.78;
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 42px;
-  padding-bottom: 34px;
+  gap: 26px;
+}
+
+.footer-column {
+  padding: 2px 0 2px 18px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-column h2 {
-  margin: 0 0 18px;
+  margin: 0 0 16px;
   color: #f8fafc;
   font-size: 0.95rem;
   font-weight: 800;
@@ -996,15 +1066,15 @@ body[data-theme="dark"] .manifesto-section {
 }
 
 .footer-column a {
-  color: rgba(147, 180, 224, 0.82);
+  color: rgba(182, 211, 246, 0.86);
   line-height: 1.5;
   text-decoration: none;
   transition: color 0.25s ease, transform 0.25s ease;
 }
 
 .footer-column a:hover {
-  color: #fff;
-  transform: translateX(3px);
+  color: #ffb091;
+  transform: translateX(4px);
 }
 
 .footer-bottom {
@@ -1012,8 +1082,9 @@ body[data-theme="dark"] .manifesto-section {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  margin-top: 34px;
   padding-top: 24px;
-  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  border-top: 1px dashed rgba(255, 255, 255, 0.16);
 }
 
 .footer-brand,
@@ -1310,6 +1381,11 @@ body[data-theme="dark"] .manifesto-section {
     grid-column: span 1;
   }
 
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
   .footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 32px 28px;
@@ -1437,9 +1513,18 @@ body[data-theme="dark"] .manifesto-section {
     padding: 38px 0 28px;
   }
 
+  .footer-intro {
+    padding: 24px;
+    border-radius: 18px;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 24px;
+  }
+
+  .footer-column {
+    padding-left: 14px;
   }
 
   .footer-bottom,
