@@ -471,15 +471,16 @@ const tools = [
         ctaText: "直達網站 →",
       },
       en: {
-        name: "NoteLM Smart Deck Recovery Assistant",
+        name: "NoteML Smart Deck Recovery Assistant",
         description:
-          "A click-to-use presentation recovery tool for beginners, with automatic binding and no serial-number friction.",
+          "Built for elite non-technical professionals and business decision makers. Your expertise belongs in strategy and insight, not in tedious technical setup. Automatic binding with no serial-number friction gives you a zero-configuration workflow that keeps technology aligned with your thinking and restores key presentations cleanly.",
         tags: [
-          "Deck recovery",
-          "Automation",
-          "Beginner friendly",
+          "Business decks",
+          "Auto binding",
+          "Elite operators",
           "No serial code",
         ],
+        ctaText: "Visit site →",
       },
     },
   },
