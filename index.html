@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css?v=20260530-7">
+  <link rel="stylesheet" href="styles.css?v=20260530-8">
 </head>
 <body>
   <header class="site-header">
@@ -20,9 +20,10 @@
       </a>
 
       <div class="nav-links" aria-label="網站選單">
-        <a href="#categories" data-i18n="navCategories">分類</a>
-        <a href="#tools" data-i18n="navTools">熱門工具</a>
-        <a href="#manifesto" data-i18n="navManifesto">品牌理念</a>
+        <a href="#values" data-i18n="navValues">核心理念</a>
+        <a href="#software" data-i18n="navSoftware">綠色軟體</a>
+        <a href="#resilience" data-i18n="navResilience">友善專案</a>
+        <a href="#loop" data-i18n="navLoop">參與共創</a>
         <a href="#guide" id="openGuideBtn">
           <i class="fa-regular fa-circle-question"></i>
           <span data-i18n="navGuide">使用說明</span>
@@ -54,8 +55,9 @@
   <main>
     <section class="hero">
       <div class="hero-inner container">
-        <h1 data-i18n="heroTitle">探索地表最強實用工具箱</h1>
-        <p class="hero-subtitle" data-i18n="heroSubtitle">幫你快速找到 AI、生產力、設計、文件處理與開發工具，把零碎工作變成漂亮流程。</p>
+        <p class="hero-kicker" data-i18n="heroKicker">NVD 生態系入口</p>
+        <h1 data-i18n="heroTitle">讓科技重新變得好用，也讓社會重新變得可通行。</h1>
+        <p class="hero-subtitle" data-i18n="heroSubtitle">NVD 以 <strong>一鍵小工具</strong> 降低數位摩擦，並透過 <strong>社會韌性友善專案</strong>，讓使用者從解決問題走向參與改變。<span class='tagline'>用小工具降低摩擦，用每一次使用推動友善社會。</span></p>
 
         <label for="searchInput" class="visually-hidden" data-i18n="searchLabel">搜尋工具名稱、標籤或痛點</label>
         <div class="search-box">
@@ -71,11 +73,65 @@
       </div>
     </section>
 
-    <section id="categories" class="filter-section container" aria-labelledby="filterTitle">
+    <section id="values" class="values-section container" aria-labelledby="valuesTitle">
+      <div class="section-heading centered-heading">
+        <div>
+          <p class="eyebrow" data-i18n="valuesEyebrow">Core Values</p>
+          <h2 id="valuesTitle" data-i18n="valuesTitle">從工具開始，走向友善社會系統</h2>
+          <p class="section-lead" data-i18n="valuesLead">我們先幫人少卡一次，再讓每一次下載、測試與回饋，成為社會韌性的一個節點。</p>
+        </div>
+      </div>
+
+      <div class="values-grid">
+        <article class="value-card">
+          <span class="value-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+          <h3 data-i18n="valueFrictionTitle">降低摩擦</h3>
+          <p data-i18n="valueFrictionText">把複雜指令、黑色視窗與繁瑣流程，折成更直覺的一鍵操作。</p>
+        </article>
+        <article class="value-card">
+          <span class="value-icon"><i class="fa-solid fa-universal-access"></i></span>
+          <h3 data-i18n="valueAccessTitle">友善可及</h3>
+          <p data-i18n="valueAccessText">讓長輩、電腦小白、身障者、照顧者與忙碌工作者都能更容易接上科技。</p>
+        </article>
+        <article class="value-card">
+          <span class="value-icon"><i class="fa-solid fa-route"></i></span>
+          <h3 data-i18n="valueActionTitle">從工具到行動</h3>
+          <p data-i18n="valueActionText">每一次使用、分享與回饋，都能推動下一個更友善的工具與專案。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="friction" class="dual-friction-section">
+      <div class="container">
+        <div class="section-heading centered-heading">
+          <div>
+            <p class="eyebrow" data-i18n="dualFrictionEyebrow">Dual Friction</p>
+            <h2 data-i18n="dualFrictionTitle">我們想解決的，不只是工具問題</h2>
+            <p class="section-lead" data-i18n="dualFrictionLead">數位流程會卡住人，城市空間也會卡住人。NVD 把這些摩擦視為可以被看見、被降低、被改善的系統問題。</p>
+          </div>
+        </div>
+
+        <div class="dual-friction-grid">
+          <article class="dual-friction-card digital-card">
+            <span class="dual-friction-icon"><i class="fa-solid fa-terminal"></i></span>
+            <h3 data-i18n="digitalFrictionTitle">數位摩擦</h3>
+            <p data-i18n="digitalFrictionText">複雜指令、軟體門檻、轉檔流程與介面焦慮，讓很多人明明有需求，卻被工具擋在門外。</p>
+          </article>
+          <article class="dual-friction-card physical-card">
+            <span class="dual-friction-icon"><i class="fa-solid fa-wheelchair-move"></i></span>
+            <h3 data-i18n="physicalFrictionTitle">生活摩擦</h3>
+            <p data-i18n="physicalFrictionText">高低差、斷裂人行道、資訊不透明與不友善動線，讓日常移動變成被迫繞路、等待或放棄。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="software" class="filter-section container" aria-labelledby="filterTitle">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Tool Categories</p>
-          <h2 id="filterTitle" data-i18n="filterTitle">依照工作情境篩選</h2>
+          <p class="eyebrow" data-i18n="softwareEyebrow">Green Friendly Software</p>
+          <h2 id="filterTitle" data-i18n="filterTitle">先從一個真的好用的小工具開始</h2>
+          <p class="section-lead" data-i18n="softwareLead">不用註冊、不逼學指令、不製造更多焦慮，只為了讓人更快完成事情。</p>
         </div>
         <span id="resultCount" class="result-count">0 個工具</span>
       </div>
@@ -100,6 +156,75 @@
         <i class="fa-regular fa-face-smile"></i>
         <h3 data-i18n="emptyTitle">沒有找到符合條件的工具</h3>
         <p data-i18n="emptyText">換個關鍵字或切回全部分類試試看。</p>
+      </div>
+    </section>
+
+    <section id="resilience" class="resilience-section">
+      <div class="container">
+        <div class="resilience-layout">
+          <div class="resilience-copy">
+            <p class="eyebrow" data-i18n="resilienceEyebrow">Project B Simulation</p>
+            <h2 data-i18n="resilienceTitle">社會韌性友善專案模擬區</h2>
+            <p data-i18n="resilienceLead">我們想做的不只是地圖，而是一套讓城市障礙被看見的公民科技系統。把生活中的障礙，變成可以被標記、被理解、被改善的資料。</p>
+            <ul class="resilience-list">
+              <li><i class="fa-solid fa-check"></i><span data-i18n="resiliencePointOne">群眾回報高低差、騎樓障礙與不友善動線。</span></li>
+              <li><i class="fa-solid fa-check"></i><span data-i18n="resiliencePointTwo">用模擬數據呈現熱區、改善點與參與節點。</span></li>
+              <li><i class="fa-solid fa-check"></i><span data-i18n="resiliencePointThree">讓同學、師資與種子使用者一起測試與微調。</span></li>
+            </ul>
+          </div>
+
+          <div class="resilience-dashboard" aria-label="社會韌性友善專案模擬數據">
+            <div class="dashboard-header">
+              <span class="pulse-dot"></span>
+              <strong data-i18n="dashboardTitle">友善道路即時數據沙盤</strong>
+            </div>
+            <div class="metric-grid">
+              <div class="metric-card">
+                <span data-i18n="metricParticipants">市民參與數</span>
+                <strong>13,786</strong>
+              </div>
+              <div class="metric-card">
+                <span data-i18n="metricReports">障礙回報</span>
+                <strong>46,931</strong>
+              </div>
+              <div class="metric-card">
+                <span data-i18n="metricImprovements">促成改善點</span>
+                <strong>147</strong>
+              </div>
+              <div class="metric-card">
+                <span data-i18n="metricHotspots">熱區分布</span>
+                <strong data-i18n="metricHotspotsValue">三民區 32%</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="loop" class="loop-section container" aria-labelledby="loopTitle">
+      <div class="section-heading centered-heading">
+        <div>
+          <p class="eyebrow" data-i18n="loopEyebrow">Friendly Tech Loop</p>
+          <h2 id="loopTitle" data-i18n="loopTitle">從下載到認同：NVD 的友善科技循環</h2>
+          <p class="section-lead" data-i18n="loopLead">NVD 不是用注意力換點擊，而是用工具建立信任。從解決痛點，到建立認同，再到參與共創。</p>
+        </div>
+      </div>
+      <div class="loop-grid">
+        <article class="loop-card">
+          <span>01</span>
+          <h3 data-i18n="loopUseTitle">使用工具</h3>
+          <p data-i18n="loopUseText">從轉檔、整理、還原簡報這類小痛點開始，讓使用者先感受到省力。</p>
+        </article>
+        <article class="loop-card">
+          <span>02</span>
+          <h3 data-i18n="loopTrustTitle">建立認同</h3>
+          <p data-i18n="loopTrustText">工具真的好用，使用者就會理解友善科技不是口號，而是少一次卡關。</p>
+        </article>
+        <article class="loop-card">
+          <span>03</span>
+          <h3 data-i18n="loopCoCreateTitle">參與共創</h3>
+          <p data-i18n="loopCoCreateText">分享工具、回饋問題、協助測試，讓下一個人更容易使用科技。</p>
+        </article>
       </div>
     </section>
 
@@ -371,6 +496,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=20260530-7"></script>
+  <script src="script.js?v=20260530-8"></script>
 </body>
 </html>
