@@ -151,6 +151,21 @@ const translations = {
     metricImprovements: "促成改善點",
     metricHotspots: "熱區分布",
     metricHotspotsValue: "三民區 32%",
+    demoFrontLabel: "Front-end Civic Capture",
+    demoFrontTitle: "真實視角障礙回報端",
+    demoGpsTitle: "自動抓取 GIS 座標中",
+    demoTagHeight: "高低差",
+    demoTagParking: "違停",
+    demoTagGravel: "碎石",
+    demoSubmit: "發起友善道路回報",
+    demoStatusDetecting: "🔍 正在自動偵測周遭環境風險...",
+    demoStatusLocation: "📍 鎖定位置：高雄市三民區",
+    demoStatusLabel: "⚠️ 偵測到路面狀況：【高低落差】",
+    demoStatusReady: "正在將現場數據 ➔ 轉化為社會韌性資產...",
+    demoStatusEncrypting: "正在將現場數據 ➔ 轉化為社會韌性資產...",
+    demoBackendStatus: "GIS Monitor / Kaohsiung Node",
+    demoScoreLabel: "Social Resilience Score",
+    demoSuccess: "現場數據已轉化為社會韌性資產",
     loopEyebrow: "Friendly Tech Loop",
     loopTitle: "從下載到認同：NVD 的友善科技循環",
     loopLead:
@@ -444,6 +459,22 @@ const translations = {
     metricImprovements: "Improvements sparked",
     metricHotspots: "Hotspot split",
     metricHotspotsValue: "Sanmin 32%",
+    demoFrontLabel: "Front-end Civic Capture",
+    demoFrontTitle: "Street-level barrier report terminal",
+    demoGpsTitle: "Capturing GIS coordinates",
+    demoTagHeight: "Height gap",
+    demoTagParking: "Illegal parking",
+    demoTagGravel: "Loose gravel",
+    demoSubmit: "Report friendly road issue",
+    demoStatusDetecting: "🔍 Auto-detecting nearby accessibility risks...",
+    demoStatusLocation: "📍 Location locked: Sanmin District, Kaohsiung",
+    demoStatusLabel: "⚠️ Road condition detected: height gap",
+    demoStatusReady: "Turning field data into a social resilience asset...",
+    demoStatusEncrypting:
+      "Turning field data into a social resilience asset...",
+    demoBackendStatus: "GIS Monitor / Kaohsiung Node",
+    demoScoreLabel: "Social Resilience Score",
+    demoSuccess: "Field data converted into a social resilience asset.",
     loopEyebrow: "Friendly Tech Loop",
     loopTitle: "From download to belief: the NVD friendly tech loop",
     loopLead:
@@ -805,7 +836,23 @@ const closeLegalModalBtn = document.querySelector("#closeLegalModalBtn");
 const legalModalConfirmBtn = document.querySelector("#legalModalConfirmBtn");
 const legalLinks = document.querySelectorAll("[data-legal-modal]");
 const legalPanels = document.querySelectorAll("[data-legal-panel]");
+const resilienceDemo = document.querySelector("#resilienceDemo");
+const demoStepButtons = document.querySelectorAll("[data-demo-step]");
+const demoCoordinates = document.querySelector("#demoCoordinates");
+const demoStatusPrimary = document.querySelector("#demoStatusPrimary");
+const demoStatusSecondary = document.querySelector("#demoStatusSecondary");
+const demoSubmitHint = document.querySelector("#demoSubmitHint");
+const phoneSubmitButton = document.querySelector(".phone-submit");
+const resilienceScore = document.querySelector("#resilienceScore");
+const taiwanMap = document.querySelector(".taiwan-map");
+const logStream = document.querySelector(".log-stream");
+const receiptModal = document.querySelector(".receipt-modal");
+const receiptHash = document.querySelector("#receiptHash");
 let processedFilesTimerId;
+let resilienceScoreFrameId;
+let resilienceResetTimerId;
+let crowdSyncTimerId;
+let receiptTypingTimerId;
 
 function t(key, replacements = {}) {
   const dictionary = translations[state.language] || translations.zh;
@@ -929,6 +976,176 @@ function startProcessedFilesTicker() {
   processedFilesTimerId = window.setInterval(incrementProcessedFiles, 2600);
 }
 
+function setResilienceDemoStep(step) {
+  if (!resilienceDemo) return;
+
+  const activeStep = Math.max(
+    0,
+    Math.min(4, Number.isFinite(Number(step)) ? Number(step) : 0),
+  );
+  window.clearTimeout(resilienceResetTimerId);
+  resilienceDemo.classList.remove("is-submitting");
+  resilienceDemo.classList.remove("show-receipt");
+  resilienceDemo.dataset.step = String(activeStep);
+
+  demoStepButtons.forEach((button) => {
+    button.classList.toggle(
+      "active",
+      Number(button.dataset.demoStep) === activeStep,
+    );
+  });
+
+  if (demoCoordinates) {
+    const coordinateOffset = activeStep * 0.0007;
+    demoCoordinates.textContent = `${(22.6273 + coordinateOffset).toFixed(4)}°N, ${(120.3014 + coordinateOffset * 1.3).toFixed(4)}°E`;
+  }
+
+  updateResilienceDemoReadout(activeStep);
+
+  if (activeStep === 4) {
+    animateResilienceScore(92.21, 92.5);
+  } else if (resilienceScore) {
+    cancelAnimationFrame(resilienceScoreFrameId);
+    resilienceScore.textContent = "92.21";
+  }
+}
+
+function addLogLine(text) {
+  if (!logStream) return;
+
+  const line = document.createElement("span");
+  line.textContent = text;
+  logStream.prepend(line);
+
+  while (logStream.children.length > 4) {
+    logStream.lastElementChild.remove();
+  }
+}
+
+function addCrowdPulse() {
+  if (!taiwanMap || resilienceDemo?.classList.contains("is-submitting")) return;
+
+  const cities = ["台北", "台中", "台南", "桃園", "新竹", "屏東"];
+  const city = cities[Math.floor(Math.random() * cities.length)];
+  const pulse = document.createElement("span");
+  pulse.className = "crowd-pulse";
+  pulse.style.left = `${28 + Math.random() * 48}%`;
+  pulse.style.top = `${18 + Math.random() * 62}%`;
+  taiwanMap.appendChild(pulse);
+  addLogLine(`[系統] ${city} 數據同步中...`);
+  pulse.addEventListener("animationend", () => pulse.remove(), { once: true });
+}
+
+function startCrowdSync() {
+  if (crowdSyncTimerId || !taiwanMap) return;
+
+  addCrowdPulse();
+  crowdSyncTimerId = window.setInterval(addCrowdPulse, 3000);
+}
+
+function typeReceiptHash() {
+  if (!receiptHash) return;
+
+  window.clearInterval(receiptTypingTimerId);
+  const hash = `HASH 0x${Math.random().toString(16).slice(2, 10).toUpperCase()}${Date.now().toString(16).slice(-8).toUpperCase()}`;
+  let index = 0;
+  receiptHash.textContent = "";
+  receiptTypingTimerId = window.setInterval(() => {
+    receiptHash.textContent = hash.slice(0, index + 1);
+    index += 1;
+    if (index >= hash.length) {
+      window.clearInterval(receiptTypingTimerId);
+    }
+  }, 28);
+}
+
+function updateResilienceDemoReadout(step, overrideKey) {
+  if (!demoStatusPrimary || !demoStatusSecondary) return;
+
+  if (overrideKey) {
+    demoStatusPrimary.textContent = t(overrideKey);
+    demoStatusSecondary.textContent = t("demoStatusLocation");
+    if (demoSubmitHint) {
+      demoSubmitHint.textContent = t("demoStatusReady");
+    }
+    return;
+  }
+
+  if (step >= 2) {
+    demoStatusPrimary.textContent = t("demoStatusLabel");
+  } else {
+    demoStatusPrimary.textContent = t("demoStatusDetecting");
+  }
+
+  demoStatusSecondary.textContent = t("demoStatusLocation");
+
+  if (demoSubmitHint) {
+    demoSubmitHint.textContent = t("demoStatusReady");
+  }
+}
+
+function animateResilienceScore(startValue, endValue) {
+  if (!resilienceScore) return;
+
+  cancelAnimationFrame(resilienceScoreFrameId);
+
+  const duration = 920;
+  const startTime = performance.now();
+
+  function tick(currentTime) {
+    const progress = Math.min((currentTime - startTime) / duration, 1);
+    const easedProgress = 1 - Math.pow(1 - progress, 3);
+    const currentValue = startValue + (endValue - startValue) * easedProgress;
+    resilienceScore.textContent = currentValue.toFixed(2);
+
+    if (progress < 1) {
+      resilienceScoreFrameId = requestAnimationFrame(tick);
+    }
+  }
+
+  resilienceScoreFrameId = requestAnimationFrame(tick);
+}
+
+function triggerResilienceSubmit() {
+  if (!resilienceDemo || resilienceDemo.classList.contains("is-submitting")) {
+    return;
+  }
+
+  window.clearTimeout(resilienceResetTimerId);
+  window.clearInterval(crowdSyncTimerId);
+  crowdSyncTimerId = null;
+  resilienceDemo.classList.add("is-submitting");
+  resilienceDemo.classList.add("scanning");
+  setResilienceDemoStep(3);
+  resilienceDemo.classList.add("is-submitting");
+  resilienceDemo.classList.add("scanning");
+  updateResilienceDemoReadout(3, "demoStatusEncrypting");
+  if (demoSubmitHint) {
+    demoSubmitHint.textContent = t("demoStatusEncrypting");
+  }
+  addLogLine("[系統] 高雄三民區現場數據上傳中...");
+
+  window.setTimeout(() => {
+    setResilienceDemoStep(4);
+    resilienceDemo.classList.add("is-submitting");
+    resilienceDemo.classList.add("scanning");
+    addLogLine("[系統] 高雄節點已精準定位...");
+
+    window.setTimeout(() => {
+      resilienceDemo.classList.add("show-receipt");
+      typeReceiptHash();
+    }, 960);
+
+    resilienceResetTimerId = window.setTimeout(() => {
+      resilienceDemo.classList.remove("is-submitting");
+      resilienceDemo.classList.remove("scanning");
+      resilienceDemo.classList.remove("show-receipt");
+      setResilienceDemoStep(0);
+      startCrowdSync();
+    }, 4500);
+  }, 520);
+}
+
 function getToolText(tool) {
   return tool.i18n[state.language] || tool.i18n.zh;
 }
@@ -957,6 +1174,9 @@ function applyTranslations() {
   }
 
   renderSimulatedStats();
+  if (resilienceDemo) {
+    updateResilienceDemoReadout(Number(resilienceDemo.dataset.step) || 0);
+  }
 }
 
 function getFilteredTools() {
@@ -1123,6 +1343,16 @@ categoryTabs.forEach((button) => {
     renderTools();
   });
 });
+
+demoStepButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    setResilienceDemoStep(button.dataset.demoStep);
+  });
+});
+
+if (phoneSubmitButton) {
+  phoneSubmitButton.addEventListener("click", triggerResilienceSubmit);
+}
 
 function showToast(message, type = "success") {
   let container = document.querySelector(".toast-container");
@@ -1370,3 +1600,5 @@ if (processedFilesCount) {
   renderSimulatedStats(true);
   startProcessedFilesTicker();
 }
+setResilienceDemoStep(0);
+startCrowdSync();
