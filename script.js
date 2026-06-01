@@ -853,6 +853,7 @@ let resilienceScoreFrameId;
 let resilienceResetTimerId;
 let crowdSyncTimerId;
 let receiptTypingTimerId;
+let resilienceTimelineTimers = [];
 
 function t(key, replacements = {}) {
   const dictionary = translations[state.language] || translations.zh;
@@ -976,6 +977,16 @@ function startProcessedFilesTicker() {
   processedFilesTimerId = window.setInterval(incrementProcessedFiles, 2600);
 }
 
+function clearResilienceTimeline() {
+  resilienceTimelineTimers.forEach((timerId) => window.clearTimeout(timerId));
+  resilienceTimelineTimers = [];
+}
+
+function queueResilienceTimeline(callback, delay) {
+  const timerId = window.setTimeout(callback, delay);
+  resilienceTimelineTimers.push(timerId);
+}
+
 function setResilienceDemoStep(step) {
   if (!resilienceDemo) return;
 
@@ -1008,6 +1019,13 @@ function setResilienceDemoStep(step) {
     cancelAnimationFrame(resilienceScoreFrameId);
     resilienceScore.textContent = "92.21";
   }
+}
+
+function runResilienceTimelineStep(step, overrideKey) {
+  setResilienceDemoStep(step);
+  resilienceDemo.classList.add("is-submitting");
+  resilienceDemo.classList.add("scanning");
+  updateResilienceDemoReadout(step, overrideKey);
 }
 
 function addLogLine(text) {
@@ -1111,39 +1129,52 @@ function triggerResilienceSubmit() {
     return;
   }
 
+  clearResilienceTimeline();
   window.clearTimeout(resilienceResetTimerId);
   window.clearInterval(crowdSyncTimerId);
   crowdSyncTimerId = null;
-  resilienceDemo.classList.add("is-submitting");
-  resilienceDemo.classList.add("scanning");
-  setResilienceDemoStep(3);
-  resilienceDemo.classList.add("is-submitting");
-  resilienceDemo.classList.add("scanning");
-  updateResilienceDemoReadout(3, "demoStatusEncrypting");
-  if (demoSubmitHint) {
-    demoSubmitHint.textContent = t("demoStatusEncrypting");
-  }
-  addLogLine("[系統] 高雄三民區現場數據上傳中...");
 
-  window.setTimeout(() => {
-    setResilienceDemoStep(4);
-    resilienceDemo.classList.add("is-submitting");
-    resilienceDemo.classList.add("scanning");
+  runResilienceTimelineStep(0);
+
+  queueResilienceTimeline(() => {
+    runResilienceTimelineStep(1);
+    addLogLine("[系統] 自動定位高雄市三民區...");
+  }, 420);
+
+  queueResilienceTimeline(() => {
+    runResilienceTimelineStep(2);
+    addLogLine("[系統] 偵測到高低落差...");
+  }, 980);
+
+  queueResilienceTimeline(() => {
+    runResilienceTimelineStep(3, "demoStatusEncrypting");
+    if (demoSubmitHint) {
+      demoSubmitHint.textContent = t("demoStatusEncrypting");
+    }
+    addLogLine("[系統] 高雄三民區現場數據上傳中...");
+  }, 1540);
+
+  queueResilienceTimeline(() => {
+    runResilienceTimelineStep(4);
     addLogLine("[系統] 高雄節點已精準定位...");
 
-    window.setTimeout(() => {
+    queueResilienceTimeline(() => {
       resilienceDemo.classList.add("show-receipt");
       typeReceiptHash();
     }, 960);
 
     resilienceResetTimerId = window.setTimeout(() => {
+      clearResilienceTimeline();
       resilienceDemo.classList.remove("is-submitting");
       resilienceDemo.classList.remove("scanning");
       resilienceDemo.classList.remove("show-receipt");
+      if (receiptHash) {
+        receiptHash.textContent = "";
+      }
       setResilienceDemoStep(0);
       startCrowdSync();
-    }, 4500);
-  }, 520);
+    }, 4460);
+  }, 2200);
 }
 
 function getToolText(tool) {
@@ -1346,6 +1377,13 @@ categoryTabs.forEach((button) => {
 
 demoStepButtons.forEach((button) => {
   button.addEventListener("click", () => {
+    clearResilienceTimeline();
+    window.clearTimeout(resilienceResetTimerId);
+    if (resilienceDemo) {
+      resilienceDemo.classList.remove("is-submitting");
+      resilienceDemo.classList.remove("scanning");
+      resilienceDemo.classList.remove("show-receipt");
+    }
     setResilienceDemoStep(button.dataset.demoStep);
   });
 });
