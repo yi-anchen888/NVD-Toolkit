@@ -7,7 +7,7 @@
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; form-action 'none'; upgrade-insecure-requests"
     />
-    <title>NVD 自生活，實用工具箱</title>
+    <title>NVD 自生活</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,7 +20,7 @@
       integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="styles.css?v=20260601-2" />
+    <link rel="stylesheet" href="styles.css?v=20260601-4" />
   </head>
   <body>
     <header class="site-header">
@@ -106,12 +106,10 @@
               <span data-i18n="homePrimaryCta">開始使用綠色軟體</span>
               <i class="fa-solid fa-arrow-right"></i>
             </a>
-            <a
-              class="secondary-link-btn"
-              href="resilience.html"
-              data-i18n="homeSecondaryCta"
-              >查看友善專案</a
-            >
+            <a class="secondary-link-btn" href="resilience.html">
+              <span data-i18n="homeSecondaryCta">查看友善專案</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
           </div>
 
           <div class="hero-stats" aria-label="檔案處理計數">
@@ -119,6 +117,74 @@
             <strong id="processedFilesCount">1,312,619</strong>
             <span data-i18n="statsProcessedFiles">小工具已下載</span>
           </div>
+        </div>
+      </section>
+
+      <section
+        class="hub-dashboard-section container"
+        aria-labelledby="hubDashboardTitle"
+      >
+        <div class="section-heading centered-heading">
+          <div>
+            <p class="eyebrow">NVD LIFE HUB</p>
+            <h2 id="hubDashboardTitle">把工具、資料與友善行動接成一個入口</h2>
+            <p class="section-lead">
+              左側是使用者最直覺的一鍵回報端，右側是社會韌性數據板。NVD
+              讓每一次工具使用，都能被整理成可理解、可討論、可改善的系統訊號。
+            </p>
+          </div>
+        </div>
+
+        <div class="hub-dashboard-grid">
+          <article class="hub-phone-card" aria-label="NVD 手機回報端">
+            <div class="hub-phone-shell">
+              <div class="hub-phone-camera"></div>
+              <div class="hub-phone-screen">
+                <div class="hub-json-stream" aria-hidden="true">
+                  { "site": "Kaohsiung", "risk": "curb_gap", "status":
+                  "syncing", "asset": "verified" }
+                </div>
+                <div class="hub-phone-banner">
+                  <span><i class="fa-solid fa-location-dot"></i></span>
+                  <div>
+                    <strong>高雄市三民區</strong>
+                    <small>現場狀況已整理成友善道路回報</small>
+                  </div>
+                </div>
+                <div class="hub-phone-action">
+                  <span>一鍵回報</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="hub-scoreboard-card" aria-label="NVD 公民分數板">
+            <div class="hub-scoreboard-header">
+              <div>
+                <span>Social Resilience Score</span>
+                <strong>92.21</strong>
+              </div>
+              <span class="hub-live-pill">LIVE</span>
+            </div>
+            <div class="hub-scoreboard-body">
+              <svg viewBox="0 0 240 180" role="img" aria-label="韌性雷達圖">
+                <path
+                  class="hub-radar-grid"
+                  d="M120 16 214 70 214 142 120 170 26 142 26 70Z M120 52 180 86 180 128 120 146 60 128 60 86Z M120 16v154M26 70l188 72M214 70 26 142"
+                />
+                <path
+                  class="hub-radar-fill"
+                  d="M120 34 196 78 178 133 120 153 54 132 42 76Z"
+                />
+              </svg>
+              <div class="hub-score-metrics">
+                <span><strong>13,786</strong> 市民參與</span>
+                <span><strong>46,931</strong> 障礙回報</span>
+                <span><strong>147</strong> 改善節點</span>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -452,8 +518,7 @@
               ><i class="fa-solid fa-bolt"></i
             ></span>
             <p data-i18n="footerCopy">
-              © 2026 NVD 自生活，實用工具箱. Curated practical tools for smarter
-              workflows.
+              © 2026 NVD 自生活. Curated practical tools for smarter workflows.
             </p>
           </div>
           <div class="footer-meta">
@@ -670,6 +735,6 @@
       </div>
     </div>
 
-    <script src="script.js?v=20260601-2"></script>
+    <script src="script.js?v=20260601-4"></script>
   </body>
 </html>
