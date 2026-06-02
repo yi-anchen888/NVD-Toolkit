@@ -1124,6 +1124,71 @@ function animateResilienceScore(startValue, endValue) {
   resilienceScoreFrameId = requestAnimationFrame(tick);
 }
 
+function triggerAutoDetection() {
+  const targetBox = document.querySelector(".target-box");
+  const statusText =
+    document.querySelector(".status-text") ||
+    document.querySelector("#demoStatusPrimary");
+  const step03Label = document.querySelector("#step-03-label");
+  const miniDataOverlay = document.querySelector(".mini-data-overlay");
+  const resultCard = document.querySelector(".detection-result-card");
+  const demoStage = document.querySelector("#resilienceDemo");
+
+  if (!targetBox || !statusText || !step03Label) return;
+
+  window.clearInterval(triggerAutoDetection.dataTimer);
+  window.clearTimeout(triggerAutoDetection.lockTimer);
+  resultCard?.classList.remove("is-visible");
+  step03Label.classList.remove("active-step");
+  targetBox.classList.remove("target-locked");
+  targetBox.classList.add("scanning-active");
+  demoStage?.classList.add("scanning");
+  miniDataOverlay?.classList.add("is-active");
+  statusText.innerHTML =
+    '<span class="animate-pulse">🔍 正在自動辨識現場空間特徵...</span>';
+
+  const updateMiniData = () => {
+    if (!miniDataOverlay) return;
+
+    const lngNoise = Math.floor(Math.random() * 900) + 100;
+    const depth = (10 + Math.random() * 8).toFixed(1);
+    const confidence = (90 + Math.random() * 8.9).toFixed(1);
+    miniDataOverlay.innerHTML = `LAT: 22.639, LNG: 120.${lngNoise}<br>DEPTH: ${depth}cm<br>CONFIDENCE: ${confidence}%`;
+  };
+
+  updateMiniData();
+  triggerAutoDetection.dataTimer = window.setInterval(updateMiniData, 80);
+
+  triggerAutoDetection.lockTimer = window.setTimeout(() => {
+    window.clearInterval(triggerAutoDetection.dataTimer);
+    targetBox.classList.remove("scanning-active");
+    targetBox.classList.add("target-locked");
+    demoStage?.classList.remove("scanning");
+    if (miniDataOverlay) {
+      miniDataOverlay.innerHTML =
+        "LAT: 22.639, LNG: 120.327<br>DEPTH: 16.8cm<br>CONFIDENCE: 98.7%";
+    }
+    statusText.innerHTML =
+      '⚠️ 偵測到路面狀況：<span class="font-bold text-[#10b981]">【斜坡太靠近道路】</span>';
+    step03Label.classList.add("active-step");
+    resultCard?.classList.add("is-visible");
+    showToast("📍 空間座標已鎖定：自動標記【斜坡太靠近道路】");
+  }, 1500);
+}
+
+function resetAutoDetectionUi() {
+  window.clearInterval(triggerAutoDetection.dataTimer);
+  window.clearTimeout(triggerAutoDetection.lockTimer);
+  document
+    .querySelector(".target-box")
+    ?.classList.remove("scanning-active", "target-locked");
+  document.querySelector(".mini-data-overlay")?.classList.remove("is-active");
+  document
+    .querySelector(".detection-result-card")
+    ?.classList.remove("is-visible");
+  document.querySelector("#step-03-label")?.classList.remove("active-step");
+}
+
 function triggerResilienceSubmit() {
   if (!resilienceDemo || resilienceDemo.classList.contains("is-submitting")) {
     return;
@@ -1133,6 +1198,7 @@ function triggerResilienceSubmit() {
   window.clearTimeout(resilienceResetTimerId);
   window.clearInterval(crowdSyncTimerId);
   crowdSyncTimerId = null;
+  triggerAutoDetection();
 
   runResilienceTimelineStep(0);
 
@@ -1168,6 +1234,7 @@ function triggerResilienceSubmit() {
       resilienceDemo.classList.remove("is-submitting");
       resilienceDemo.classList.remove("scanning");
       resilienceDemo.classList.remove("show-receipt");
+      resetAutoDetectionUi();
       if (receiptHash) {
         receiptHash.textContent = "";
       }
@@ -1384,6 +1451,7 @@ demoStepButtons.forEach((button) => {
       resilienceDemo.classList.remove("scanning");
       resilienceDemo.classList.remove("show-receipt");
     }
+    resetAutoDetectionUi();
     setResilienceDemoStep(button.dataset.demoStep);
   });
 });

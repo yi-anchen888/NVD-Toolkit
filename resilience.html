@@ -177,19 +177,28 @@
                           <span class="crack crack-c"></span>
                         </div>
                         <div class="lidar-scan"></div>
+                        <div class="scan-line" aria-hidden="true"></div>
+                        <div class="mini-data-overlay" aria-hidden="true">
+                          LAT: --.---, LNG: ---.---<br />
+                          DEPTH: --.-cm<br />
+                          CONFIDENCE: --.-%
+                        </div>
                         <div class="target-lock target-box">
                           <span></span>
                           <span></span>
                           <span></span>
                           <span></span>
                           <div class="detection-readout">
-                            <strong id="demoStatusPrimary"
+                            <strong id="demoStatusPrimary" class="status-text"
                               >🔍 正在自動偵測周遭環境風險...</strong
                             >
                             <small id="demoStatusSecondary"
                               >📍 鎖定位置：高雄市三民區</small
                             >
                           </div>
+                        </div>
+                        <div class="detection-result-card" aria-hidden="true">
+                          ⚠️ 偵測到路面狀況：<strong>【斜坡太靠近道路】</strong>
                         </div>
                         <div class="radar-scan"></div>
                       </div>
@@ -219,6 +228,7 @@
 
                         <div class="semantic-tags">
                           <button
+                            id="step-03-label"
                             type="button"
                             data-tag="height"
                             data-i18n="demoTagHeight"
