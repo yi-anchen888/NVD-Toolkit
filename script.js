@@ -1,12 +1,12 @@
 /**
- * NVD 自生活，實用工具箱
+ * NVD 自生活
  * 功能：工具資料渲染、即時搜尋、分類篩選、收藏、深淺色主題、多語言切換、使用說明 Modal。
  */
 
 const translations = {
   zh: {
     brandName: "NVD 自生活",
-    pageTitle: "NVD 自生活，友善科技生態系",
+    pageTitle: "NVD 自生活",
     navHome: "首頁",
     navValues: "核心理念",
     navSoftware: "綠色軟體",
@@ -65,7 +65,7 @@ const translations = {
     softwareEyebrow: "Green Friendly Software",
     softwareLead:
       "不用註冊、不逼學指令、不製造更多焦慮，只為了讓人更快完成事情。",
-    productEyebrow: "NoteML Product Page",
+    productEyebrow: "綠色軟體專頁",
     productHeroTitle: "NoteML 智慧簡報還原助理",
     productHeroLead:
       "為非資訊本業的頂尖專家與商務決策者打造的零摩擦簡報還原工具，讓高價值思考回到策略、洞察與決策本身。",
@@ -220,7 +220,7 @@ const translations = {
     visitSite: "直達網站",
     favoriteTool: "收藏 {name}",
     footerCopy:
-      "© 2026 NVD 自生活，實用工具箱. Curated practical tools for smarter workflows.",
+      "© 2026 NVD 自生活. Curated practical tools for smarter workflows.",
     footerIntroTitle: "把複雜科技，折成一鍵生活。",
     footerIntroText:
       "為長輩、電腦小白與忙碌工作者整理最省力的工具入口，讓每一次下載都更安心、更直覺。",
@@ -254,7 +254,7 @@ const translations = {
     legalUpdated: "最後更新：2026 年 5 月 30 日",
     privacySectionScope: "我們如何保護你的資料",
     privacyScopeText:
-      "NVD 自生活，實用工具箱是純前端靜態網站。本網站不要求註冊帳號，也不會主動收集你的姓名、電子郵件、檔案內容或付款資料。",
+      "NVD 自生活是純前端靜態網站。本網站不要求註冊帳號，也不會主動收集你的姓名、電子郵件、檔案內容或付款資料。",
     privacySectionStorage: "本機儲存資料",
     privacyStorageText:
       "網站會在你的瀏覽器 localStorage 中保存語言、深淺色主題與收藏清單，僅用於維持你的使用偏好。你可以隨時透過瀏覽器清除網站資料。",
@@ -359,7 +359,7 @@ const translations = {
     softwareEyebrow: "Green Friendly Software",
     softwareLead:
       "No registration pressure, no forced command learning, no extra anxiety. Just small tools that help people finish work faster.",
-    productEyebrow: "NoteML Product Page",
+    productEyebrow: "Green Software Page",
     productHeroTitle: "NoteML Smart Deck Recovery Assistant",
     productHeroLead:
       "A zero-friction deck recovery tool for elite non-technical professionals and business decision makers, keeping high-value thinking focused on strategy, insight, and decisions.",
