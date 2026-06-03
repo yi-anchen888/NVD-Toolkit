@@ -1276,6 +1276,261 @@ function triggerResilienceSubmit() {
   }, 2200);
 }
 
+function setResilienceDemoStep(step) {
+  if (!resilienceDemo) return;
+
+  const activeStep = Math.max(
+    0,
+    Math.min(4, Number.isFinite(Number(step)) ? Number(step) : 0),
+  );
+  window.clearTimeout(resilienceResetTimerId);
+  resilienceDemo.classList.remove("is-submitting", "scanning", "show-receipt");
+  resilienceDemo.dataset.step = String(activeStep);
+
+  demoStepButtons.forEach((button) => {
+    button.classList.toggle(
+      "active",
+      Number(button.dataset.demoStep) === activeStep,
+    );
+  });
+
+  if (demoCoordinates) {
+    demoCoordinates.textContent =
+      activeStep >= 1 ? "22.6390°N, 120.3270°E" : "22.6273°N, 120.3014°E";
+  }
+
+  updateResilienceDemoReadout(activeStep);
+
+  if (activeStep === 4) {
+    animateResilienceScore(92.21, 92.5);
+  } else if (resilienceScore) {
+    cancelAnimationFrame(resilienceScoreFrameId);
+    resilienceScore.textContent = "92.21";
+  }
+}
+
+function runResilienceTimelineStep(step, overrideText) {
+  setResilienceDemoStep(step);
+  resilienceDemo.classList.add("is-submitting");
+  if (step <= 3) {
+    resilienceDemo.classList.add("scanning");
+  }
+  updateResilienceDemoReadout(step, overrideText);
+}
+
+function addLogLine(text) {
+  if (!logStream) return;
+
+  const line = document.createElement("span");
+  line.textContent = text;
+  logStream.prepend(line);
+
+  while (logStream.children.length > 4) {
+    logStream.lastElementChild.remove();
+  }
+}
+
+function addCrowdPulse() {
+  if (!taiwanMap || resilienceDemo?.classList.contains("is-submitting")) return;
+
+  const cities = ["台北", "台中", "台南", "高雄", "新竹", "屏東"];
+  const city = cities[Math.floor(Math.random() * cities.length)];
+  const pulse = document.createElement("span");
+  pulse.className = "crowd-pulse";
+  pulse.style.left = `${28 + Math.random() * 48}%`;
+  pulse.style.top = `${18 + Math.random() * 62}%`;
+  taiwanMap.appendChild(pulse);
+  addLogLine(`[系統] ${city} 數據同步中...`);
+  pulse.addEventListener("animationend", () => pulse.remove(), { once: true });
+}
+
+function startCrowdSync() {
+  if (crowdSyncTimerId || !taiwanMap) return;
+
+  addCrowdPulse();
+  crowdSyncTimerId = window.setInterval(addCrowdPulse, 3000);
+}
+
+function typeReceiptHash() {
+  if (!receiptHash) return;
+
+  window.clearInterval(receiptTypingTimerId);
+  const hash = `HASH: 0x9f82${Math.random().toString(16).slice(2, 10).toUpperCase()}${Date.now().toString(16).slice(-6).toUpperCase()}`;
+  let index = 0;
+  receiptHash.textContent = "";
+  receiptTypingTimerId = window.setInterval(() => {
+    receiptHash.textContent = hash.slice(0, index + 1);
+    index += 1;
+    if (index >= hash.length) {
+      window.clearInterval(receiptTypingTimerId);
+    }
+  }, 28);
+}
+
+function updateResilienceDemoReadout(step, overrideText) {
+  if (!demoStatusPrimary || !demoStatusSecondary) return;
+
+  const primaryTexts = [
+    "🔍 正在自動偵測周遭環境風險...",
+    "📍 鎖定位置：高雄市三民區",
+    "⚠️ 偵測到路面狀況：【斜坡太靠近道路】",
+    "正在將現場數據 ➔ 轉化為社會韌性資產...",
+    "✅ 已安全寫入友善道路資料庫",
+  ];
+  const secondaryTexts = [
+    "點擊下方按鈕開始回報",
+    "GIS 座標已取得，正在比對道路特徵",
+    "已完成現場狀況判讀",
+    "資料正在送往 GIS 控制中心",
+    "高雄三民節點已完成同步",
+  ];
+
+  demoStatusPrimary.textContent =
+    overrideText || primaryTexts[step] || primaryTexts[0];
+  demoStatusSecondary.textContent = secondaryTexts[step] || secondaryTexts[0];
+
+  if (demoSubmitHint) {
+    demoSubmitHint.textContent = "正在將現場數據 ➔ 轉化為社會韌性資產...";
+  }
+}
+
+function animateResilienceScore(startValue, endValue) {
+  if (!resilienceScore) return;
+
+  cancelAnimationFrame(resilienceScoreFrameId);
+
+  const duration = 920;
+  const startTime = performance.now();
+
+  function tick(currentTime) {
+    const progress = Math.min((currentTime - startTime) / duration, 1);
+    const easedProgress = 1 - Math.pow(1 - progress, 3);
+    const currentValue = startValue + (endValue - startValue) * easedProgress;
+    resilienceScore.textContent = currentValue.toFixed(2);
+
+    if (progress < 1) {
+      resilienceScoreFrameId = requestAnimationFrame(tick);
+    }
+  }
+
+  resilienceScoreFrameId = requestAnimationFrame(tick);
+}
+
+function triggerAutoDetection() {
+  const targetBox = document.querySelector(".target-box");
+  const statusText =
+    document.querySelector(".status-text") ||
+    document.querySelector("#demoStatusPrimary");
+  const miniDataOverlay = document.querySelector(".mini-data-overlay");
+  const resultCard = document.querySelector(".detection-result-card");
+  const demoStage = document.querySelector("#resilienceDemo");
+
+  if (!targetBox || !statusText) return;
+
+  window.clearInterval(triggerAutoDetection.dataTimer);
+  window.clearTimeout(triggerAutoDetection.lockTimer);
+  resultCard?.classList.remove("is-visible");
+  targetBox.classList.remove("target-locked");
+  targetBox.classList.add("scanning-active");
+  demoStage?.classList.add("scanning");
+  miniDataOverlay?.classList.add("is-active");
+  statusText.innerHTML =
+    '<span class="animate-pulse">🔍 正在自動偵測周遭環境風險...</span>';
+
+  const updateMiniData = () => {
+    if (!miniDataOverlay) return;
+
+    const lngNoise = Math.floor(Math.random() * 900) + 100;
+    const depth = (10 + Math.random() * 8).toFixed(1);
+    const confidence = (90 + Math.random() * 8.9).toFixed(1);
+    miniDataOverlay.innerHTML = `LAT: 22.639, LNG: 120.${lngNoise}<br>DEPTH: ${depth}cm<br>CONFIDENCE: ${confidence}%`;
+  };
+
+  updateMiniData();
+  triggerAutoDetection.dataTimer = window.setInterval(updateMiniData, 80);
+
+  triggerAutoDetection.lockTimer = window.setTimeout(() => {
+    window.clearInterval(triggerAutoDetection.dataTimer);
+    targetBox.classList.remove("scanning-active");
+    targetBox.classList.add("target-locked");
+    if (miniDataOverlay) {
+      miniDataOverlay.innerHTML =
+        "LAT: 22.639, LNG: 120.327<br>DEPTH: 16.8cm<br>CONFIDENCE: 98.7%";
+    }
+    statusText.innerHTML =
+      '⚠️ 偵測到路面狀況：<span class="font-bold text-[#10b981]">【斜坡太靠近道路】</span>';
+    resultCard?.classList.add("is-visible");
+    if (typeof showToast === "function") {
+      showToast("📍 空間座標已鎖定：自動標記【斜坡太靠近道路】");
+    }
+  }, 1500);
+}
+
+function resetAutoDetectionUi() {
+  window.clearInterval(triggerAutoDetection.dataTimer);
+  window.clearTimeout(triggerAutoDetection.lockTimer);
+  document
+    .querySelector(".target-box")
+    ?.classList.remove("scanning-active", "target-locked");
+  document.querySelector(".mini-data-overlay")?.classList.remove("is-active");
+  document
+    .querySelector(".detection-result-card")
+    ?.classList.remove("is-visible");
+  if (receiptHash) {
+    receiptHash.textContent = "HASH: 0x9f82...";
+  }
+}
+
+function triggerResilienceSubmit() {
+  if (!resilienceDemo || resilienceDemo.classList.contains("is-submitting")) {
+    return;
+  }
+
+  clearResilienceTimeline();
+  window.clearTimeout(resilienceResetTimerId);
+  window.clearInterval(crowdSyncTimerId);
+  crowdSyncTimerId = null;
+  resetAutoDetectionUi();
+  triggerAutoDetection();
+
+  runResilienceTimelineStep(0);
+
+  queueResilienceTimeline(() => {
+    runResilienceTimelineStep(1);
+    addLogLine("[系統] 高雄市三民區 GIS 座標鎖定中...");
+  }, 1500);
+
+  queueResilienceTimeline(() => {
+    runResilienceTimelineStep(2);
+    addLogLine("[系統] 現場狀況已判讀：斜坡太靠近道路");
+  }, 3000);
+
+  queueResilienceTimeline(() => {
+    runResilienceTimelineStep(3, "正在將現場數據 ➔ 轉化為社會韌性資產...");
+    addLogLine("[系統] 現場資料打包傳送至 GIS 控制中心");
+  }, 4500);
+
+  queueResilienceTimeline(() => {
+    runResilienceTimelineStep(4);
+    resilienceDemo.classList.remove("scanning");
+    resilienceDemo.classList.add("show-receipt");
+    typeReceiptHash();
+    addLogLine("[系統] 安全寫入完成：STATUS ENCRYPTED");
+
+    queueResilienceTimeline(() => {
+      resilienceDemo.classList.remove("show-receipt");
+    }, 2000);
+
+    resilienceResetTimerId = window.setTimeout(() => {
+      clearResilienceTimeline();
+      resilienceDemo.classList.remove("is-submitting", "scanning");
+      resetAutoDetectionUi();
+      setResilienceDemoStep(0);
+      startCrowdSync();
+    }, 3200);
+  }, 6000);
+}
+
 function getToolText(tool) {
   return tool.i18n[state.language] || tool.i18n.zh;
 }
