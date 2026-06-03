@@ -848,12 +848,44 @@ const taiwanMap = document.querySelector(".taiwan-map");
 const logStream = document.querySelector(".log-stream");
 const receiptModal = document.querySelector(".receipt-modal");
 const receiptHash = document.querySelector("#receiptHash");
+const manifestoModeToggle = document.querySelector("#manifestoModeToggle");
+const manifestoGrid = document.querySelector("#manifestoGrid");
+const manifestoCards = document.querySelectorAll("[data-manifesto-card]");
 let processedFilesTimerId;
 let resilienceScoreFrameId;
 let resilienceResetTimerId;
 let crowdSyncTimerId;
 let receiptTypingTimerId;
 let resilienceTimelineTimers = [];
+let manifestoMode = "hardcore";
+
+const manifestoModeContent = [
+  {
+    hardcore: "打破體制設定的局限，在社會韌性的沙盒中重新定義玩法...",
+    human:
+      "我們不抱怨路不平，而是直接開發工具，把路上的障礙變成手機裡精準的數據。",
+  },
+  {
+    hardcore: "拒絕標籤...我們將被動的弱勢逆向轉譯，奪回價值的終極定價權。",
+    human:
+      "輪椅族不是負擔，而是城市裡最強的『無礙測試員』。我們的數據就是最高級的資產。",
+  },
+  {
+    hardcore: "這是一場跨越時間軸的社會韌性工程...擁有所向披靡的永恆日常。",
+    human:
+      "今天我們幫推輪椅的人開路，明天就是幫推嬰兒車的父母、以及終將老去的你我鋪路。",
+  },
+  {
+    hardcore: "率先踏入高階資產工程學的實踐場...為全人類提前建構防線。",
+    human:
+      "這不是同情做善事，而是用科技提前幫全台灣打造一條『不會讓人受傷』的安全防線。",
+  },
+  {
+    hardcore: "我們用跨域邏輯進行結構性壓制...NVD是未來社會運行的頂層協議。",
+    human:
+      "丟掉只靠捐款的舊觀念！我們用程式碼與數據庫，直接幫台灣的交通環境進行系統大升級。",
+  },
+];
 
 function t(key, replacements = {}) {
   const dictionary = translations[state.language] || translations.zh;
@@ -1427,6 +1459,25 @@ function toggleLanguageMenu() {
   languageToggle.setAttribute("aria-expanded", String(shouldOpen));
 }
 
+function renderManifestoMode(mode = "hardcore") {
+  if (!manifestoGrid || !manifestoCards.length) return;
+
+  manifestoGrid.classList.add("is-switching");
+
+  window.setTimeout(() => {
+    manifestoCards.forEach((card) => {
+      const content = manifestoModeContent[Number(card.dataset.manifestoCard)];
+      const text = card.querySelector("[data-manifesto-text]");
+      if (content && text) {
+        text.textContent = content[mode];
+      }
+    });
+
+    manifestoGrid.dataset.mode = mode;
+    manifestoGrid.classList.remove("is-switching");
+  }, 180);
+}
+
 if (searchInput) {
   searchInput.addEventListener("input", (event) => {
     state.keyword = event.target.value;
@@ -1599,6 +1650,17 @@ if (themeToggle) {
   });
 }
 
+if (manifestoModeToggle) {
+  manifestoModeToggle.addEventListener("click", () => {
+    manifestoMode = manifestoMode === "hardcore" ? "human" : "hardcore";
+    const isHuman = manifestoMode === "human";
+
+    manifestoModeToggle.classList.toggle("is-human", isHuman);
+    manifestoModeToggle.setAttribute("aria-pressed", String(isHuman));
+    renderManifestoMode(manifestoMode);
+  });
+}
+
 function handleSystemThemeChange(event) {
   if (!localStorage.getItem("nvd-theme")) {
     setTheme(event.matches ? "dark" : "light", false);
@@ -1701,6 +1763,7 @@ if (legalModal) {
 
 setLanguage(state.language);
 setTheme(state.theme, Boolean(savedTheme));
+renderManifestoMode(manifestoMode);
 if (processedFilesCount) {
   delete processedFilesCount.dataset.currentValue;
   renderSimulatedStats(true);

@@ -176,10 +176,24 @@
       <section id="manifesto" class="manifesto-section">
         <div class="container">
           <div class="manifesto-intro">
-            <p class="eyebrow" data-i18n="manifestoEyebrow">
-              The Sovereign Manifesto
-            </p>
-            <h2 data-i18n="manifestoTitle">核心主權宣言</h2>
+            <div class="manifesto-intro-top">
+              <div>
+                <p class="eyebrow" data-i18n="manifestoEyebrow">
+                  The Sovereign Manifesto
+                </p>
+                <h2 data-i18n="manifestoTitle">核心主權宣言</h2>
+              </div>
+              <button
+                class="manifesto-mode-toggle"
+                id="manifestoModeToggle"
+                type="button"
+                aria-pressed="false"
+              >
+                <span class="mode-option mode-hardcore">Hardcore</span>
+                <span class="mode-track" aria-hidden="true"></span>
+                <span class="mode-option mode-human">Human</span>
+              </button>
+            </div>
             <blockquote data-i18n="manifestoQuote">
               現在的我們，就是未來的你們。
             </blockquote>
@@ -188,54 +202,50 @@
               已經在定義規則。
             </p>
           </div>
-          <div class="manifesto-grid">
-            <article class="manifesto-card">
+          <div class="manifesto-grid" id="manifestoGrid">
+            <article class="manifesto-card" data-manifesto-card="0">
               <span class="manifesto-index">01</span>
-              <p class="manifesto-symbol" data-i18n="manifestoNatureSymbol">
+              <p class="manifesto-symbol">
                 N (Nature) —— 天生、本然、無所畏懼。
               </p>
-              <h3 data-i18n="manifestoNatureTitle">天生玩家</h3>
-              <p data-i18n="manifestoNatureText">
+              <h3>天生玩家</h3>
+              <p data-manifesto-text>
                 生命不是一場等待被拯救的苦旅，而是一場頂級的硬核遊戲。打破體制設定的局限，我們以天生的姿態，在社會韌性的沙盒中重新定義玩法。
               </p>
             </article>
-            <article class="manifesto-card">
+            <article class="manifesto-card" data-manifesto-card="1">
               <span class="manifesto-index">02</span>
-              <p class="manifesto-symbol" data-i18n="manifestoValueSymbol">
-                V (Value) —— 本我價值、不容置疑。
-              </p>
-              <h3 data-i18n="manifestoValueTitle">本我定值</h3>
-              <p data-i18n="manifestoValueText">
+              <p class="manifesto-symbol">V (Value) —— 本我價值、不容置疑。</p>
+              <h3>本我定值</h3>
+              <p data-manifesto-text>
                 拒絕標籤，拒絕被社會殘留的估值系統定義。我們的存在，本身就是最高級別的資產。
               </p>
             </article>
-            <article class="manifesto-card">
+            <article class="manifesto-card" data-manifesto-card="2">
               <span class="manifesto-index">03</span>
-              <p class="manifesto-symbol" data-i18n="manifestoDaysSymbol">
+              <p class="manifesto-symbol">
                 D (Days) —— 跨越過去、現在與未來的日子。
               </p>
-              <h3 data-i18n="manifestoDaysTitle">無礙永日</h3>
-              <p data-i18n="manifestoDaysText">
+              <h3>無礙永日</h3>
+              <p data-manifesto-text>
                 這不是一場短期倡議，而是一場跨越時間軸的社會韌性工程，讓每個人都能擁有無所阻礙的永恆日常。
               </p>
             </article>
-            <article class="manifesto-card">
+            <article class="manifesto-card" data-manifesto-card="3">
               <span class="manifesto-index">04</span>
-              <p class="manifesto-symbol" data-i18n="manifestoLogicSymbol">
-                Sovereign Logic —— 規則定義者。
-              </p>
-              <h3 data-i18n="manifestoLogicTitle">全人先驅</h3>
-              <p data-i18n="manifestoLogicText">
+              <p class="manifesto-symbol">Sovereign Logic —— 規則定義者。</p>
+              <h3>全人先驅</h3>
+              <p data-manifesto-text>
                 領先時代的步伐，我們率先踏入高階資產工程學的實踐場。這不是為特定族群妥協，而是為全人類提前建構防線。
               </p>
             </article>
-            <article class="manifesto-card">
+            <article class="manifesto-card" data-manifesto-card="4">
               <span class="manifesto-index">05</span>
-              <p class="manifesto-symbol" data-i18n="manifestoResilienceSymbol">
+              <p class="manifesto-symbol">
                 Social Resilience Engineering —— 社會韌性工程。
               </p>
-              <h3 data-i18n="manifestoResilienceTitle">韌性架構</h3>
-              <p data-i18n="manifestoResilienceText">
+              <h3>韌性架構</h3>
+              <p data-manifesto-text>
                 將傳統公益的碎步，升級為系統化的社會韌性架構。NVD
                 是地基、是框架、是未來社會運行的頂層協議。
               </p>
