@@ -96,18 +96,15 @@
         <div class="container">
           <div class="resilience-demo-header">
             <div class="resilience-copy">
-              <p class="eyebrow" data-i18n="resilienceEyebrow">
-                Project B Simulation
-              </p>
-              <h1 data-i18n="resilienceTitle">身障友善專案模擬區</h1>
-              <p data-i18n="resilienceLead">
-                把認知與物理摩擦轉成可討論、可測試、可行動的社會韌性專案。
+              <p class="eyebrow">Project B Simulation</p>
+              <h1>社會韌性友善專案模擬區</h1>
+              <p>
+                用一個手機回報，示範現場障礙如何轉成可定位、可追蹤、可協作的友善道路資料。
               </p>
             </div>
-
             <div
               class="demo-step-controls step-bar-container"
-              aria-label="模擬步驟控制"
+              aria-label="模擬流程"
             >
               <button
                 class="demo-step-button active"
@@ -136,127 +133,69 @@
               <div class="demo-panel-heading">
                 <span class="demo-status-dot"></span>
                 <div>
-                  <span data-i18n="demoFrontLabel"
-                    >Front-end Civic Capture</span
-                  >
-                  <strong data-i18n="demoFrontTitle">真實視角障礙回報端</strong>
+                  <span>NVD Lens</span>
+                  <strong>友善道路現場回報端</strong>
                 </div>
               </div>
 
-              <ul class="resilience-list">
-                <li>
-                  <i class="fa-solid fa-check"></i
-                  ><span data-i18n="resiliencePointOne"
-                    >用模擬數據呈現友善道路與無障礙需求</span
-                  >
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i
-                  ><span data-i18n="resiliencePointTwo"
-                    >讓師資、同學與使用者一起微調方案</span
-                  >
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i
-                  ><span data-i18n="resiliencePointThree"
-                    >從工具出發，累積可被信任的行動資料</span
-                  >
-                </li>
-              </ul>
-
               <div class="nvd-mockup-container">
-                <div class="pixel-shell">
-                  <div class="camera-hole"></div>
+                <div class="pixel-shell" aria-label="Google Pixel 模擬手機">
+                  <div class="camera-hole" aria-hidden="true"></div>
                   <div class="phone-screen">
                     <div class="screen-content">
-                      <div class="road-vision" aria-label="行動不便者真實視角">
-                        <div class="road-skyline"></div>
-                        <div class="road-surface">
-                          <span class="crack crack-a"></span>
-                          <span class="crack crack-b"></span>
-                          <span class="crack crack-c"></span>
-                        </div>
-                        <div class="lidar-scan"></div>
-                        <div class="scan-line" aria-hidden="true"></div>
-                        <div class="mini-data-overlay" aria-hidden="true">
-                          LAT: --.---, LNG: ---.---<br />
-                          DEPTH: --.-cm<br />
-                          CONFIDENCE: --.-%
-                        </div>
-                        <div class="target-lock target-box">
-                          <span></span>
-                          <span></span>
-                          <span></span>
-                          <span></span>
-                          <div class="detection-readout">
-                            <strong id="demoStatusPrimary" class="status-text"
-                              >🔍 正在自動偵測周遭環境風險...</strong
-                            >
-                            <small id="demoStatusSecondary"
-                              >📍 鎖定位置：高雄市三民區</small
-                            >
-                          </div>
-                        </div>
-                        <div class="detection-result-card" aria-hidden="true">
-                          ⚠️ 偵測到路面狀況：<strong>【斜坡太靠近道路】</strong>
-                        </div>
-                        <div class="radar-scan"></div>
-                      </div>
-
                       <div class="phone-topbar">
                         <span>NVD Lens</span>
                         <strong>LIVE</strong>
                       </div>
-
+                      <div
+                        class="street-frame"
+                        role="img"
+                        aria-label="高雄市三民區道路現場影像"
+                      ></div>
+                      <div class="lidar-scan" aria-hidden="true"></div>
+                      <div class="scan-line" aria-hidden="true"></div>
+                      <div class="target-box target-lock" aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                      <div class="mini-data-overlay" aria-live="polite">
+                        LAT: --.---, LNG: ---.---<br />
+                        DEPTH: --.-cm<br />
+                        CONFIDENCE: --.-%
+                      </div>
                       <div class="phone-ui">
+                        <div class="detection-readout step-card">
+                          <strong id="demoStatusPrimary" class="status-text"
+                            >🔍 正在自動偵測周遭環境風險...</strong
+                          >
+                          <small id="demoStatusSecondary"
+                            >點擊下方按鈕開始回報</small
+                          >
+                        </div>
                         <div class="phone-map-card step-card">
-                          <div class="mini-map">
+                          <div class="mini-map" aria-hidden="true">
                             <span class="map-node"></span>
                             <span class="map-route route-a"></span>
                             <span class="map-route route-b"></span>
                           </div>
                           <div>
-                            <strong data-i18n="demoGpsTitle"
-                              >自動抓取 GIS 座標中</strong
-                            >
+                            <strong>自動定位</strong>
                             <span id="demoCoordinates"
                               >22.6273°N, 120.3014°E</span
                             >
                             <div class="gis-progress"><span></span></div>
                           </div>
                         </div>
-
-                        <div class="semantic-tags">
-                          <button
-                            id="step-03-label"
-                            type="button"
-                            data-tag="height"
-                            data-i18n="demoTagHeight"
-                          >
-                            高低差
-                          </button>
-                          <button
-                            type="button"
-                            data-tag="parking"
-                            data-i18n="demoTagParking"
-                          >
-                            違停
-                          </button>
-                          <button
-                            type="button"
-                            data-tag="gravel"
-                            data-i18n="demoTagGravel"
-                          >
-                            碎石
-                          </button>
+                        <div class="detection-result-card">
+                          ⚠️ 偵測到路面狀況：<strong>【斜坡太靠近道路】</strong>
                         </div>
-
                         <p class="phone-submit-hint" id="demoSubmitHint">
-                          👉 請點擊下方按鈕，將現場數據轉為韌性資產
+                          正在將現場數據 ➔ 轉化為社會韌性資產...
                         </p>
                         <button class="phone-submit" type="button">
-                          <span data-i18n="demoSubmit">發起友善道路回報</span>
-                          <i class="fa-solid fa-arrow-right"></i>
+                          <span>發起友善道路回報 ➔</span>
                         </button>
                       </div>
                     </div>
@@ -273,22 +212,22 @@
             >
               <path
                 class="beam beam-main"
-                d="M190 310 C360 190 610 170 830 250"
+                d="M185 302 C345 150 615 138 848 248"
               />
               <path
                 class="beam beam-secondary"
-                d="M205 360 C420 470 620 120 850 205"
+                d="M195 350 C398 448 620 114 862 205"
               />
               <circle
                 class="beam-particle particle-a"
-                cx="190"
-                cy="310"
+                cx="185"
+                cy="302"
                 r="5"
               />
               <circle
                 class="beam-particle particle-b"
-                cx="205"
-                cy="360"
+                cx="195"
+                cy="350"
                 r="4"
               />
             </svg>
@@ -296,80 +235,89 @@
             <div class="nvd-demo-panel nvd-demo-backend">
               <div
                 class="resilience-dashboard"
-                aria-label="社會韌性專案模擬數據"
+                aria-label="GIS 社會韌性控制中心"
               >
                 <div class="dashboard-header">
                   <span class="pulse-dot"></span>
-                  <strong data-i18n="dashboardTitle"
-                    >友善道路即時數據沙盤</strong
-                  >
-                  <small data-i18n="demoBackendStatus"
-                    >GIS Monitor / Kaohsiung Node</small
-                  >
+                  <strong>GIS Control Center</strong>
+                  <small>Kaohsiung Friendly Road Node</small>
                 </div>
 
                 <div class="backend-screen">
-                  <div class="taiwan-map" aria-hidden="true">
-                    <svg viewBox="0 0 220 320" role="img">
+                  <div class="score-card dashboard-score-card">
+                    <span>Social Resilience Score</span>
+                    <strong id="resilienceScore">92.21</strong>
+                  </div>
+
+                  <div class="resilience-radar-card">
+                    <svg
+                      class="radar-vector-chart"
+                      viewBox="0 0 260 260"
+                      role="img"
+                      aria-label="結構向量雷達圖"
+                    >
+                      <circle cx="130" cy="130" r="102"></circle>
+                      <circle cx="130" cy="130" r="72"></circle>
+                      <circle cx="130" cy="130" r="42"></circle>
                       <path
-                        class="taiwan-shape"
-                        d="M121 13C95 35 80 70 76 109c-5 45-27 72-36 111-8 38 8 75 43 89 31 12 62-10 77-40 19-39 16-83 30-121 11-31 25-68 7-102-14-26-45-50-76-33Z"
-                      />
-                      <path
-                        class="taiwan-grid"
-                        d="M92 64h77M80 121h104M56 184h119M70 248h83M122 19v278M82 88l92 160M174 76 71 260"
-                      />
+                        d="M130 28V232M28 130H232M58 58 202 202M202 58 58 202"
+                      ></path>
+                      <polygon
+                        points="130,42 207,112 178,205 84,196 54,112"
+                      ></polygon>
                     </svg>
-                    <span class="kaohsiung-node"></span>
-                  </div>
-
-                  <div class="backend-data">
-                    <div class="score-card">
-                      <span data-i18n="demoScoreLabel"
-                        >Social Resilience Score</span
-                      >
-                      <strong id="resilienceScore">92.21</strong>
-                    </div>
-                    <div class="metric-grid">
-                      <div class="metric-card">
-                        <span data-i18n="metricParticipants">市民參與數</span
-                        ><strong>13,786</strong>
+                    <div class="dashboard-metric-list">
+                      <div>
+                        <span>Citizens Participated</span>
+                        <strong>13,786</strong>
                       </div>
-                      <div class="metric-card">
-                        <span data-i18n="metricReports">障礙回報</span
-                        ><strong>46,931</strong>
+                      <div>
+                        <span>Barriers Captured</span>
+                        <strong>46,931</strong>
                       </div>
-                      <div class="metric-card">
-                        <span data-i18n="metricImprovements">促成改善點</span
-                        ><strong>147</strong>
+                      <div>
+                        <span>Improvements Triggered</span>
+                        <strong>147</strong>
                       </div>
-                      <div class="metric-card">
-                        <span data-i18n="metricHotspots">熱區分布</span
-                        ><strong data-i18n="metricHotspotsValue"
-                          >三民區 32%</strong
-                        >
+                      <div>
+                        <span>Current Hotspot</span>
+                        <strong>高雄市三民區</strong>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="backend-toast">
-                  <i class="fa-solid fa-cube"></i>
-                  <span data-i18n="demoSuccess"
-                    >數據原子化成功，社會韌性磚已寫入區塊鏈</span
-                  >
+                  <div class="dashboard-map-card">
+                    <div class="taiwan-map" aria-hidden="true">
+                      <svg viewBox="0 0 220 320">
+                        <path
+                          class="taiwan-shape"
+                          d="M121 13C95 35 80 70 76 109c-5 45-27 72-36 111-8 38 8 75 43 89 31 12 62-10 77-40 19-39 16-83 30-121 11-31 25-68 7-102-14-26-45-50-76-33Z"
+                        />
+                        <path
+                          class="taiwan-grid"
+                          d="M92 64h77M80 121h104M56 184h119M70 248h83M122 19v278M82 88l92 160M174 76 71 260"
+                        />
+                      </svg>
+                      <span class="kaohsiung-node"></span>
+                    </div>
+                    <div class="backend-toast">
+                      <i class="fa-solid fa-circle-check"></i>
+                      <span>現場回報已安全寫入友善道路資料庫</span>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="receipt-modal" aria-hidden="true">
                   <span class="receipt-kicker">ASSET RECEIPT</span>
-                  <strong id="receiptHash"></strong>
+                  <strong id="receiptHash">HASH: 0x9f82...</strong>
+                  <span class="receipt-proof">STATUS: ENCRYPTED</span>
                   <em>VERIFIED</em>
                 </div>
 
-                <div class="log-stream" aria-label="系統紀錄">
-                  <span>[NVD-GIS] target_locked: curb_gap</span>
-                  <span>[semantic] label: height_delta</span>
-                  <span>[chain] block_written: resilience_brick_147</span>
+                <div class="log-stream" aria-label="系統同步紀錄">
+                  <span>[系統] 高雄節點待命中...</span>
+                  <span>[系統] 台中數據同步中...</span>
+                  <span>[系統] 台北數據同步中...</span>
                 </div>
               </div>
             </div>
