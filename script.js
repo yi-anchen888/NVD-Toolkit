@@ -69,7 +69,7 @@ const translations = {
     productHeroTitle: "NoteML 智慧簡報還原助理",
     productHeroLead:
       "為非資訊本業的頂尖專家與商務決策者打造的零摩擦簡報還原工具，讓高價值思考回到策略、洞察與決策本身。",
-    productHeroPrimaryCta: "直達網站 →",
+    productHeroPrimaryCta: "下載 NoteML →",
     productHeroSecondaryCta: "查看使用流程",
     productCardKicker: "Business Deck Recovery",
     productCardTitle: "NoteML 智慧簡報還原助理",
@@ -122,6 +122,13 @@ const translations = {
     productSecurityTitle: "安全提醒保留，雜訊拿掉。",
     productSecurityText:
       "頁面不顯示雜湊驗證區塊，避免干擾商務使用者閱讀；仍保留官方下載、來源確認與防毒掃描提醒。執行任何 EXE 前，請確認來源並以系統防護工具掃描。",
+    productSecurityDetailSummary: "查看安全下載提醒",
+    productSecurityDetailOne:
+      "僅從本頁提供的官方連結下載，避免使用來路不明的轉傳檔案。",
+    productSecurityDetailTwo:
+      "下載後先以 Windows Defender 或常用防毒軟體掃描，再執行 EXE。",
+    productSecurityDetailThree:
+      "若檔案來源、大小或發布說明與頁面不一致，請先停止執行並回報。",
     filterTitle: "先從一個真的好用的小工具開始",
     resultCount: "{count} 個工具",
     categoryAll: "全部",
@@ -363,7 +370,7 @@ const translations = {
     productHeroTitle: "NoteML Smart Deck Recovery Assistant",
     productHeroLead:
       "A zero-friction deck recovery tool for elite non-technical professionals and business decision makers, keeping high-value thinking focused on strategy, insight, and decisions.",
-    productHeroPrimaryCta: "Visit site →",
+    productHeroPrimaryCta: "Download NoteML →",
     productHeroSecondaryCta: "View workflow",
     productCardKicker: "Business Deck Recovery",
     productCardTitle: "NoteML Smart Deck Recovery Assistant",
@@ -427,6 +434,13 @@ const translations = {
     productSecurityTitle: "Safety stays. Noise goes away.",
     productSecurityText:
       "The page does not show checksum verification blocks, keeping the business reading flow clean. Source confirmation and antivirus scanning reminders remain. Before running any EXE, verify the source and scan it with your system protection tools.",
+    productSecurityDetailSummary: "View safe download reminders",
+    productSecurityDetailOne:
+      "Download only from the official link on this page and avoid forwarded files from unknown sources.",
+    productSecurityDetailTwo:
+      "Scan the downloaded file with Windows Defender or your preferred antivirus before running the EXE.",
+    productSecurityDetailThree:
+      "If the source, file size, or release note does not match this page, stop and report it first.",
     filterTitle: "Start with one tool that genuinely helps",
     resultCount: "{count} tools",
     categoryAll: "All",
@@ -624,7 +638,7 @@ const tools = [
         description:
           "專為非資訊本業的頂尖專家與商務決策者打造。我們深知您的專業價值在於策略與洞察，不該耗費在繁瑣的技術盲區中。免輸入序號即刻自動綁定，用零設定的直覺操作，讓科技無縫配合您的思維，完美呈現關鍵簡報。",
         tags: ["商務簡報", "自動綁定", "跨界菁英首選", "免序號"],
-        ctaText: "直達網站 →",
+        ctaText: "下載 NoteML →",
       },
       en: {
         name: "NoteML Smart Deck Recovery Assistant",
@@ -636,7 +650,7 @@ const tools = [
           "Elite operators",
           "No serial code",
         ],
-        ctaText: "Visit site →",
+        ctaText: "Download NoteML →",
       },
     },
   },
@@ -826,6 +840,9 @@ const languageToggle = document.querySelector("#languageToggle");
 const languageOptions = document.querySelectorAll(".language-option");
 const currentLanguageLabel = document.querySelector("#currentLanguageLabel");
 const themeToggle = document.querySelector("#themeToggle");
+const mobileNavToggle = document.querySelector("#mobileNavToggle");
+const siteHeader = document.querySelector(".site-header");
+const primaryNav = document.querySelector("#primaryNav");
 const openGuideBtn = document.querySelector("#openGuideBtn");
 const guideModal = document.querySelector("#guideModal");
 const closeModalBtn = document.querySelector("#closeModalBtn");
@@ -1537,7 +1554,10 @@ function getToolText(tool) {
 
 function applyTranslations() {
   document.documentElement.lang = state.language === "zh" ? "zh-Hant" : "en";
-  document.title = t("pageTitle");
+  const pageTitle = document.querySelector(
+    'meta[property="og:title"]',
+  )?.content;
+  document.title = pageTitle || t("pageTitle");
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.dataset.i18n;
@@ -1712,6 +1732,21 @@ function toggleLanguageMenu() {
   const shouldOpen = !languageMenu.classList.contains("open");
   languageMenu.classList.toggle("open", shouldOpen);
   languageToggle.setAttribute("aria-expanded", String(shouldOpen));
+}
+
+function closeMobileNav() {
+  if (!siteHeader || !mobileNavToggle) return;
+
+  siteHeader.classList.remove("nav-open");
+  mobileNavToggle.setAttribute("aria-expanded", "false");
+}
+
+function toggleMobileNav() {
+  if (!siteHeader || !mobileNavToggle) return;
+
+  const shouldOpen = !siteHeader.classList.contains("nav-open");
+  siteHeader.classList.toggle("nav-open", shouldOpen);
+  mobileNavToggle.setAttribute("aria-expanded", String(shouldOpen));
 }
 
 function renderManifestoMode(mode = "hardcore") {
@@ -1897,6 +1932,32 @@ document.addEventListener("click", (event) => {
   if (languageMenu && !languageMenu.contains(event.target)) {
     closeLanguageMenu();
   }
+
+  if (siteHeader && !siteHeader.contains(event.target)) {
+    closeMobileNav();
+  }
+});
+
+if (mobileNavToggle) {
+  mobileNavToggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleMobileNav();
+  });
+}
+
+if (primaryNav) {
+  primaryNav.addEventListener("click", (event) => {
+    if (event.target.closest("a")) {
+      closeMobileNav();
+    }
+  });
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeLanguageMenu();
+    closeMobileNav();
+  }
 });
 
 if (themeToggle) {
@@ -1982,9 +2043,9 @@ if (openGuideBtn && guideModal) {
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && languageMenu.classList.contains("open")) {
+    if (event.key === "Escape" && languageMenu?.classList.contains("open")) {
       closeLanguageMenu();
-      languageToggle.focus();
+      languageToggle?.focus();
     }
 
     if (event.key === "Escape" && guideModal.classList.contains("active")) {

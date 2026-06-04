@@ -7,7 +7,26 @@
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; form-action 'none'; upgrade-insecure-requests"
     />
-    <title>NVD 自生活</title>
+    <title>NoteML 智慧簡報還原助理｜NVD 綠色軟體</title>
+    <meta
+      name="description"
+      content="NoteML 智慧簡報還原助理是為非資訊本業專家打造的零摩擦簡報工具，免序號、自動綁定，讓關鍵簡報回到策略與洞察。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="NoteML 智慧簡報還原助理｜NVD 綠色軟體" />
+    <meta
+      property="og:description"
+      content="NoteML 智慧簡報還原助理是為非資訊本業專家打造的零摩擦簡報工具，免序號、自動綁定，讓關鍵簡報回到策略與洞察。"
+    />
+    <meta
+      property="og:url"
+      content="https://yi-anchen888.github.io/NVD-Toolkit/software.html"
+    />
+    <meta
+      property="og:image"
+      content="https://yi-anchen888.github.io/NVD-Toolkit/assets/og-image.jpg"
+    />
+    <link rel="icon" href="data:," />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,7 +39,7 @@
       integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="styles.css?v=20260601-4" />
+    <link rel="stylesheet" href="styles.css?v=20260604-1" />
   </head>
   <body>
     <header class="site-header">
@@ -30,7 +49,20 @@
           <span data-i18n="brandName">NVD 自生活</span>
         </a>
 
-        <div class="nav-links" aria-label="網站選單">
+        <button
+          class="mobile-nav-toggle"
+          id="mobileNavToggle"
+          type="button"
+          aria-label="開啟網站選單"
+          aria-controls="primaryNav"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-links" id="primaryNav" aria-label="網站選單">
           <a href="index.html" data-i18n="navHome">首頁</a>
           <a class="active" href="software.html" data-i18n="navSoftware"
             >綠色軟體</a
@@ -104,7 +136,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 data-i18n="productHeroPrimaryCta"
-                >直達網站 →</a
+                >下載 NoteML →</a
               >
               <a
                 class="secondary-link-btn"
@@ -151,7 +183,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 data-i18n="productHeroPrimaryCta"
-                >直達網站 →</a
+                >下載 NoteML →</a
               >
             </div>
           </article>
@@ -329,6 +361,22 @@
                 頁面不顯示雜湊驗證區塊，避免干擾商務使用者閱讀；仍保留官方下載、來源確認與防毒掃描提醒。執行任何
                 EXE 前，請確認來源並以系統防護工具掃描。
               </p>
+              <details class="security-details">
+                <summary data-i18n="productSecurityDetailSummary">
+                  查看安全下載提醒
+                </summary>
+                <ul>
+                  <li data-i18n="productSecurityDetailOne">
+                    僅從本頁提供的官方連結下載，避免使用來路不明的轉傳檔案。
+                  </li>
+                  <li data-i18n="productSecurityDetailTwo">
+                    下載後先以 Windows Defender 或常用防毒軟體掃描，再執行 EXE。
+                  </li>
+                  <li data-i18n="productSecurityDetailThree">
+                    若檔案來源、大小或發布說明與頁面不一致，請先停止執行並回報。
+                  </li>
+                </ul>
+              </details>
             </div>
           </div>
         </div>
@@ -639,7 +687,11 @@
           </button>
         </div>
         <div class="modal-body legal-body">
-          <section class="modal-section legal-panel" data-legal-panel="privacy">
+          <section
+            id="privacy"
+            class="modal-section legal-panel"
+            data-legal-panel="privacy"
+          >
             <p class="legal-updated" data-i18n="legalUpdated">
               最後更新：2026 年 5 月 30 日
             </p>
@@ -669,6 +721,7 @@
           </section>
 
           <section
+            id="terms"
             class="modal-section legal-panel"
             data-legal-panel="terms"
             hidden
@@ -709,6 +762,6 @@
       </div>
     </div>
 
-    <script src="script.js?v=20260601-4"></script>
+    <script src="script.js?v=20260604-1"></script>
   </body>
 </html>
