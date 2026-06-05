@@ -132,11 +132,7 @@ const translations = {
     filterTitle: "先從一個真的好用的小工具開始",
     resultCount: "{count} 個工具",
     categoryAll: "全部",
-    categoryAi: "AI 工具",
     categoryOffice: "辦公效率",
-    categoryDocument: "文件處理",
-    categoryDesign: "圖文設計",
-    categoryDev: "工程開發",
     categoryFavorites: "我的收藏",
     categoryUnknown: "未分類",
     shareTool: "分享 {name} 連結",
@@ -444,11 +440,7 @@ const translations = {
     filterTitle: "Start with one tool that genuinely helps",
     resultCount: "{count} tools",
     categoryAll: "All",
-    categoryAi: "AI Tools",
     categoryOffice: "Office",
-    categoryDocument: "Documents",
-    categoryDesign: "Design",
-    categoryDev: "Development",
     categoryFavorites: "My Favorites",
     categoryUnknown: "Uncategorized",
     shareTool: "Share {name} link",
@@ -629,19 +621,19 @@ const tools = [
     id: 1,
     categoryKey: "office",
     categoryLabelKey: "categoryOffice",
-    url: "https://drive.google.com/file/d/1Ky8qJnXC1Frui0MzlERgi2xGHtEIOsc7/view?usp=drive_link",
-    sha256: "E7806BA585D1508CA0879FDE0E2B006376CD81D2DBC599FBD3F37752CE82FFB2",
+    url: "https://drive.google.com/file/d/1_5wVJ22QtDKWQ_ZuBXqF7FS2o-hesIRg/view?usp=sharing",
+    sha256: "EA13205FB2BECB374AF93F04A335F5613B96B663C9CF46C341F80DC43486942C",
     imageIcon: "fa-solid fa-file-powerpoint",
     i18n: {
       zh: {
-        name: "NoteML 智慧簡報還原助理",
+        name: "NVD友善軟體與知識圖書館_安全合規版_v2.1",
         description:
           "專為非資訊本業的頂尖專家與商務決策者打造。我們深知您的專業價值在於策略與洞察，不該耗費在繁瑣的技術盲區中。免輸入序號即刻自動綁定，用零設定的直覺操作，讓科技無縫配合您的思維，完美呈現關鍵簡報。",
         tags: ["商務簡報", "自動綁定", "跨界菁英首選", "免序號"],
-        ctaText: "下載 NoteML →",
+        ctaText: "下載 NVD 友善軟體 →",
       },
       en: {
-        name: "NoteML Smart Deck Recovery Assistant",
+        name: "NVD Friendly Software and Knowledge Library Safe Compliance Edition v2.1",
         description:
           "Built for elite non-technical professionals and business decision makers. Your expertise belongs in strategy and insight, not in tedious technical setup. Automatic binding with no serial-number friction gives you a zero-configuration workflow that keeps technology aligned with your thinking and restores key presentations cleanly.",
         tags: [
@@ -650,163 +642,12 @@ const tools = [
           "Elite operators",
           "No serial code",
         ],
-        ctaText: "Download NoteML →",
+        ctaText: "Download NVD Friendly Software →",
       },
     },
   },
-  {
-    id: 2,
-    categoryKey: "document",
-    categoryLabelKey: "categoryDocument",
-    url: "https://drive.google.com/file/d/1n6Y5QMSkbWsl3IgEDtYZ4w80sgoZFdow/view?usp=drive_link",
-    sha256: "8A083298C6C185EB28C8B8B2E4D5AA3287814C1B652A86D34D272324ECDCF2B0",
-    imageIcon: "fa-solid fa-file-arrow-down",
-    i18n: {
-      zh: {
-        name: "萬物歸一轉檔助理",
-        description:
-          "滑鼠右鍵點擊，一鍵自動轉檔！專為長輩與電腦小白設計的零摩擦文件萃取工具。",
-        tags: ["轉檔工具", "右鍵點擊", "新手友善", "快速萃取"],
-      },
-      en: {
-        name: "Universal File Conversion Assistant",
-        description:
-          "A simple right-click conversion tool for parents and seniors. No commands, no terminal, just one-click extraction.",
-        tags: [
-          "Converter",
-          "Right click",
-          "Beginner friendly",
-          "Fast extraction",
-        ],
-      },
-    },
-  },
-  {
-    id: 3,
-    categoryKey: "ai",
-    categoryLabelKey: "categoryAi",
-    url: "https://www.notion.so/product/ai",
-    imageIcon: "fa-solid fa-wand-magic-sparkles",
-    i18n: {
-      zh: {
-        name: "Notion AI 寫作助理",
-        description:
-          "把會議記錄、草稿與零散專案想法快速整理成結構完整、可直接執行的精美工作文件。",
-        tags: ["AI", "筆記", "生產力"],
-      },
-      en: {
-        name: "Notion AI Writing Assistant",
-        description:
-          "Turn meeting notes, drafts, and project ideas into structured documents ready for action.",
-        tags: ["AI", "Notes", "Productivity"],
-      },
-    },
-  },
-  {
-    id: 4,
-    categoryKey: "ai",
-    categoryLabelKey: "categoryAi",
-    url: "https://www.perplexity.ai",
-    imageIcon: "fa-solid fa-magnifying-glass-chart",
-    i18n: {
-      zh: {
-        name: "Perplexity AI 搜尋引擎",
-        description:
-          "以對話方式搜集網頁資訊，給出答案的同時提供精準的引用來源連結，適合做快速研究與分析。",
-        tags: ["搜尋", "AI", "資訊收集"],
-      },
-      en: {
-        name: "Perplexity AI Search",
-        description:
-          "Research through conversation with concise answers and cited sources for faster comparison and analysis.",
-        tags: ["Search", "AI", "Research"],
-      },
-    },
-  },
-  {
-    id: 5,
-    categoryKey: "design",
-    categoryLabelKey: "categoryDesign",
-    url: "https://www.remove.bg",
-    imageIcon: "fa-solid fa-image",
-    i18n: {
-      zh: {
-        name: "Remove.bg 線上智慧去背",
-        description:
-          "全自動去背只需 5 秒鐘，AI 識別精準度高，非常適合做商品展示圖、簡報圖表與貼文設計。",
-        tags: ["圖片去背", "AI", "免費體驗"],
-      },
-      en: {
-        name: "Remove.bg Background Remover",
-        description:
-          "Remove image backgrounds in seconds for product shots, presentation assets, and social designs.",
-        tags: ["Background", "AI", "Free trial"],
-      },
-    },
-  },
-  {
-    id: 6,
-    categoryKey: "design",
-    categoryLabelKey: "categoryDesign",
-    url: "https://www.canva.com",
-    imageIcon: "fa-solid fa-palette",
-    i18n: {
-      zh: {
-        name: "Canva 線上視覺設計",
-        description:
-          "提供豐富的海量中英文設計模板，快速製作簡報、海報、社群貼文與企業品牌視覺素材。",
-        tags: ["海報", "簡報", "設計模板"],
-      },
-      en: {
-        name: "Canva Visual Design",
-        description:
-          "Create presentations, posters, social posts, and brand visuals quickly with a large template library.",
-        tags: ["Posters", "Slides", "Templates"],
-      },
-    },
-  },
-  {
-    id: 7,
-    categoryKey: "dev",
-    categoryLabelKey: "categoryDev",
-    url: "https://codepen.io",
-    imageIcon: "fa-brands fa-codepen",
-    i18n: {
-      zh: {
-        name: "CodePen 線上程式碼沙盒",
-        description:
-          "快速測試前端 HTML/CSS/JS 點子、分享互動 Demo，不需在本機建置開發環境或安裝依賴。",
-        tags: ["前端", "Demo", "線上寫 code"],
-      },
-      en: {
-        name: "CodePen Online Code Sandbox",
-        description:
-          "Test HTML, CSS, and JavaScript ideas quickly and share interactive demos without local setup.",
-        tags: ["Frontend", "Demo", "Online coding"],
-      },
-    },
-  },
-  {
-    id: 8,
-    categoryKey: "dev",
-    categoryLabelKey: "categoryDev",
-    url: "https://jsonformatter.org",
-    imageIcon: "fa-solid fa-code",
-    i18n: {
-      zh: {
-        name: "JSON Formatter 格式化工具",
-        description:
-          "線上整理、驗證、排版與壓縮 JSON 資料格式，大幅減少工程師在排查 API 參數時的時間。",
-        tags: ["JSON", "線上除錯", "免費工具"],
-      },
-      en: {
-        name: "JSON Formatter",
-        description:
-          "Format, validate, beautify, and compress JSON online to speed up API debugging work.",
-        tags: ["JSON", "Debugging", "Free tool"],
-      },
-    },
-  },
+
+
 ];
 
 const simulatedStats = {
