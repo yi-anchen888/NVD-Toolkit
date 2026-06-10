@@ -2851,7 +2851,9 @@ body[data-theme="dark"] .product-section.alt {
   z-index: 0;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(3, 7, 18, 0.2)),
-    url("assets/83bxrcfg.jpg") center / cover;
+    radial-gradient(circle at 70% 82%, rgba(16, 185, 129, 0.22), transparent 17%),
+    linear-gradient(155deg, transparent 0 30%, rgba(148, 163, 184, 0.55) 31% 44%, transparent 45%),
+    linear-gradient(180deg, #dbe3df 0 22%, #87908c 23% 100%);
   filter: grayscale(80%) contrast(1.2) brightness(0.6);
   transition:
     filter 0.4s ease,
@@ -4455,12 +4457,24 @@ body[data-theme="dark"] .social-links a {
 }
 
 @media (max-width: 640px) {
+  html,
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
   .container {
-    width: min(calc(100dvw - 24px), 366px, var(--max-width));
+    width: calc(100vw - 28px);
+    max-width: 330px;
+    margin-right: 14px;
+    margin-left: 14px;
   }
 
   .site-header .container {
-    width: min(calc(100dvw - 60px), 330px, var(--max-width));
+    width: calc(100vw - 60px);
+    max-width: 330px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .navbar {
@@ -4583,6 +4597,35 @@ body[data-theme="dark"] .social-links a {
     align-items: flex-start;
     flex-direction: column;
     gap: 10px;
+  }
+
+  .dual-friction-section,
+  .friction-section {
+    overflow-x: clip;
+  }
+
+  .dual-friction-section .container,
+  .friction-section .container {
+    width: min(100%, 330px);
+    max-width: calc(100vw - 28px);
+  }
+
+  .dual-friction-section h1,
+  .friction-heading h2 {
+    width: 100%;
+    max-width: 300px;
+    margin-inline: auto;
+    white-space: normal;
+    line-break: anywhere;
+    overflow-wrap: anywhere;
+    word-break: break-all;
+  }
+
+  .dual-friction-grid,
+  .friction-grid,
+  .dual-friction-card,
+  .friction-card {
+    min-width: 0;
   }
 
   .centered-heading {
@@ -5140,11 +5183,48 @@ body[data-theme="dark"] .toast {
   z-index: 0;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(3, 7, 18, 0.3)),
-    url("assets/83bxrcfg.jpg") center / cover;
+    radial-gradient(circle at 72% 79%, rgba(16, 185, 129, 0.24), transparent 14%),
+    linear-gradient(90deg, transparent 0 12%, rgba(255, 255, 255, 0.34) 12% 13%, transparent 13% 87%, rgba(255, 255, 255, 0.26) 87% 88%, transparent 88%),
+    linear-gradient(172deg, transparent 0 35%, rgba(15, 23, 42, 0.22) 35% 37%, transparent 37%),
+    linear-gradient(155deg, transparent 0 25%, rgba(229, 231, 235, 0.72) 26% 42%, transparent 43%),
+    repeating-linear-gradient(90deg, rgba(15, 23, 42, 0.1) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(0deg, rgba(15, 23, 42, 0.08) 0 1px, transparent 1px 32px),
+    linear-gradient(180deg, #cfd8d5 0 24%, #8c9691 25% 100%);
   filter: grayscale(82%) contrast(1.22) brightness(0.62);
   transition:
     filter 0.36s ease,
     transform 0.36s ease;
+}
+
+.street-frame::before,
+.street-frame::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.street-frame::before {
+  left: 55%;
+  top: 58%;
+  width: 34%;
+  height: 18%;
+  border-left: 5px solid rgba(16, 185, 129, 0.72);
+  border-bottom: 5px solid rgba(16, 185, 129, 0.64);
+  border-radius: 0 0 0 28px;
+  transform: rotate(-7deg);
+  box-shadow: 0 0 18px rgba(16, 185, 129, 0.42);
+}
+
+.street-frame::after {
+  left: 67%;
+  top: 70%;
+  width: 70px;
+  height: 96px;
+  border: 8px solid rgba(15, 23, 42, 0.72);
+  border-top: 0;
+  border-radius: 0 0 42px 42px;
+  transform: rotate(-8deg);
+  opacity: 0.72;
 }
 
 .nvd-demo-stage.is-submitting .street-frame,
