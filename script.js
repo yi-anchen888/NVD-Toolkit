@@ -1,6 +1,6 @@
 /**
  * NVD 協會
- * 功能：工具資料渲染、即時搜尋、分類篩選、收藏、深淺色主題、多語言切換、使用說明 Modal。
+ * 功能：協會官網互動、深淺色主題、多語言切換、使用說明 Modal。
  */
 
 const translations = {
@@ -9,8 +9,7 @@ const translations = {
     pageTitle: "NVD 協會｜道路回饋與修復行動",
     navHome: "首頁",
     navValues: "核心理念",
-    navSoftware: "友善軟體",
-    navResilience: "道路行動",
+        navResilience: "道路行動",
     navManifesto: "品牌理念",
     navLoop: "加入共創",
     navGuide: "使用說明",
@@ -21,19 +20,18 @@ const translations = {
     heroKicker: "NVD 協會｜Road Feedback & Repair",
     heroTitle: "道路回饋與修復行動，讓每一次通行都更安全。",
     heroSubtitle: "<strong>以友善通行、即時回饋、修復行動與智慧協作為核心</strong>，NVD 協會把道路上的真實阻礙整理成可被看見、可被追蹤、可被改善的公共訊號。<span class='tagline'>Better Roads, Better Together.</span>",
-    searchLabel: "搜尋工具名稱、標籤或痛點",
-    searchPlaceholder: "搜尋工具名稱、標籤或痛點...",
+    searchLabel: "搜尋道路行動、理念或參與方式",
+    searchPlaceholder: "搜尋道路行動、理念或參與方式...",
     statsProcessedFiles: "友善行動節點",
     homePrimaryCta: "查看道路行動",
-    homeSecondaryCta: "下載友善軟體",
+    homeSecondaryCta: "認識 NVD 協會",
     homeTertiaryCta: "參與共創",
     gatewayEyebrow: "Ecosystem Gateway",
     gatewayTitle: "三個入口，對應同一個使命",
     gatewayLead:
       "NVD 不是先要求認同，而是先提供可感受到的幫助，再把幫助轉成理解與參與。",
-    gatewaySoftwareTitle: "綠色友善軟體",
-    gatewaySoftwareText:
-      "從轉檔、簡報還原與日常效率開始，讓人不用註冊、不背指令也能完成任務。",
+    gatewaySoftwareTitle: "認識 NVD 協會",
+    gatewaySoftwareText: "以友善通行、即時回饋、修復行動與智慧協作為核心，建立更安全的道路公共信任。",
     gatewayResilienceTitle: "社會韌性友善專案",
     gatewayResilienceText:
       "用模擬資料盤呈現城市障礙如何被標記、被理解，並走向可協作的改善。",
@@ -41,24 +39,24 @@ const translations = {
     gatewayJoinText:
       "讓同學、師資與種子使用者從測試、回饋、分享開始，進入 NVD 友善科技循環。",
     valuesEyebrow: "Core Values",
-    valuesTitle: "從工具開始，走向友善社會系統",
+    valuesTitle: "從道路回饋開始，走向友善社會系統",
     valuesLead:
-      "我們先幫人少卡一次，再讓每一次下載、測試與回饋，成為社會韌性的一個節點。",
+      "我們先幫人少卡一次，再讓每一次理解、測試與回饋，成為社會韌性的一個節點。",
     valueFrictionTitle: "降低摩擦",
     valueFrictionText: "把複雜指令、黑色視窗與繁瑣流程，折成更直覺的一鍵操作。",
     valueAccessTitle: "友善可及",
     valueAccessText:
-      "讓專業前輩、企業經營者、無礙需求者與照護同行者，都能以更低摩擦接上 AI 時代的工具能力。",
-    valueActionTitle: "從工具到行動",
+      "讓專業前輩、企業經營者、無礙需求者與照護同行者，都能以更低摩擦參與 AI 時代的公共協作。",
+    valueActionTitle: "從回饋到行動",
     valueActionText:
-      "每一次使用、分享與回饋，都能推動下一個更友善的工具與專案。",
+      "每一次觀察、分享與回饋，都能推動下一個更友善的道路專案。",
     dualFrictionEyebrow: "Dual Friction",
-    dualFrictionTitle: "我們想解決的，不只是工具問題",
+    dualFrictionTitle: "我們想解決的，不只是道路問題",
     dualFrictionLead:
       "數位流程會卡住人，城市空間也會卡住人。NVD 把這些摩擦視為可以被看見、被降低、被改善的系統問題。",
     digitalFrictionTitle: "數位摩擦",
     digitalFrictionText:
-      "複雜指令、軟體門檻、轉檔流程與介面焦慮，讓很多人明明有需求，卻被工具擋在門外。",
+      "資訊落差、通報門檻、責任分散與介面焦慮，讓很多真實需求難以被看見。",
     physicalFrictionTitle: "生活摩擦",
     physicalFrictionText:
       "高低差、斷裂人行道、資訊不透明與不友善動線，讓日常移動變成被迫繞路、等待或放棄。",
@@ -66,15 +64,15 @@ const translations = {
     softwareLead:
       "不用註冊、不逼學指令、不製造更多焦慮，只為了讓人更快完成事情。",
     productEyebrow: "安全合規版 v2.1",
-    productHeroTitle: "NVD 友善軟體與知識圖書館",
+    productHeroTitle: "道路回饋與修復行動",
     productHeroLead:
-      "整合本地端友善軟體、知識文件與安全說明，讓下載、使用與驗證流程更直覺，也更安心。",
-    productHeroPrimaryCta: "下載安全合規版 v2.1 →",
-    productHeroSecondaryCta: "查看使用流程 →",
+      "整理 NVD 協會理念、道路行動、參與共創與安全提醒，讓理解與參與更直覺。",
+    productHeroPrimaryCta: "了解道路行動 →",
+    productHeroSecondaryCta: "加入共創",
     productCardKicker: "NVD LIFE OS",
-    productCardTitle: "NVD 友善軟體與知識圖書館",
+    productCardTitle: "道路回饋與修復行動",
     productCardDescription:
-      "一份獻給台灣師字輩專業者、企業經營者與跨域決策者的友善 AI 工具入口，以公益協作補上非資訊本業的數位落差。",
+      "一份獻給台灣師字輩專業者、企業經營者與跨域決策者的公共協作入口，以公益行動補上 AI 時代的參與落差。",
     productBadgeBusiness: "本地端",
     productBadgeBinding: "安全合規",
     productBadgeElite: "知識圖書館",
@@ -85,7 +83,7 @@ const translations = {
       "醫師、律師、顧問、企業主與頂尖業務的時間，應該花在判斷、說服、成交與策略，而不是卡在序號、設定、格式還原與技術盲區。",
     productPainStrategyTitle: "高階思考，不該被低階設定中斷",
     productPainStrategyText:
-      "當你正在準備關鍵簡報，真正稀缺的是注意力。這套工具包把繁瑣設定收進背景，讓你保持在決策節奏裡。",
+      "當社會正在面對通行風險，真正稀缺的是可被信任的現場資料。NVD 把回饋流程收斂成更清楚的公共訊號。",
     productPainBandwidthTitle: "非資訊本業，也能乾淨完成",
     productPainBandwidthText:
       "不需要理解技術細節、不需要找人救火，也不需要在黑色視窗和授權流程之間消耗專業能量。",
@@ -93,54 +91,54 @@ const translations = {
     productFeatureTitle: "把技術摩擦壓到最低，把專業價值放到最大。",
     productFeatureAutoTitle: "免序號自動綁定",
     productFeatureAutoText:
-      "降低授權與設定摩擦，讓工具啟動後直接進入可用狀態。",
+      "降低回饋與協作摩擦，讓現場觀察更容易進入後續整理。",
     productFeatureClickTitle: "點擊即用",
     productFeatureClickText:
       "以非技術使用者為核心設計，減少流程判斷與操作成本。",
     productFeatureDeckTitle: "聚焦關鍵簡報",
     productFeatureDeckText:
-      "協助你把注意力留給內容、邏輯、客戶與決策，而不是工具本身。",
+      "協助參與者把注意力留給現場、需求、證據與改善，而不是流程本身。",
     productAudienceEyebrow: "Fit Check",
-    productAudienceTitle: "先確認它是不是你需要的工具。",
-    productAudienceDoctor: "適合：師字輩專業者、企業決策者，或希望降低 AI 工具門檻與設定風險的人。",
+    productAudienceTitle: "先確認這是不是你想參與的行動。",
+    productAudienceDoctor: "適合：師字輩專業者、企業決策者，或希望參與道路友善公共協作的人。",
     productAudienceLawyer: "適合：需要本地端使用、清楚來源與安全驗證資訊的人。",
     productAudienceOwner: "不適合：需要雲端多人協作或企業 IT 大規模部署的人。",
-    productAudienceSales: "不適合：不願意自行確認來源、掃描檔案或閱讀安全提醒的人。",
+    productAudienceSales: "不適合：不願意確認外部連結來源或閱讀安全提醒的人。",
     productWorkflowEyebrow: "Workflow",
-    productWorkflowTitle: "五步驟，把工具變成成果。",
-    productStepOneTitle: "下載",
-    productStepOneText: "從官方連結取得工具，保留清楚來源。",
+    productWorkflowTitle: "五步驟，把回饋變成行動。",
+    productStepOneTitle: "理解",
+    productStepOneText: "從官方頁面理解行動範圍，保留清楚資訊來源。",
     productStepTwoTitle: "開啟",
     productStepTwoText: "不需要先研究技術文件，直接進入操作。",
     productStepThreeTitle: "自動綁定",
     productStepThreeText: "免輸入序號，降低授權流程的干擾。",
     productStepFourTitle: "還原簡報",
-    productStepFourText: "讓工具協助處理繁瑣還原工作。",
+    productStepFourText: "讓協作流程協助整理現場回饋。",
     productStepFiveTitle: "使用成果",
     productStepFiveText: "把時間交還給內容修整、演示與決策。",
     productSecurityEyebrow: "Trust & Safety",
-    productSecurityTitle: "下載可以簡單，來源必須清楚。",
-    productSecurityText: "這套工具包不要求註冊，保留官方下載連結、檔案版本、SHA-256 與安全提醒。執行任何 EXE 前，請確認來源並以系統防護工具掃描。",
-    productSecurityDetailSummary: "查看安全下載提醒",
+    productSecurityTitle: "公開資訊可以簡單，外部連結必須清楚。",
+    productSecurityText: "本站不要求註冊，並保留清楚的協會資訊、外部連結說明與安全提醒。使用外部服務前，請確認來源與資料用途。",
+    productSecurityDetailSummary: "查看安全理解提醒",
     productSecurityDetailOne:
-      "僅從本頁提供的官方連結下載，避免使用來路不明的轉傳檔案。",
+      "僅從本站提供的官方入口前往外部服務，避免使用來路不明的轉傳連結。",
     productSecurityDetailTwo:
-      "下載後先以 Windows Defender 或常用防毒軟體掃描，再執行 EXE。",
+      "???????????????????????????",
     productSecurityDetailThree:
-      "若檔案來源、大小或發布說明與頁面不一致，請先停止執行並回報。",
-    downloadCheckVersionLabel: "目前版本",
-    downloadCheckVersionValue: "v2.1",
-    downloadCheckTypeLabel: "檔案類型",
-    downloadCheckTypeValue: "RAR 壓縮檔",
+      "若外部頁面內容與本站說明不一致，請先停止操作並回報。",
+    downloadCheckVersionLabel: "目前階段",
+    downloadCheckVersionValue: "協會官網",
+    downloadCheckTypeLabel: "行動類型",
+    downloadCheckTypeValue: "道路回饋與修復",
     downloadCheckAudienceLabel: "適合對象",
-    downloadCheckAudienceValue: "師字輩專業者、企業經營者、跨域決策者",
-    productVerificationSummary: "查看檔案驗證資訊",
-    productVerificationFileLabel: "檔案名稱",
+    downloadCheckAudienceValue: "居民、專業者、企業與公共協作夥伴",
+    productVerificationSummary: "查看資訊來源說明",
+    productVerificationFileLabel: "資料來源",
     productVerificationUpdatedLabel: "更新日期",
     productVerificationUpdatedValue: "2026-06-05",
     productVerificationShaLabel: "SHA-256",
-    filterTitle: "先從一個真的好用的小工具開始",
-    resultCount: "{count} 個工具",
+    filterTitle: "先從一個真實可行的道路回饋開始",
+    resultCount: "{count} 個行動入口",
     categoryAll: "全部",
     categoryOffice: "辦公效率",
     categoryFavorites: "我的收藏",
@@ -149,7 +147,7 @@ const translations = {
     linkCopied: "已成功複製 {name} 的連結！",
     favoriteAdded: "已將 {name} 加入我的收藏！",
     favoriteRemoved: "已將 {name} 從我的收藏移除！",
-    emptyTitle: "沒有找到符合條件的工具",
+    emptyTitle: "沒有找到符合條件的行動入口",
     emptyText: "換個關鍵字或切回全部分類試試看。",
     resilienceEyebrow: "Project B Simulation",
     resilienceTitle: "社會韌性友善專案模擬區",
@@ -180,24 +178,21 @@ const translations = {
     demoScoreLabel: "Social Resilience Score",
     demoSuccess: "現場數據已轉化為社會韌性資產",
     loopEyebrow: "Friendly Tech Loop",
-    loopTitle: "從下載到認同：NVD 的友善科技循環",
-    loopLead:
-      "NVD 不是用注意力換點擊，而是用工具建立信任。從解決痛點，到建立認同，再到參與共創。",
-    loopUseTitle: "使用工具",
-    loopUseText: "從轉檔、整理、還原簡報這類小痛點開始，讓使用者先感受到省力。",
+    loopTitle: "從回饋到修復：NVD 的友善道路循環",
+    loopLead: "不是停留在口號，而是把現場回饋整理成可被追蹤、可被討論、可被改善的公共訊號。",
+    loopUseTitle: "現場回饋",
+    loopUseText: "從道路阻礙、通行風險與日常不便開始，讓真實需求被看見。",
     loopTrustTitle: "建立認同",
-    loopTrustText:
-      "工具真的好用，使用者就會理解友善科技不是口號，而是少一次卡關。",
+    loopTrustText: "回饋被整理、被標記、被理解，才有機會成為修復行動的起點。",
     loopCoCreateTitle: "參與共創",
-    loopCoCreateText:
-      "分享工具、回饋問題、協助測試，讓下一個人更容易使用科技。",
+    loopCoCreateText: "邀請居民、專業者、企業與公共部門共同參與，讓下一次通行更安全。",
     frictionEyebrow: "Technology Friction",
     frictionTitle: "科技讓我們進化，還是退化？",
     frictionLead:
-      "人類花了數百萬年學會挺直脊椎，卻在科技爆炸的今天，因為繁瑣指令與黑色視窗，再度駝下背。NVD 自生活誕生，就是為了用滑鼠右鍵的一鍵自動化，終結退化，還給每個人最直覺、最省力的自生活。",
+      "人類花了數百萬年學會挺直脊椎，卻在科技爆炸的今天，因為繁瑣指令與黑色視窗，再度駝下背。NVD 自生活誕生，就是為了用滑鼠右鍵的送出友善回饋，終結退化，還給每個人最直覺、最省力的自生活。",
     frictionCardOneTitle: "我們曾經學會直立",
     frictionCardOneText:
-      "文明的演化，應該讓人更自由、更省力，而不是被工具反過來壓低姿態。",
+      "文明的演化，應該讓通行更自由、更安全，而不是讓障礙反覆消耗人的尊嚴。",
     frictionCardTwoTitle: "科技不該讓人駝背",
     frictionCardTwoText:
       "黑色視窗、複雜指令與層層設定，都是不該由使用者承擔的摩擦力。",
@@ -236,11 +231,11 @@ const translations = {
       "© 2026 NVD 協會. Road Feedback & Repair Action.",
     footerIntroTitle: "把複雜科技，折成一鍵生活。",
     footerIntroText:
-      "為台灣專業前輩與企業領袖整理更低摩擦的工具入口，讓每一次下載、驗證與導入都更安心、更體面。",
-    footerProductsTitle: "產品",
-    footerProductTools: "NVD 友善軟體與知識圖書館",
-    footerProductConverter: "使用流程",
-    footerProductSlides: "下載與安全",
+      "為台灣專業前輩與企業領袖整理更低摩擦的公共協作入口，讓每一次理解、參與與支持都更安心、更體面。",
+    footerProductsTitle: "協會行動",
+    footerProductTools: "道路回饋與修復行動",
+    footerProductConverter: "加入共創",
+    footerProductSlides: "品牌理念",
     footerGuidesTitle: "理念",
     footerGuideQuickStart: "核心主權宣言",
     footerGuideRightClick: "科技摩擦",
@@ -273,41 +268,39 @@ const translations = {
       "網站會在你的瀏覽器 localStorage 中保存語言、深淺色主題與收藏清單，僅用於維持你的使用偏好。你可以隨時透過瀏覽器清除網站資料。",
     privacySectionThirdParty: "第三方服務",
     privacyThirdPartyText:
-      "本網站透過 GitHub Pages 提供頁面，並可能載入 Google Fonts、Font Awesome 與 Google Drive 下載連結。這些服務可能依各自政策處理基本連線紀錄。",
-    privacySectionDownloads: "下載與工具使用",
-    privacyDownloadsText:
-      "下載工具後，請確認來源並使用防毒軟體掃描。本網站不會讀取你的本機檔案內容；外部工具或第三方網站的資料處理方式，請以該服務提供者的政策為準。",
+      "本網站透過 GitHub Pages 提供頁面，並可能載入 Google Fonts、Font Awesome 與 Google Drive 理解連結。這些服務可能依各自政策處理基本連線紀錄。",
+    privacySectionDownloads: "外部連結與協作服務",
+    privacyDownloadsText: "本網站可能連結至社群平台、協作表單或第三方資訊頁。離開本站後的資料處理方式，請以該服務提供者的政策為準。",
     termsSectionService: "服務內容",
     termsServiceText:
-      "本網站提供實用工具推薦、下載連結、使用說明與相關資源整理。部分連結會導向第三方網站或雲端硬碟下載頁。",
+      "本網站提供 NVD 協會理念、道路回饋與修復行動、參與共創與相關資源整理。部分連結可能導向第三方網站或社群平台。",
     termsSectionUse: "使用責任",
     termsUseText:
-      "使用者應自行確認工具是否符合需求，並遵守所在地法律與第三方服務規範。請勿使用本網站或相關工具處理、散布或侵害他人權利的內容。",
-    termsSectionDownloads: "下載風險提醒",
+      "使用者應自行確認外部服務是否符合需求，並遵守所在地法律與第三方服務規範。請勿使用本網站或相關資源處理、散布或侵害他人權利的內容。",
+    termsSectionDownloads: "外部連結提醒",
     termsDownloadsText:
-      "本站會盡力維護連結與說明的正確性，但無法保證所有第三方工具、下載檔案或外部網站永久可用或完全無風險。執行可執行檔前，請先確認來源並掃描檔案。",
+      "本站會盡力維護連結與說明的正確性，但無法保證所有第三方網站、社群平台或外部資源永久可用或完全無風險。使用外部服務前，請自行確認其條款與隱私政策。",
     termsSectionChanges: "內容異動",
     termsChangesText:
-      "我們可能依專案進度調整工具清單、連結、政策與條款。更新後的內容會公布於本頁，繼續使用網站即代表你了解並接受更新內容。",
+      "我們可能依專案進度調整行動資訊、連結、政策與條款。更新後的內容會公布於本頁，繼續使用網站即代表你了解並接受更新內容。",
     modalStepsTitle: "極簡 3 步驟輕鬆上手",
-    stepOneTitle: "選功能與下載",
-    stepOneText: "在網站中選擇您需要的工具分類，點擊直達連結或下載點取得工具。",
-    stepTwoTitle: "一鍵自動化",
+    stepOneTitle: "認識行動入口",
+    stepOneText: "從首頁、道路行動、品牌理念或加入共創頁面，選擇最符合您需求的參與入口。",
+    stepTwoTitle: "送出友善回饋",
     stepTwoText:
-      "程式皆經過極簡設計，開啟後只需一鍵點擊，便能自動啟動處理流程。",
-    stepThreeTitle: "直達結果下載",
+      "依照頁面提示完成回饋或參與表單，讓資訊進入後續整理流程。",
+    stepThreeTitle: "完成參與回饋",
     stepThreeText:
-      "無任何繁雜設定，處理完成的檔案將自動輸出，即刻下載並投入工作。",
+      "透過表單、社群或現場協作完成回饋，讓道路阻礙被看見並進入後續整理。",
     faqTitle: "常見問題 FAQ",
-    faqOneQuestion: "Q: 使用這些工具需要付費或註冊嗎？",
+    faqOneQuestion: "Q: 參與 NVD 行動需要付費或註冊嗎？",
     faqOneAnswer:
-      "本站推薦的部分客製工具提供免費下載，其餘外部工具則視原廠政策而定，多數均有免註冊免費體驗額度。",
-    faqTwoQuestion: "Q: 開啟打包工具時若被防毒軟體攔截該怎麼辦？",
+      "參與 NVD 協會行動不以購買服務為前提；實際活動、合作與社群參與方式，將依各專案公告為準。",
+    faqTwoQuestion: "Q: 外部平台要求登入或授權時該怎麼辦？",
     faqTwoAnswer:
-      "由於本地工具通常是獨立可執行檔，Windows Defender 等可能會出現誤報。若您信任來源，可依系統提示選擇仍要執行。",
-    faqThreeQuestion: "Q: 下載 EXE 工具前需要注意什麼？",
-    faqThreeAnswer:
-      "請只從本站卡片提供的官方連結下載，下載後可先使用防毒軟體掃描。若系統跳出未知來源提醒，請確認檔名與來源後再執行。",
+      "若外部平台要求登入、授權或填寫資料，請先確認網域、用途與隱私政策；不確定時可以先暫停。",
+    faqThreeQuestion: "Q: 使用外部連結前需要注意什麼？",
+    faqThreeAnswer: "請確認連結來源與頁面網域；若外部服務要求提供個人資料，請先閱讀該服務的隱私政策與使用條款。",
     modalConfirm: "我知道了",
   },
   en: {
@@ -315,8 +308,7 @@ const translations = {
     pageTitle: "NVD Association｜Road Feedback & Repair",
     navHome: "Home",
     navValues: "Values",
-    navSoftware: "Friendly Software",
-    navResilience: "Road Action",
+        navResilience: "Road Action",
     navManifesto: "Brand Belief",
     navLoop: "Join Us",
     navGuide: "Guide",
@@ -331,15 +323,14 @@ const translations = {
     searchPlaceholder: "Search by tool name, tag, or pain point...",
     statsProcessedFiles: "friendly action nodes",
     homePrimaryCta: "View road action",
-    homeSecondaryCta: "Download friendly software",
+    homeSecondaryCta: "認識 NVD 協會",
     homeTertiaryCta: "Join co-creation",
     gatewayEyebrow: "Ecosystem Gateway",
     gatewayTitle: "Three gateways, one mission",
     gatewayLead:
       "NVD does not demand belief first. It offers tangible help, then turns help into understanding and participation.",
-    gatewaySoftwareTitle: "Green Friendly Software",
-    gatewaySoftwareText:
-      "Start with conversion, slide recovery, and everyday workflows so people can finish tasks without accounts or commands.",
+    gatewaySoftwareTitle: "認識 NVD 協會",
+    gatewaySoftwareText: "以友善通行、即時回饋、修復行動與智慧協作為核心，建立更安全的道路公共信任。",
     gatewayResilienceTitle: "Social Resilience Friendly Project",
     gatewayResilienceText:
       "Use a simulated data board to show how city barriers can be marked, understood, and improved collaboratively.",
@@ -373,13 +364,13 @@ const translations = {
     softwareLead:
       "No registration pressure, no forced command learning, no extra anxiety. Just small tools that help people finish work faster.",
     productEyebrow: "Safe Compliance v2.1",
-    productHeroTitle: "NVD Friendly Software and Knowledge Library",
+    productHeroTitle: "道路回饋與修復行動",
     productHeroLead:
       "A local-first friendly software and knowledge package with clearer download, usage, and verification guidance for safer everyday workflows.",
-    productHeroPrimaryCta: "Download Safe Compliance v2.1 →",
-    productHeroSecondaryCta: "View workflow →",
+    productHeroPrimaryCta: "了解道路行動 →",
+    productHeroSecondaryCta: "加入共創",
     productCardKicker: "NVD LIFE OS",
-    productCardTitle: "NVD Friendly Software and Knowledge Library",
+    productCardTitle: "道路回饋與修復行動",
     productCardDescription:
       "A refined AI tool gateway for senior professionals, business owners, and cross-domain decision-makers, reducing setup friction while preserving source clarity and safety checks.",
     productBadgeBusiness: "Local-first",
@@ -432,21 +423,21 @@ const translations = {
     productStepFiveText:
       "Spend time on content refinement, delivery, and decisions.",
     productSecurityEyebrow: "Trust & Safety",
-    productSecurityTitle: "Downloads can be simple. Sources must stay clear.",
-    productSecurityText: "This toolkit does not require account registration and keeps the official download link, version, SHA-256, and safety notes available. Before running any EXE, verify the source and scan it with system protection tools.",
+    productSecurityTitle: "公開資訊可以簡單，外部連結必須清楚。",
+    productSecurityText: "本站不要求註冊，並保留清楚的協會資訊、外部連結說明與安全提醒。使用外部服務前，請確認來源與資料用途。",
     productSecurityDetailSummary: "View safe download reminders",
     productSecurityDetailOne:
       "Download only from the official link on this page and avoid forwarded files from unknown sources.",
     productSecurityDetailTwo:
-      "Scan the downloaded file with Windows Defender or your preferred antivirus before running the EXE.",
+      "If an external service asks for login or authorization, verify the domain and data purpose first.",
     productSecurityDetailThree:
       "If the source, file size, or release note does not match this page, stop and report it first.",
-    downloadCheckVersionLabel: "Current version",
-    downloadCheckVersionValue: "v2.1",
-    downloadCheckTypeLabel: "File type",
-    downloadCheckTypeValue: "RAR archive",
-    downloadCheckAudienceLabel: "Best for",
-    downloadCheckAudienceValue: "Senior professionals, business leaders, and cross-domain decision-makers",
+    downloadCheckVersionLabel: "目前階段",
+    downloadCheckVersionValue: "協會官網",
+    downloadCheckTypeLabel: "行動類型",
+    downloadCheckTypeValue: "道路回饋與修復",
+    downloadCheckAudienceLabel: "適合對象",
+    downloadCheckAudienceValue: "居民、專業者、企業與公共協作夥伴",
     productVerificationSummary: "View file verification details",
     productVerificationFileLabel: "File name",
     productVerificationUpdatedLabel: "Updated",
@@ -497,18 +488,14 @@ const translations = {
     demoScoreLabel: "Social Resilience Score",
     demoSuccess: "Field data converted into a social resilience asset.",
     loopEyebrow: "Friendly Tech Loop",
-    loopTitle: "From download to belief: the NVD friendly tech loop",
-    loopLead:
-      "NVD does not trade attention for clicks. It builds trust through useful tools, then turns solved pain points into belief and co-creation.",
-    loopUseTitle: "Use a tool",
-    loopUseText:
-      "Begin with small pain points like conversion, organization, and slide recovery so users feel the relief first.",
+    loopTitle: "從回饋到修復：NVD 的友善道路循環",
+    loopLead: "不是停留在口號，而是把現場回饋整理成可被追蹤、可被討論、可被改善的公共訊號。",
+    loopUseTitle: "現場回饋",
+    loopUseText: "從道路阻礙、通行風險與日常不便開始，讓真實需求被看見。",
     loopTrustTitle: "Build trust",
-    loopTrustText:
-      "When the tool truly helps, users understand that friendly technology means one less moment of being stuck.",
+    loopTrustText: "回饋被整理、被標記、被理解，才有機會成為修復行動的起點。",
     loopCoCreateTitle: "Co-create",
-    loopCoCreateText:
-      "Share tools, report issues, and help test so the next person can use technology more easily.",
+    loopCoCreateText: "邀請居民、專業者、企業與公共部門共同參與，讓下一次通行更安全。",
     frictionEyebrow: "Technology Friction",
     frictionTitle: "Does technology evolve us, or regress us?",
     frictionLead:
@@ -554,10 +541,10 @@ const translations = {
     footerIntroTitle: "Fold complex technology into one-click living.",
     footerIntroText:
       "A refined tool gateway for established professionals and business leaders, making every download, verification step, and adoption decision feel safer and more dignified.",
-    footerProductsTitle: "Product",
-    footerProductTools: "NVD Friendly Software Library",
-    footerProductConverter: "Workflow",
-    footerProductSlides: "Download and safety",
+    footerProductsTitle: "協會行動",
+    footerProductTools: "道路回饋與修復行動",
+    footerProductConverter: "加入共創",
+    footerProductSlides: "品牌理念",
     footerGuidesTitle: "Ideas",
     footerGuideQuickStart: "Sovereign manifesto",
     footerGuideRightClick: "Technology friction",
@@ -592,29 +579,28 @@ const translations = {
     privacySectionThirdParty: "Third-party services",
     privacyThirdPartyText:
       "This site is hosted on GitHub Pages and may load Google Fonts, Font Awesome, and Google Drive download links. These services may process basic connection logs under their own policies.",
-    privacySectionDownloads: "Downloads and tool usage",
-    privacyDownloadsText:
-      "After downloading a tool, verify the source and scan the file with antivirus software. This website does not read your local file contents. Data handling by external tools or third-party websites is governed by those providers.",
+    privacySectionDownloads: "外部連結與協作服務",
+    privacyDownloadsText: "本網站可能連結至社群平台、協作表單或第三方資訊頁。離開本站後的資料處理方式，請以該服務提供者的政策為準。",
     termsSectionService: "Service scope",
     termsServiceText:
       "This site provides practical tool recommendations, download links, usage notes, and related resources. Some links may lead to third-party websites or cloud-drive download pages.",
     termsSectionUse: "User responsibility",
     termsUseText:
       "You are responsible for confirming whether each tool fits your needs and for complying with local laws and third-party service rules. Do not use this site or related tools to process, distribute, or infringe content that violates others' rights.",
-    termsSectionDownloads: "Download risk notice",
+    termsSectionDownloads: "外部連結提醒",
     termsDownloadsText:
       "We try to keep links and descriptions accurate, but cannot guarantee that every third-party tool, download file, or external website will remain available or risk-free. Before running executable files, verify the source and scan the file.",
     termsSectionChanges: "Changes",
     termsChangesText:
       "We may update the tool list, links, policies, and terms as the project evolves. Updated content will be posted on this page. Continued use of the site means you understand and accept the updates.",
     modalStepsTitle: "Get started in 3 simple steps",
-    stepOneTitle: "Choose and download",
+    stepOneTitle: "認識行動入口",
     stepOneText:
       "Pick the tool category you need, then use the direct link or download page to get the tool.",
     stepTwoTitle: "Run with one click",
     stepTwoText:
       "Each tool is designed to be simple. Open it, click once, and let the automated workflow begin.",
-    stepThreeTitle: "Get your result",
+    stepThreeTitle: "完成參與回饋",
     stepThreeText:
       "No complicated setup. Processed files are exported automatically so you can use them right away.",
     faqTitle: "FAQ",
@@ -624,46 +610,13 @@ const translations = {
     faqTwoQuestion: "Q: What if antivirus software blocks a packaged tool?",
     faqTwoAnswer:
       "Local tools are often standalone executable files, so Windows Defender may warn you. If you trust the source, follow the system prompt to continue.",
-    faqThreeQuestion: "Q: What should I check before downloading EXE tools?",
-    faqThreeAnswer:
-      "Only download from the official links shown on this site. After downloading, scan the file with antivirus software. If your system warns about an unknown source, confirm the filename and source before running it.",
+    faqThreeQuestion: "Q: 使用外部連結前需要注意什麼？",
+    faqThreeAnswer: "請確認連結來源與頁面網域；若外部服務要求提供個人資料，請先閱讀該服務的隱私政策與使用條款。",
     modalConfirm: "Got it",
   },
 };
 
-const tools = [
-  {
-    id: 1,
-    categoryKey: "office",
-    categoryLabelKey: "categoryOffice",
-    url: "https://drive.google.com/file/d/1_5wVJ22QtDKWQ_ZuBXqF7FS2o-hesIRg/view?usp=sharing",
-    sha256: "EA13205FB2BECB374AF93F04A335F5613B96B663C9CF46C341F80DC43486942C",
-    imageIcon: "fa-solid fa-file-powerpoint",
-    i18n: {
-      zh: {
-        name: "NVD友善軟體與知識圖書館_安全合規版_v2.1",
-        description:
-          "專為非資訊本業的頂尖專家與商務決策者打造。我們深知您的專業價值在於策略與洞察，不該耗費在繁瑣的技術盲區中。免輸入序號即刻自動綁定，用零設定的直覺操作，讓科技無縫配合您的思維，完美呈現關鍵簡報。",
-        tags: ["商務簡報", "自動綁定", "跨界菁英首選", "免序號"],
-        ctaText: "下載 NVD 友善軟體 →",
-      },
-      en: {
-        name: "NVD Friendly Software and Knowledge Library Safe Compliance Edition v2.1",
-        description:
-          "Built for elite non-technical professionals and business decision makers. Your expertise belongs in strategy and insight, not in tedious technical setup. Automatic binding with no serial-number friction gives you a zero-configuration workflow that keeps technology aligned with your thinking and restores key presentations cleanly.",
-        tags: [
-          "Business decks",
-          "Auto binding",
-          "Elite operators",
-          "No serial code",
-        ],
-        ctaText: "Download NVD Friendly Software →",
-      },
-    },
-  },
-
-
-];
+const tools = [];
 
 const simulatedStats = {
   processedFilesBase: 1312619,
@@ -736,7 +689,7 @@ const manifestoModeContent = [
   {
     hardcore: "打破體制設定的局限，在社會韌性的沙盒中重新定義玩法...",
     human:
-      "我們不抱怨路不平，而是直接開發工具，把路上的障礙變成手機裡精準的數據。",
+      "我們不只抱怨路不平，而是把路上的障礙整理成可被看見、可被追蹤的公共資料。",
   },
   {
     hardcore: "拒絕標籤...我們將被動的弱勢逆向轉譯，奪回價值的終極定價權。",
@@ -756,7 +709,7 @@ const manifestoModeContent = [
   {
     hardcore: "我們用跨域邏輯進行結構性壓制...NVD是未來社會運行的頂層協議。",
     human:
-      "丟掉只靠捐款的舊觀念！我們用程式碼與數據庫，直接幫台灣的交通環境進行系統大升級。",
+      "不只依賴單次善意，而是用資料、協作與制度化回饋，推動台灣交通環境的系統升級。",
   },
 ];
 

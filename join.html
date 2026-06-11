@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
@@ -26,7 +26,7 @@
       property="og:image"
       content="https://yi-anchen888.github.io/NVD-Toolkit/assets/og-image.jpg"
     />
-    <link rel="icon" href="data:," />
+    <link rel="icon" type="image/png" href="assets/nvd-logo-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,8 +45,9 @@
     <header class="site-header">
       <nav class="navbar container" aria-label="主要導覽">
         <a class="brand" href="index.html" aria-label="NVD 協會首頁">
-          <span class="brand-mark"><i class="fa-solid fa-road"></i></span>
-          <span data-i18n="brandName">NVD 協會</span>
+          <img class="brand-logo brand-logo-light" src="assets/nvd-logo-horizontal.png" alt="NVD Road Feedback & Repair" width="950" height="318" />
+          <img class="brand-logo brand-logo-dark" src="assets/nvd-logo-horizontal-reverse.png" alt="NVD Road Feedback & Repair" width="330" height="145" />
+          <span class="brand-text" data-i18n="brandName">NVD 協會</span>
         </a>
 
         <button
@@ -64,7 +65,6 @@
 
         <div class="nav-links" id="primaryNav" aria-label="網站選單">
           <a href="index.html" data-i18n="navHome">首頁</a>
-          <a href="software.html" data-i18n="navSoftware">友善軟體</a>
           <a href="resilience.html" data-i18n="navResilience">道路行動</a>
           <a href="manifesto.html" data-i18n="navManifesto">品牌理念</a>
           <a class="active" href="join.html" data-i18n="navLoop">加入共創</a>
@@ -128,11 +128,11 @@
           <div>
             <p class="eyebrow" data-i18n="loopEyebrow">Friendly Tech Loop</p>
             <h1 id="loopTitle" data-i18n="loopTitle">
-              從工具出發，建立 NVD 友善循環
+              從道路回饋出發，建立 NVD 友善循環
             </h1>
             <p class="section-lead" data-i18n="loopLead">
               NVD
-              不只是下載站，而是把解決痛點、建立信任、探索社會價值串起來的入口。
+              不只是理念頁，而是把現場回饋、公共信任、社會價值串起來的入口。
             </p>
           </div>
         </div>
@@ -141,14 +141,14 @@
             <span>01</span>
             <h3 data-i18n="loopUseTitle">解決痛點</h3>
             <p data-i18n="loopUseText">
-              用一鍵工具降低學習門檻，先讓使用者真的省力。
+              用低門檻回饋降低參與成本，先讓真實問題被看見。
             </p>
           </article>
           <article class="loop-card">
             <span>02</span>
             <h3 data-i18n="loopTrustTitle">建立信任</h3>
             <p data-i18n="loopTrustText">
-              用安全說明、版本紀錄與透明下載流程，讓工具被放心使用。
+              用清楚說明、透明流程與公開紀錄，讓行動被放心參與。
             </p>
           </article>
           <article class="loop-card">
@@ -162,11 +162,11 @@
       </section>
       <section class="gateway-section container">
         <div class="gateway-grid">
-          <a class="gateway-card" href="software.html"
+          <a class="gateway-card" href="resilience.html"
             ><span><i class="fa-solid fa-vial-circle-check"></i></span>
-            <h3 data-i18n="gatewaySoftwareTitle">綠色友善軟體</h3>
+            <h3 data-i18n="gatewaySoftwareTitle">認識 NVD 協會</h3>
             <p data-i18n="gatewaySoftwareText">
-              從一鍵轉檔、簡報還原到工作流工具，先讓日常科技變簡單。
+              從道路觀察、問題回報到協作改善，先讓公共參與變簡單。
             </p></a
           ><a class="gateway-card" href="resilience.html"
             ><span><i class="fa-solid fa-road-circle-check"></i></span>
@@ -190,26 +190,16 @@
         <div class="footer-top">
           <div class="footer-grid" aria-label="頁尾導覽">
             <section class="footer-column">
-              <h2 data-i18n="footerProductsTitle">產品</h2>
+              <h2 data-i18n="footerProductsTitle">協會行動</h2>
               <ul>
                 <li>
-                  <a href="software.html#product" data-i18n="footerProductTools"
-                    >NVD 友善軟體與知識圖書館</a
-                  >
+                  <a href="resilience.html" data-i18n="footerProductTools">道路回饋與修復行動</a>
                 </li>
                 <li>
-                  <a
-                    href="software.html#workflow"
-                    data-i18n="footerProductConverter"
-                    >使用流程</a
-                  >
+                  <a href="join.html" data-i18n="footerProductConverter">加入共創</a>
                 </li>
                 <li>
-                  <a
-                    href="software.html#security"
-                    data-i18n="footerProductSlides"
-                    >下載與安全</a
-                  >
+                  <a href="manifesto.html" data-i18n="footerProductSlides">品牌理念</a>
                 </li>
               </ul>
             </section>
@@ -304,13 +294,13 @@
                   >
                 </li>
                 <li>
-                  <a href="software.html#workflow" data-i18n="footerCompanyFaq"
+                  <a href="join.html#faq" data-i18n="footerCompanyFaq"
                     >常見問題</a
                   >
                 </li>
                 <li>
                   <a
-                    href="software.html#product"
+                    href="resilience.html"
                     data-i18n="footerCompanyUpdates"
                     >更新日誌</a
                   >
@@ -338,9 +328,7 @@
 
         <div class="footer-bottom">
           <div class="footer-brand">
-            <span class="footer-logo" aria-hidden="true"
-              ><i class="fa-solid fa-road"></i
-            ></span>
+            <span class="footer-logo" aria-hidden="true"><img class="footer-logo-img" src="assets/nvd-logo-icon.png" alt="" /></span>
             <p data-i18n="footerCopy">
               © 2026 NVD 協會. Road Feedback & Repair Action.
             </p>
@@ -394,27 +382,27 @@
               <li>
                 <span class="step-number">1</span>
                 <div>
-                  <strong data-i18n="stepOneTitle">選功能與下載</strong>
+                  <strong data-i18n="stepOneTitle">認識行動入口</strong>
                   <p data-i18n="stepOneText">
-                    在網站中選擇您需要的工具分類，點擊直達連結或下載點取得工具。
+                    從首頁、道路行動、品牌理念或加入共創頁面，選擇最符合您需求的參與入口。
                   </p>
                 </div>
               </li>
               <li>
                 <span class="step-number">2</span>
                 <div>
-                  <strong data-i18n="stepTwoTitle">一鍵自動化</strong>
+                  <strong data-i18n="stepTwoTitle">送出友善回饋</strong>
                   <p data-i18n="stepTwoText">
-                    程式皆經過極簡設計，開啟後只需一鍵點擊，便能自動啟動處理流程。
+                    依照頁面提示完成回饋或參與表單，讓資訊進入後續整理流程。
                   </p>
                 </div>
               </li>
               <li>
                 <span class="step-number">3</span>
                 <div>
-                  <strong data-i18n="stepThreeTitle">直達結果下載</strong>
+                  <strong data-i18n="stepThreeTitle">完成參與回饋</strong>
                   <p data-i18n="stepThreeText">
-                    無任何繁雜設定，處理完成的檔案將自動輸出，即刻下載並投入工作。
+                    透過表單、社群或現場協作完成回饋，讓道路阻礙被看見並進入後續整理。
                   </p>
                 </div>
               </li>
@@ -426,27 +414,26 @@
             <div class="faq-group">
               <div class="faq-item">
                 <h4 data-i18n="faqOneQuestion">
-                  Q: 使用這些工具需要付費或註冊嗎？
+                  Q: 參與 NVD 行動需要付費或註冊嗎？
                 </h4>
                 <p data-i18n="faqOneAnswer">
-                  本站推薦的部分客製工具提供免費下載，其餘外部工具則視原廠政策而定，多數均有免註冊免費體驗額度。
+                  參與 NVD 協會行動不以購買服務為前提；實際活動、合作與社群參與方式，將依各專案公告為準。
                 </p>
               </div>
               <div class="faq-item">
                 <h4 data-i18n="faqTwoQuestion">
-                  Q: 開啟打包工具時若被防毒軟體攔截該怎麼辦？
+                  Q: 外部平台要求登入或授權時該怎麼辦？
                 </h4>
                 <p data-i18n="faqTwoAnswer">
-                  由於本地工具通常是獨立可執行檔，Windows Defender
-                  等可能會出現誤報。若您信任來源，可依系統提示選擇仍要執行。
+                  若外部平台要求登入、授權或填寫資料，請先確認網域、用途與隱私政策；不確定時可以先暫停。
                 </p>
               </div>
               <div class="faq-item">
                 <h4 data-i18n="faqThreeQuestion">
-                  Q: 下載 EXE 工具前需要注意什麼？
+                  Q: 使用外部連結前需要注意什麼？
                 </h4>
                 <p data-i18n="faqThreeAnswer">
-                  請只從本站卡片提供的官方連結下載，下載後可先使用防毒軟體掃描。若系統跳出未知來源提醒，請確認檔名與來源後再執行。
+                  請確認連結來源與頁面網域；若外部服務要求提供個人資料，請先閱讀該服務的隱私政策與使用條款。
                 </p>
               </div>
             </div>
@@ -500,7 +487,7 @@
             <h3 data-i18n="privacySectionScope">我們如何保護你的資料</h3>
             <p data-i18n="privacyScopeText">
               NVD
-              自生活，實用工具箱是純前端靜態網站。本網站不要求註冊帳號，也不會主動收集你的姓名、電子郵件、檔案內容或付款資料。
+              NVD 協會網站是純前端靜態網站。本網站不要求註冊帳號，也不會主動收集你的姓名、電子郵件、檔案內容或付款資料。
             </p>
 
             <h3 data-i18n="privacySectionStorage">本機儲存資料</h3>
@@ -513,12 +500,12 @@
             <p data-i18n="privacyThirdPartyText">
               本網站透過 GitHub Pages 提供頁面，並可能載入 Google Fonts、Font
               Awesome 與 Google Drive
-              下載連結。這些服務可能依各自政策處理基本連線紀錄。
+              外部社群與協作連結。這些服務可能依各自政策處理基本連線紀錄。
             </p>
 
-            <h3 data-i18n="privacySectionDownloads">下載與工具使用</h3>
+            <h3 data-i18n="privacySectionDownloads">外部連結與協作服務</h3>
             <p data-i18n="privacyDownloadsText">
-              下載工具後，請確認來源並使用防毒軟體掃描。本網站不會讀取你的本機檔案內容；外部工具或第三方網站的資料處理方式，請以該服務提供者的政策為準。
+              本網站可能連結至社群平台、協作表單或第三方資訊頁。離開本站後的資料處理方式，請以該服務提供者的政策為準。
             </p>
           </section>
 
@@ -533,22 +520,22 @@
             </p>
             <h3 data-i18n="termsSectionService">服務內容</h3>
             <p data-i18n="termsServiceText">
-              本網站提供實用工具推薦、下載連結、使用說明與相關資源整理。部分連結會導向第三方網站或雲端硬碟下載頁。
+              本網站提供 NVD 協會理念、道路回饋與修復行動、參與共創與相關資源整理。部分連結可能導向第三方網站或社群平台。
             </p>
 
             <h3 data-i18n="termsSectionUse">使用責任</h3>
             <p data-i18n="termsUseText">
-              使用者應自行確認工具是否符合需求，並遵守所在地法律與第三方服務規範。請勿使用本網站或相關工具處理、散布或侵害他人權利的內容。
+              使用者應自行確認外部服務是否符合需求，並遵守所在地法律與第三方服務規範。請勿使用本網站或相關資源處理、散布或侵害他人權利的內容。
             </p>
 
-            <h3 data-i18n="termsSectionDownloads">下載風險提醒</h3>
+            <h3 data-i18n="termsSectionDownloads">外部連結提醒</h3>
             <p data-i18n="termsDownloadsText">
-              本站會盡力維護連結與說明的正確性，但無法保證所有第三方工具、下載檔案或外部網站永久可用或完全無風險。執行可執行檔前，請先確認來源並掃描檔案。
+              本站會盡力維護連結與說明的正確性，但無法保證所有第三方網站、社群平台或外部資源永久可用或完全無風險。使用外部服務前，請自行確認其條款與隱私政策。
             </p>
 
             <h3 data-i18n="termsSectionChanges">內容異動</h3>
             <p data-i18n="termsChangesText">
-              我們可能依專案進度調整工具清單、連結、政策與條款。更新後的內容會公布於本頁，繼續使用網站即代表你了解並接受更新內容。
+              我們可能依專案進度調整行動資訊、連結、政策與條款。更新後的內容會公布於本頁，繼續使用網站即代表你了解並接受更新內容。
             </p>
           </section>
         </div>
